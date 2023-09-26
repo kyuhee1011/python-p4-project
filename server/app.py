@@ -29,7 +29,7 @@ class Login(Resource):
 
         if user and user.authenticate(password):
             session['user_id'] = user.id
-            return user.to_dict(), 200
+            return user.to_dict(), 201
         
 class Logout(Resource):
     def delete(self):
