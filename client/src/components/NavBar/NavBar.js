@@ -23,10 +23,26 @@ function NavBar() {
         </Row>
         <Row>
           <ul>
-            <li className="nav-title">Home</li>
-            <li className="nav-title">MyRecipe</li>
-            <li className="nav-title">My Favorite</li>
-            <li className="nav-title">Add NewRecipe</li>
+            <li className="nav-title">
+              <Link className="navBar-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-title">
+              <Link className="navBar-link" to="/recipes">
+                MyRecipe
+              </Link>
+            </li>
+            <li className="nav-title">
+              <Link className="navBar-link" to="/mylist">
+                My Favorite
+              </Link>
+            </li>
+            <li className="nav-title">
+              <Link className="navBar-link" to="/addNew">
+                Add NewRecipe
+              </Link>
+            </li>
           </ul>
         </Row>
       </Container>
