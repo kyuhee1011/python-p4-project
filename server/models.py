@@ -36,3 +36,36 @@ class User(db.Model, SerializerMixin):
         return f'id: {self.id}, \
                 username: {self.username}, \
                 profile_image: {self.image_me}'
+    
+class Ingredient(db.Model):
+    __tablename__='ingredients'
+    id = db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String)
+    amount=db.Column(db.String)
+    direction=db.Column(db.String)
+
+    def __repr__(self):
+        return f'id: {self.id}, \
+                ingredient_name: {self.name}, \
+                ingredient_amount: {self.amount}\
+                direction:{self.direction}'
+    
+
+# ingredients = db.relationship('Ingredient', secondary=recipeIngredient, back_populates="ingredient")
+
+
+
+
+
+# class Recipe(db.Model, SerializerMixin):
+#     __tablename__ = 'recipes'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name=db.Column(db.String)
+#     image_food=db.Column(db.String)
+#     description=db.Column(db.String)
+#     duration=db.Column(db.String)
+#     serving=db.Column(db.String)  
+#     review=db.Column(db.Integer)
+#     mealType=db.Column(db.String)
+
+# recipes=relationship("Recipe", secondary=recipeIngredient, back_populates="ingredient")
