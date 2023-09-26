@@ -9,7 +9,7 @@ import * as yup from "yup";
 function SignUp() {
   const [errorPage, setErrorPage] = useState(false);
 
-  const formSignUp = yup.object().shape({
+  const formSchema = yup.object().shape({
     username: yup.string().required("Must enter a username").max(20),
     password: yup.string().required("Must enter a password").max(20),
     confirmation_password: yup
@@ -65,7 +65,7 @@ function SignUp() {
                 name="firstName "
                 placeholder="Enter your first name"
                 onChange={formik.handleInputChange}
-                value={formik.vlaues.firstName}
+                value={formik.values.firstName}
               />
               <p style={{ color: "red" }}> {formik.errors.firstName}</p>
             </Col>
