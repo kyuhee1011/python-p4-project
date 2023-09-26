@@ -14,10 +14,38 @@ from models import User, Recipe, Ingredient, recipeIngredient
 
 
 class CheckSession(Resource):
-    pass
+
+    def get(self):
+        user_id = session['user_id']
+
+        if not user_id:
+            return {'error' : 'Unauthorized'}, 401
+        if user_id:
+            user = User.query.filter(User.id == user_id).first()
+            return user.to_dict(), 200
+        
+        return {}, 204
+    
 
 class SignUp(Resource):
-    pass
+    def post(self):
+        data = request.get_json()
+
+        new_user=User(
+            username = data['username'],
+            password = data['password'],
+            image_url = data['image_url']
+        )
+        
+        new_user.password_hash = data['password']  
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            session['user_id'] = new_user.id
+            return new_user.to_dict(), 201
+        except IntegrityError:
+            return {'error': '400 Username already exist'}, 400
+        
 class Login(Resource):
     def post(self):
         request_login=request.get_json()
