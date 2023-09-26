@@ -6,6 +6,13 @@ from sqlalchemy import ForeignKey
 from config import db, bcrypt
 
 # Models go here!
+
+recipeIngredient=db.Table(
+    'recipe_ingredient',
+    db.Column('recipe_id', db.Integer,  db.ForeignKey('recipes.id')),
+    db.Column('ingredient_id', db.Integer,  db.ForeignKey('ingredients.id')),
+    
+)
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
@@ -48,14 +55,9 @@ class Ingredient(db.Model):
         return f'id: {self.id}, \
                 ingredient_name: {self.name}, \
                 ingredient_amount: {self.amount}\
-                direction:{self.direction}'
-    
+                direction:{self.direction}' 
 
-# ingredients = db.relationship('Ingredient', secondary=recipeIngredient, back_populates="ingredient")
-
-
-
-
+ingredients = db.relationship('Ingredient', secondary=recipeIngredient, back_populates="ingredient")
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
@@ -71,12 +73,11 @@ class Recipe(db.Model, SerializerMixin):
     def __repr__(self):
         return f'id: {self.id}, \
                 name: {self.name}, \
-                image: {self.image}\
+                image: {self.image_food}\
                 description:{self.description}\
                 duration:{self.duration}\
                 serving:{self.serving}\
                 review:{self.review}\
                 mealType:{self.mealType}'
                 
-
-# recipes=relationship("Recipe", secondary=recipeIngredient, back_populates="ingredient")
+recipes=db.relationship("Recipe", secondary=recipeIngredient, back_populates="ingredient")

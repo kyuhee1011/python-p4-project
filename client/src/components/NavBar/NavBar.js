@@ -21,11 +21,10 @@ function NavBar() {
         </Row>
         <Row>
           <ul>
-            <li>Breakfast</li>
-            <li>Lunch</li>
-            <li>Dinner</li>
-            <li>Dessert</li>
+            <li>Home</li>
+            <li>MyRecipe</li>
             <li>My Favorite</li>
+            <li>Add NewRecipe</li>
           </ul>
         </Row>
       </Container>
