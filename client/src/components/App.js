@@ -1,9 +1,9 @@
 // import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 // import { useState, useEffect } from "react";
-import Home from "./components/Home/Home";
+// import Home from "./components/Home/Home";
 // import MyFav from "./components/MyFav/MyFav";
-// import AddForm from "./components/AddForm/AddForm";
+// import AddForm from "./components/AddNew/AddNew";
 import NavBar from "./components/NavBar/NavBar";
 // import Recipe from "./components/Recipe/Recipe";
 
@@ -11,20 +11,20 @@ function App() {
   return (
     <div>
       <NavBar />
-      <Switch>
+      {/* <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/recipe">
+        <Route exact path="/Recipe">
           <Recipe />
         </Route>
-        <Route exact path="/myFav">
+        <Route exact path="/MyFav">
           <MyFav />
         </Route>
-        <Route exact path="/addNew">
+        <Route exact path="/AddNew">
           <AddNew />
         </Route>
-      </Switch>
+      </Switch> */}
     </div>
   );
 }

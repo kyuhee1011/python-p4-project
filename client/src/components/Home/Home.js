@@ -5,12 +5,7 @@ import "./Home.css";
 import { Container } from "react-bootstrap";
 
 function Home() {
-  return (
-    <Container>
-      {/* div meal pictures only
-        div dessert */}
-    </Container>
-  );
+  return <h2>home</h2>;
 }
 
 export default Home;

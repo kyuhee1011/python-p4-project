@@ -3,6 +3,8 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -21,10 +23,10 @@ function NavBar() {
         </Row>
         <Row>
           <ul>
-            <li>Home</li>
-            <li>MyRecipe</li>
-            <li>My Favorite</li>
-            <li>Add NewRecipe</li>
+            <li className="nav-title">Home</li>
+            <li className="nav-title">MyRecipe</li>
+            <li className="nav-title">My Favorite</li>
+            <li className="nav-title">Add NewRecipe</li>
           </ul>
         </Row>
       </Container>
