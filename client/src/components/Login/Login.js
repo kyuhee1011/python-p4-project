@@ -49,8 +49,8 @@ function LogIn() {
                 type="text"
                 name="username "
                 placeholder="Enter your username"
-                onChange={formik.handleInputChange}
-                value={formik.vlaues.username}
+                onChange={formik.handleInput}
+                value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
@@ -62,7 +62,7 @@ function LogIn() {
                 type="text"
                 name="password "
                 placeholder="Enter your password"
-                onChange={formik.handleInputChange}
+                onChange={formik.handleInput}
                 value={formik.vlaues.password}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>

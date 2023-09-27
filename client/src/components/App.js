@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import Home from "./Home/Home";
 import MyFav from "./MyFav/MyFav";
-import AddForm from "./AddNew/AddNew";
+import AddNew from "./AddNew/AddNew";
 import NavBar from "./NavBar/NavBar";
 import Recipe from "./Recipe/Recipe";
 import Login from "./Login/Login";

@@ -1,9 +1,9 @@
 import React from "react";
-import "./Recipe.css";
+
 import { useState, useEffect } from "react";
 // import { useFormik } from 'formik';
 import { Container, Row } from "react-bootstrap";
-import Ingredient from "./Ingredient/Ingredient";
+import Ingredient from "../Ingredient/Ingredient";
 
 function Recipe() {
   const [recipes, setRecipes] = useState([]);

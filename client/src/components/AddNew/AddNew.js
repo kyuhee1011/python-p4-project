@@ -1,7 +1,7 @@
 import React from "react";
 import "./AddNew.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
 
@@ -15,6 +15,8 @@ function AddNew({ recipes, setRecipes }) {
     direction: "",
     Favorite: "",
   });
+
+  const history = useHistory();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -34,7 +36,7 @@ function AddNew({ recipes, setRecipes }) {
       .then((res) => res.json())
       .then((returnedRecipe) => {
         setRecipes([...recipes, returnedRecipe]);
-        useNavigate("/recipe_all");
+        history.push("/recipe_all");
       });
   };
   return (
