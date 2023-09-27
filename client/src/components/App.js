@@ -1,13 +1,27 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-// import { useState, useEffect } from "react";
-// import Home from "./components/Home/Home";
-// import MyFav from "./components/MyFav/MyFav";
-// import AddForm from "./components/AddNew/AddNew";
-import NavBar from "./components/NavBar/NavBar";
-// import Recipe from "./components/Recipe/Recipe";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+import Home from "./Home/Home";
+import MyFav from "./MyFav/MyFav";
+import AddForm from "./AddNew/AddNew";
+import NavBar from "./NavBar/NavBar";
+import Recipe from "./Recipe/Recipe";
+import Login from "./Login/Login";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [searchSubmit, setSearchSubmit] = useState("");
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    fetch("/check_session").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+  if (!user) return <Login onLogin={setUser} />;
   return (
     <div>
       <NavBar />

@@ -1,9 +1,11 @@
 import React from "react";
-import "./Logincss";
+import "./Login.css";
 import { useState } from "react";
 import { useFormik } from "formik";
 // import { Container } from "react-bootstrap";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
+import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 
 function LogIn() {
   const [errorPage, setErrorPage] = useState(false);
@@ -71,9 +73,11 @@ function LogIn() {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-      <Button variant="primary" type="submit">
-        SignUp
-      </Button>
+      <Link to="/signup">
+        <Button variant="primary" type="submit">
+          SignUp
+        </Button>
+      </Link>
     </Form>
   );
 }

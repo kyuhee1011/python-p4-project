@@ -1,17 +1,23 @@
-#!/usr/bin/env python3
 
-# Standard library imports
-from random import randint, choice as rc
-
-# Remote library imports
-from faker import Faker
 
 # Local imports
 from app import app
-from models import db
+from models import User, Ingredient, Recipe
+from config import db
 
 if __name__ == '__main__':
-    fake = Faker()
+   
     with app.app_context():
-        print("Starting seed...")
-        # Seed code goes here!
+        User.query.delete()
+        Ingredient.query.delete()
+        Recipe.query.delete()
+
+        users=[]
+        ingredients=[]
+        recipes=[]
+
+
+        db.session.add(users)
+        db.session.add(ingredients)
+        db.session.add(recipes)
+        db.session.commit()

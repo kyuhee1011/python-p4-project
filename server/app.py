@@ -11,8 +11,7 @@ from sqlalchemy.exc import IntegrityError
 from config import app, db, api
 # Add your model imports
 from models import User, Recipe, Ingredient, recipeIngredient
-
-
+    
 class CheckSession(Resource):
 
     def get(self):
@@ -66,15 +65,28 @@ class Logout(Resource):
         if session.get('user_id'):
             session['user_id'] = None
             return {}, 204  
+        
+ 
     
 class RecipeAll(Resource):
-    pass
+    def get(self):
+        request_login=request.get_json()
+        username = request_login['username']
+        user = User.query.filter(User.username == username).first()
+        data_meals=Recipe.query.all()
+        all_recipe=[recipe.to_dict()for recipe in data_meals]
+      
+        if not user:
+            return {'errors':'User not found'}, 404
+        else:
+            return make_response(jsonify(all_recipe),200)   
 class RecipeMember(Resource):
     pass
 
 # @app.route('/')
 # def index():
 #     return '<h1>Project Server</h1>'
+
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
 api.add_resource(Login, '/login')
