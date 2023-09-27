@@ -25,7 +25,9 @@ function App() {
   return (
     <div>
       <NavBar />
-      {/* <Switch>
+      {/* direct to login page 
+      background image */}
+      <Switch>
         <Route exact path="/">
           <Home />
         </Route>
@@ -38,7 +40,7 @@ function App() {
         <Route exact path="/AddNew">
           <AddNew />
         </Route>
-      </Switch> */}
+      </Switch>
     </div>
   );
 }

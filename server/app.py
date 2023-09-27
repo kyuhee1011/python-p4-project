@@ -79,7 +79,38 @@ class RecipeAll(Resource):
         if not user:
             return {'errors':'User not found'}, 404
         else:
-            return make_response(jsonify(all_recipe),200)   
+            return make_response(jsonify(all_recipe),200)
+
+    def post(self):
+        new_form=request.get_json()
+        new_recipe= Recipe(
+            name=new_form["name"],    
+            image_food=new_form["image_food"],
+            description=new_form["description"],
+            duration=new_form["duration"],
+            serving=new_form["serving"], 
+            review=new_form["review"],
+            mealType=new_form["mealType"]
+        )
+        new_ingredient=Ingredient(
+            name=new_form["name"],
+            amount=new_form["amount"],
+            direction=new_form["direction"]
+        )
+        db.session.add(new_recipe)
+        db.session.add(new_ingredient)
+        db.commit()
+
+        recipe_dict=new_recipe.to_dict()
+        ingredient_dict=new_ingredient.to_dict()
+        response_data = {
+                "recipe": recipe_dict,
+                "ingredient": ingredient_dict
+            }
+        response=make_response(jsonify(response_data),
+                               201
+        )
+        return response
 class RecipeMember(Resource):
     pass
 
