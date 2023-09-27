@@ -44,12 +44,12 @@ class User(db.Model, SerializerMixin):
                 username: {self.username}, \
                 profile_image: {self.image_me}'
     
-class Ingredient(db.Model):
+class Ingredient(db.Model,SerializerMixin):
     __tablename__='ingredients'
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
-    amount=db.Column(db.String)
     direction=db.Column(db.String)
+    recipes = db.relationship('Recipe', secondary=recipeIngredient, back_populates="ingredient")
 
     def __repr__(self):
         return f'id: {self.id}, \
@@ -57,18 +57,19 @@ class Ingredient(db.Model):
                 ingredient_amount: {self.amount}\
                 direction:{self.direction}' 
 
-ingredients = db.relationship('Ingredient', secondary=recipeIngredient, back_populates="ingredient")
+    
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
-    name=db.Column(db.String)
+    title=db.Column(db.String)
     image_food=db.Column(db.String)
     description=db.Column(db.String)
     duration=db.Column(db.String)
     serving=db.Column(db.String)  
     review=db.Column(db.Integer)
     mealType=db.Column(db.String)
+    ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipe")
 
     def __repr__(self):
         return f'id: {self.id}, \
@@ -80,4 +81,4 @@ class Recipe(db.Model, SerializerMixin):
                 review:{self.review}\
                 mealType:{self.mealType}'
                 
-recipes=db.relationship("Recipe", secondary=recipeIngredient, back_populates="ingredient")
+    

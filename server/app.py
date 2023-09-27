@@ -71,8 +71,7 @@ class Logout(Resource):
 class RecipeAll(Resource):
     def get(self):
         request_login=request.get_json()
-        username = request_login['username']
-        user = User.query.filter(User.username == username).first()
+        
         data_meals=Recipe.query.all()
         all_recipe=[recipe.to_dict()for recipe in data_meals]
       
