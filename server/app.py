@@ -92,25 +92,60 @@ class RecipeAll(Resource):
             review=new_form["review"],
             mealType=new_form["mealType"]
         )
-        new_ingredient=Ingredient(
-            name=new_form["name"],
-            amount=new_form["amount"],
-            direction=new_form["direction"]
-        )
+        # new_ingredient=Ingredient(
+        #     name=new_form["name"],
+        #     amount=new_form["amount"],
+        #     direction=new_form["direction"]
+        # )
         db.session.add(new_recipe)
-        db.session.add(new_ingredient)
+        # db.session.add(new_ingredient)
         db.commit()
 
         recipe_dict=new_recipe.to_dict()
-        ingredient_dict=new_ingredient.to_dict()
+        # ingredient_dict=new_ingredient.to_dict()
         response_data = {
                 "recipe": recipe_dict,
-                "ingredient": ingredient_dict
+                # "ingredient": ingredient_dict
             }
         response=make_response(jsonify(response_data),
                                201
         )
         return response
+    
+class IngredientAll(Resource):
+    def get(self):
+        request_login=request.get_json()
+        username = request_login['username']
+        user = User.query.filter(User.username == username).first()
+        data_meals=Ingredient.query.all()
+        all_ingredient=[ingredient.to_dict()for ingredient in data_meals]
+      
+        if not user:
+            return {'errors':'User not found'}, 404
+        else:
+            return make_response(jsonify(all_ingredient),200)
+
+    def post(self):
+        new_form=request.get_json()
+    
+        new_ingredient=Ingredient(
+            name=new_form["name"],
+            amount=new_form["amount"],
+            direction=new_form["direction"]
+        )
+   
+        db.session.add(new_ingredient)
+        db.commit()
+
+        ingredient_dict=new_ingredient.to_dict()
+        response_ingredient = {
+              "ingredient": ingredient_dict
+            }
+        response=make_response(jsonify(response_ingredient),
+                               201
+        )
+        return response
+
 class RecipeMember(Resource):
     pass
 
@@ -123,6 +158,7 @@ api.add_resource(SignUp, '/signup')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
+api.add_resource(IngredientAll, '/ingredient_all')
 api.add_resource(RecipeMember, '/recipe_member')
 
 
