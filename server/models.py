@@ -19,9 +19,9 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
     _password_hash=db.Column(db.String)
-    first_name = db.Column(db.String)
-    last_name=db.Column(db.String)
-    image_me=db.Column(db.String)
+    firstName = db.Column(db.String)
+    lastName=db.Column(db.String)
+    created = db.Column(db.DateTime, default=db.func.now())
   
     recipes = db.relationship('Recipe', backref='user')
 

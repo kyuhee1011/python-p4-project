@@ -60,25 +60,18 @@ class Login(Resource):
         
 class Logout(Resource):
     def delete(self):
-        if not session['user_id']:
-            return {'error': 'Unauthorized access'}, 401
-        if session.get('user_id'):
-            session['user_id'] = None
-            return {}, 204  
+        session.get('user_id')
+        session['user_id'] = None
+        return {}, 204  
         
  
     
 class RecipeAll(Resource):
     def get(self):
-        request_login=request.get_json()
-        
+              
         data_meals=Recipe.query.all()
         all_recipe=[recipe.to_dict()for recipe in data_meals]
-      
-        if not user:
-            return {'errors':'User not found'}, 404
-        else:
-            return make_response(jsonify(all_recipe),200)
+        return make_response(jsonify(all_recipe),200)
 
     def post(self):
         new_form=request.get_json()
