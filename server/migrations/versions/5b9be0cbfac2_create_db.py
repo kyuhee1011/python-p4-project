@@ -30,7 +30,7 @@ def upgrade():
     sa.Column('_password_hash', sa.String(), nullable=True),
     sa.Column('firstName', sa.String(), nullable=True),
     sa.Column('lastName', sa.String(), nullable=True),
-    sa.CheckConstraint('length(username) >= 30'),
+    sa.CheckConstraint('length(username) >= 3'),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('username')
     )

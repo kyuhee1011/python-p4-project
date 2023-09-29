@@ -16,9 +16,9 @@ recipeIngredient=db.Table(
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     __table_args__ = (
-        db.CheckConstraint('length(username) >= 30'),
+        db.CheckConstraint('length(username) >= 3'),
     )
-    serialize_rules = ('-recipes.user')
+    serialize_rules = ('-recipes.user',)
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
@@ -49,12 +49,12 @@ class User(db.Model, SerializerMixin):
     
 class Ingredient(db.Model,SerializerMixin):
     __tablename__='ingredients'
-    serialize_rules = ('-recipes.ingredient')
+    serialize_rules = ('-recipes.ingredient',)
     
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
     direction=db.Column(db.String)
-    recipes = db.relationship('Recipe', secondary=recipeIngredient, back_populates="ingredient")
+    recipes = db.relationship('Recipe', secondary=recipeIngredient, back_populates="ingredients")
 
     def __repr__(self):
         return f'id: {self.id}, \
@@ -65,7 +65,7 @@ class Ingredient(db.Model,SerializerMixin):
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
-    serialize_rules = ('-user.recipes', '-user.recipeIngredient','-ingredient.recipes')
+    serialize_rules = ('-user.recipes', '-ingredients.recipes')
 
     id = db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String)
@@ -76,7 +76,7 @@ class Recipe(db.Model, SerializerMixin):
     review=db.Column(db.Integer)
     mealType=db.Column(db.String)
     user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
-    ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipe")
+    ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipes")
 
     def __repr__(self):
         return f'id: {self.id}, \
