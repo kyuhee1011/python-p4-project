@@ -12,7 +12,10 @@ if __name__ == '__main__':
         Ingredient.query.delete()
         Recipe.query.delete()
 
-        users=[]
+        users =[ 
+            User(username="kyuhelee", _password_hash="k1234", firstName="kyuhee",lastName="Lee" ),
+            User(username="raylee", _password_hash="r1234", firstName="ray", lastName="lee")
+        ]
         ingredients=[
             Ingredient(name="3 egg, 1 Tbsp chopped onion, 1 Tbsp chopped green onion, 1 Tbsp chopped carrot, salt (option)", 
                        direction="Chopped every ingredients,In a medium bowl crack 3 eggs and add a pinch of salt  then add and mix all ingredients together, Preheat the pan between medium and low heated, Add the egg mixture to the pan and wait until the top or edges begins cooked,Using a spoon with a spatula (or two spatula), lift one end and fold it over and over until nice rolled egg, Place on the cutting board and slice the egg about ¾ or ½ inch thick and enjoy the delicious Korean omelette."),
@@ -40,6 +43,6 @@ if __name__ == '__main__':
         ]
 
 
-        db.session.add(users)
-        db.session.add(recipes)
+        db.session.add_all(users)
+        db.session.add_all(recipes)
         db.session.commit()

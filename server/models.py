@@ -18,7 +18,7 @@ class User(db.Model, SerializerMixin):
     __table_args__ = (
         db.CheckConstraint('length(username) >= 30'),
     )
-    serialize_rules = ('-recipes.user', '-ingredient.user')
+    serialize_rules = ('-recipes.user')
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
@@ -45,8 +45,7 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'id: {self.id}, \
-                username: {self.username}, \
-                profile_image: {self.image_me}'
+                username: {self.username}'
     
 class Ingredient(db.Model,SerializerMixin):
     __tablename__='ingredients'
@@ -66,7 +65,7 @@ class Ingredient(db.Model,SerializerMixin):
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
-    serialize_rules = ('-user.recipes', '-user.recipeIngredient', '-user.ingredient')
+    serialize_rules = ('-user.recipes', '-user.recipeIngredient','-ingredient.recipes')
 
     id = db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String)
@@ -81,7 +80,7 @@ class Recipe(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'id: {self.id}, \
-                name: {self.name}, \
+                name: {self.title}, \
                 image: {self.image_food}\
                 description:{self.description}\
                 duration:{self.duration}\
