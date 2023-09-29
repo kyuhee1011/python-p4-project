@@ -10,8 +10,10 @@ function NavBar() {
         <Row>
           <Col xs={6} md={4}>
             <Link className="navBar-link" to="/login">
-              Log In
-              <i class="fi fi-sr-user"></i>
+              <Button type="submit" variant="outline-primary">
+                Log In
+                <i class="fi fi-sr-user"></i>
+              </Button>
             </Link>
           </Col>
           <Col>

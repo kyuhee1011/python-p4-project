@@ -7,7 +7,6 @@ import MyFav from "./MyFav/MyFav";
 import AddNew from "./AddNew/AddNew";
 import NavBar from "./NavBar/NavBar";
 import Recipe from "./Recipe/Recipe";
-import Login from "./Login/Login";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,13 +14,13 @@ function App() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/check_session").then((response) => {
+    fetch("http://127.0.0.1:5555/check_session").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
     });
   }, []);
-  if (!user) return <Login onLogin={setUser} />;
+  // if (!user) return <Login onLogin={setUser} />;
   return (
     <div>
       <NavBar />

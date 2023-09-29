@@ -20,16 +20,16 @@ function LogIn() {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("/login", {
+      fetch("http://127.0.0.1:5555/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values, null, 2),
       }).then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           setErrorPage("Successfully signed up");
-        } else if (res.status == 422) {
+        } else if (res.status === 422) {
           setErrorPage("Invalid username or password ");
         }
       });
@@ -63,7 +63,7 @@ function LogIn() {
                 name="password "
                 placeholder="Enter your password"
                 onChange={formik.handleInput}
-                value={formik.vlaues.password}
+                value={formik.values.password}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>
             </Col>

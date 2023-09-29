@@ -16,8 +16,8 @@ function SignUp() {
       .string()
       .required("Please enter confirm your password")
       .max(20),
-    first_name: yup.string().required("Must enter a first name").max(20),
-    last_name: yup.string().required("Must enter a last name").max(20),
+    firstName: yup.string().required("Must enter a first name").max(20),
+    lastName: yup.string().required("Must enter a last name").max(20),
     profile_image: yup
       .string()
       .required("Must upload your profile image.")
@@ -28,14 +28,14 @@ function SignUp() {
       username: "",
       password: "",
       confirmation: "",
-      first_name: "",
-      last_name: "",
+      firstName: "",
+      lastName: "",
       profile_image: "",
       terms: false,
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("/signup", {
+      fetch("http://127.0.0.1:5555/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function SignUp() {
                 type="text"
                 name="firstName "
                 placeholder="Enter your first name"
-                onChange={formik.handleInputChange}
+                onChange={formik.handleInput}
                 value={formik.values.firstName}
               />
               <p style={{ color: "red" }}> {formik.errors.firstName}</p>
@@ -77,8 +77,8 @@ function SignUp() {
                 type="text"
                 name="lastName "
                 placeholder="Enter your last name"
-                onChange={formik.handleInputChange}
-                value={formik.vlaues.lastName}
+                onChange={formik.handleInput}
+                value={formik.values.lastName}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>
             </Col>
@@ -91,8 +91,8 @@ function SignUp() {
                 type="text"
                 name="username "
                 placeholder="Enter your username"
-                onChange={formik.handleInputChange}
-                value={formik.vlaues.username}
+                onChange={formik.handleInput}
+                value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
@@ -104,10 +104,10 @@ function SignUp() {
                 type="text"
                 name="password "
                 placeholder="Enter your password"
-                onChange={formik.handleInputChange}
-                value={formik.vlaues.password}
+                onChange={formik.handleInput}
+                value={formik.values.password}
               />
-              <p style={{ color: "red" }}> {formik.errors.lastName}</p>
+              <p style={{ color: "red" }}> {formik.errors.password}</p>
             </Col>
             <Col lg="10">
               <Form.Label className="formPasswordConfirm">
@@ -120,8 +120,8 @@ function SignUp() {
                 type="text"
                 name="confirmation "
                 placeholder="Enter your password again"
-                onChange={formik.handleInputChange}
-                value={formik.vlaues.confirmation}
+                onChange={formik.handleInput}
+                value={formik.values.confirmation}
               />
               <p style={{ color: "red" }}> {formik.errors.confirmation}</p>
             </Col>

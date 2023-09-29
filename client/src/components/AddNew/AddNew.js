@@ -3,7 +3,7 @@ import "./AddNew.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 
 function AddNew({ recipes, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({

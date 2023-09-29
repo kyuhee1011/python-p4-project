@@ -9,7 +9,7 @@ function Recipe() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/recipe_all")
+    fetch("http://127.0.0.1:5555/recipe_all")
       .then((response) => response.json())
       .then((recipes) => {
         setRecipes(recipes);
