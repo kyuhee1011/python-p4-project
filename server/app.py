@@ -122,7 +122,6 @@ class IngredientAll(Resource):
     
         new_ingredient=Ingredient(
             name=new_form["name"],
-            amount=new_form["amount"],
             direction=new_form["direction"]
         )
    
@@ -138,8 +137,50 @@ class IngredientAll(Resource):
         )
         return response
 
-class RecipeMember(Resource):
-    pass
+class RecipeMemberById(Resource):
+    def get(self,id):
+        user = User.query.filter(User.id==id).first()
+      
+        if user:
+            recipes = [recipe.to_dict() for recipe in user.recipes]
+            ingredients = [ingredient.to_dict() for ingredient in user.ingredients]
+            response_data = {
+                "user": user.to_dict(),
+                "recipes": recipes,
+                "ingredients": ingredients
+            }
+            return response_data, 200
+        else:
+            return {'errors': 'recipe not found'},404
+    
+    def post(self, id):
+        request_json=request.get_json()
+        user = User.query.filter(User.id==id).first()
+        ingredient=Ingredient.query.all()
+        
+        if user and ingredient in request_json['name','direction']:
+            new_ingredient = Ingredient(
+                name=request_json['name'],
+                direction=request_json['direction']
+            )
+
+            db.session.add(user)
+            db.session.add(new_ingredient)
+            db.session.commit()
+            return new_ingredient.to_dict(), 201
+        else:
+            return {'errors':'unprocessable entity'}, 422
+    
+    def delete(self,id):
+        ingredient=Ingredient.query.filter(Ingredient.id==id).first()
+        if ingredient:
+            db.session.delete(ingredient)
+            db.session.commit()
+            return ingredient.to_dict(), 205
+        else:
+            return {'errors':'bad request'}, 400
+            
+
 
 # @app.route('/')
 # def index():
@@ -151,7 +192,7 @@ api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
 api.add_resource(IngredientAll, '/ingredient_all')
-api.add_resource(RecipeMember, '/recipe_member')
+api.add_resource(RecipeMemberById, '/recipe_member/<int:id>')
 
 
 if __name__ == '__main__':

@@ -15,13 +15,17 @@ recipeIngredient=db.Table(
 )
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
+    __table_args__ = (
+        db.CheckConstraint('length(username) >= 30'),
+    )
+    serialize_rules = ('-recipes.user', '-ingredient.user')
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
     _password_hash=db.Column(db.String)
     firstName = db.Column(db.String)
     lastName=db.Column(db.String)
-    created = db.Column(db.DateTime, default=db.func.now())
+    
   
     recipes = db.relationship('Recipe', backref='user')
 
@@ -46,6 +50,8 @@ class User(db.Model, SerializerMixin):
     
 class Ingredient(db.Model,SerializerMixin):
     __tablename__='ingredients'
+    serialize_rules = ('-recipes.ingredient')
+    
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
     direction=db.Column(db.String)
@@ -54,13 +60,14 @@ class Ingredient(db.Model,SerializerMixin):
     def __repr__(self):
         return f'id: {self.id}, \
                 ingredient_name: {self.name}, \
-                ingredient_amount: {self.amount}\
                 direction:{self.direction}' 
 
     
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
+    serialize_rules = ('-user.recipes', '-user.recipeIngredient', '-user.ingredient')
+
     id = db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String)
     image_food=db.Column(db.String)
@@ -69,6 +76,7 @@ class Recipe(db.Model, SerializerMixin):
     serving=db.Column(db.String)  
     review=db.Column(db.Integer)
     mealType=db.Column(db.String)
+    user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
     ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipe")
 
     def __repr__(self):
