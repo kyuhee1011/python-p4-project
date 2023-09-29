@@ -26,7 +26,7 @@ function AddNew({ recipes, setRecipes }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("/recipe_all", {
+    fetch("http://127.0.0.1:5555/recipe_all", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

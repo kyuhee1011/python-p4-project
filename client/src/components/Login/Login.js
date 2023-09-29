@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 
-function LogIn() {
+function LogIn({ handleSubmit, newUser }) {
   const [errorPage, setErrorPage] = useState(false);
   const formSchema = yup.object().shape({
     username: yup.string().required("Must enter a username").max(20),
@@ -37,7 +37,7 @@ function LogIn() {
   });
 
   return (
-    <Form className="formContainer" onSubmit={formik.handleSubmitTask}>
+    <Form className="formContainer" onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Login </h2>
       <div className="formLogin">
         <InputGroup className="formCenter">
@@ -49,7 +49,7 @@ function LogIn() {
                 type="text"
                 name="username "
                 placeholder="Enter your username"
-                onChange={formik.handleInput}
+                onChange={formik.newUser}
                 value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
@@ -62,7 +62,7 @@ function LogIn() {
                 type="text"
                 name="password "
                 placeholder="Enter your password"
-                onChange={formik.handleInput}
+                onChange={formik.newUser}
                 value={formik.values.password}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>

@@ -11,10 +11,10 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-
+  console.log("render");
   const handleSearch = recipes.filter((e) => {
     const inputSearch = e.title.toLowerCase().includes(search);
-    setSearch(inputSearch);
+    // setSearch(inputSearch);
   });
 
   const newUser = (user) => setUser(user);
@@ -29,6 +29,7 @@ function App() {
 
   return (
     <div>
+      <h1>test</h1>
       <NavBar search={handleSearch} setSearch={setSearch} />
       {/* direct to login page 
       background image */}
