@@ -19,10 +19,8 @@ function Ingredient() {
         <h2>Share Your Ingredient for Your Recipe</h2>
       </Row>
       <Row>
-        {ingredients.map(
-          (ingredients) => (
-            (<p>{ingredients.name}</p>), (<p>{ingredients.direction}</p>)
-          )
+        {ingredients.map((ingredients) =>
+          (<p>{ingredients.name}</p>)(<p>{ingredients.direction}</p>)
         )}
       </Row>
     </Container>

@@ -19,16 +19,13 @@ function Home({ recipes }) {
       <div>
         <h2>home page</h2>
         <div>
-          {recipes.map(
-            (recipes) => (
-              (<h3>{recipes.title}</h3>),
-              (
-                <img
-                  key={recipes.id}
-                  src={recipes.image}
-                  alt="My Delicious Food"
-                />
-              )
+          {recipes.map((recipes) =>
+            (<h3>{recipes.title}</h3>)(
+              <img
+                key={recipes.id}
+                src={recipes.image}
+                alt="My Delicious Food"
+              />
             )
           )}
         </div>

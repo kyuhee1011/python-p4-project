@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
-function NavBar() {
+function NavBar({ search, setSearch }) {
   return (
     <NavBar>
       <Container fluid className="navBarContainer">
@@ -22,9 +21,16 @@ function NavBar() {
             </Button>
           </Col>
           <Col>
-            <Button type="submit" variant="outline-primary">
-              Search
-            </Button>
+            <Link
+              className="navBar-link"
+              placeholder="Search"
+              type="search"
+              onChange={(searchSubmit) => setSearch(searchSubmit)}
+            >
+              <Button type="submit" variant="outline-primary">
+                Search
+              </Button>
+            </Link>
           </Col>
         </Row>
         <Row>

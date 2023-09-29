@@ -21,16 +21,9 @@ function Recipe() {
         <h2>Share Your Recipes</h2>
       </Row>
       <Row>
-        {recipes.map(
-          (recipes) => (
-            (<h3>{recipes.title}</h3>),
-            (
-              <img
-                key={recipes.id}
-                src={recipes.image}
-                alt="My Delicious Food"
-              />
-            )
+        {recipes.map((recipes) =>
+          (<h3>{recipes.title}</h3>)(
+            <img key={recipes.id} src={recipes.image} alt="My Delicious Food" />
           )
         )}
       </Row>
