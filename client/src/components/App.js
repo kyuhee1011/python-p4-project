@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import Home from "./Home/Home";
 import MyFav from "./MyFav/MyFav";
@@ -10,8 +9,9 @@ import Recipe from "./Recipe/Recipe";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [searchSubmit, setSearchSubmit] = useState("");
   const [recipes, setRecipes] = useState([]);
+
+  const newUser = (user) => setUser(user);
 
   useEffect(() => {
     fetch("http://127.0.0.1:5555/check_session").then((response) => {
@@ -20,7 +20,7 @@ function App() {
       }
     });
   }, []);
-  // if (!user) return <Login onLogin={setUser} />;
+
   return (
     <div>
       <NavBar />
@@ -28,16 +28,16 @@ function App() {
       background image */}
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home recipes={recipes} />
         </Route>
         <Route exact path="/Recipe">
-          <Recipe />
+          <Recipe users={user} newUser={newUser} />
         </Route>
         <Route exact path="/MyFav">
-          <MyFav />
+          <MyFav users={user} newUser={newUser} />
         </Route>
         <Route exact path="/AddNew">
-          <AddNew />
+          <AddNew users={user} newUser={newUser} />
         </Route>
       </Switch>
     </div>

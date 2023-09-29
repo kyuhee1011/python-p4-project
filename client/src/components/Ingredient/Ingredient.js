@@ -16,7 +16,14 @@ function Ingredient() {
   return (
     <Container>
       <Row>
-        <h2>Share Your Recipes</h2>
+        <h2>Share Your Ingredient for Your Recipe</h2>
+      </Row>
+      <Row>
+        {ingredients.map(
+          (ingredients) => (
+            (<p>{ingredients.name}</p>), (<p>{ingredients.direction}</p>)
+          )
+        )}
       </Row>
     </Container>
   );

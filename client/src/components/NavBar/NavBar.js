@@ -8,13 +8,18 @@ function NavBar() {
     <NavBar>
       <Container fluid className="navBarContainer">
         <Row>
-          <Col xs={6} md={4}>
+          <Col>
             <Link className="navBar-link" to="/login">
               <Button type="submit" variant="outline-primary">
                 Log In
                 <i class="fi fi-sr-user"></i>
               </Button>
             </Link>
+          </Col>
+          <Col>
+            <Button type="submit" variant="outline-primary">
+              Logout
+            </Button>
           </Col>
           <Col>
             <Button type="submit" variant="outline-primary">
