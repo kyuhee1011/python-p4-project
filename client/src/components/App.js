@@ -6,6 +6,7 @@ import MyFav from "./MyFav/MyFav";
 import AddNew from "./AddNew/AddNew";
 import NavBar from "./NavBar/NavBar";
 import Recipe from "./Recipe/Recipe";
+import Login from "./Login/Login";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -14,9 +15,13 @@ function App() {
   console.log("render");
 
   const handleSearch = recipes.filter((e) => {
-    const inputSearch = e.title.toLowerCase().includes(search);
+    return e.title.toLowerCase().includes(search.toLowerCase());
     // setSearch(inputSearch);
   });
+  const [username, setUsername] = useState("");
+  function handleUpdate(e) {
+    setUsername(e.target.value);
+  }
 
   const newUser = (user) => setUser(user);
 
@@ -35,6 +40,9 @@ function App() {
       {/* direct to login page 
       background image */}
       <Switch>
+        <Route exact path="/login">
+          <Login user={user} handleUpdate={handleUpdate} />
+        </Route>
         <Route exact path="/">
           <Home recipes={recipes} setRecipes={setRecipes} />
         </Route>
@@ -45,7 +53,7 @@ function App() {
           <MyFav users={user} newUser={newUser} />
         </Route>
         <Route exact path="/addNew">
-          <AddNew users={user} newUser={newUser} />
+          <AddNew users={user} setRecipes={setRecipes} />
         </Route>
       </Switch>
     </div>

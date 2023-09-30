@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-function AddNew({ recipes, setRecipes }) {
+function AddNew({ user, recipes, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({
     title: "",
     image: "",
@@ -54,7 +54,7 @@ function AddNew({ recipes, setRecipes }) {
                 name="title"
                 placeholder="Enter title of the recipe"
                 onChange={handleInput}
-                value={setRecipeForm.title}
+                value={recipeForm.title}
               />
             </Col>
           </Row>
@@ -73,7 +73,7 @@ function AddNew({ recipes, setRecipes }) {
                 size="md"
                 placeholder="copy image's url"
                 onChange={handleInput}
-                value={setRecipeForm.image}
+                value={recipeForm.image}
               />
             </Col>
           </Row>
@@ -91,7 +91,7 @@ function AddNew({ recipes, setRecipes }) {
                 className="inputSpace"
                 placeholder="Write down the description"
                 onChange={handleInput}
-                value={setRecipeForm.description}
+                value={recipeForm.description}
               />
             </Col>
           </Row>
@@ -109,7 +109,7 @@ function AddNew({ recipes, setRecipes }) {
                 size="md"
                 placeholder="enter the ingredient name"
                 onChange={handleInput}
-                value={setRecipeForm.name}
+                value={recipeForm.name}
               />
             </Col>
           </Row>
@@ -127,7 +127,7 @@ function AddNew({ recipes, setRecipes }) {
                 size="md"
                 placeholder="Enter the direction"
                 onChange={handleInput}
-                value={setRecipeForm.direction}
+                value={recipeForm.direction}
               />
             </Col>
           </Row>

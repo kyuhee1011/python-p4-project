@@ -9,8 +9,10 @@ function Ingredient() {
   useEffect((ingredients) => {
     fetch("http://127.0.0.1:5555/ingredient_all")
       .then((response) => response.json())
-      .then((data) => setIngredients(data));
+      .then((data) => console.log(data));
   }, []);
+  const testIngredient = ingredients.map((ingredient) => ingredient);
+  console.log(testIngredient);
   return (
     <Container>
       <Row>
@@ -18,12 +20,12 @@ function Ingredient() {
       </Row>
       <Row>
         <div>
-          {ingredients.map((ingredient) => (
+          {/* {ingredients.map((ingredient) => (
             <div key={ingredient.id}>
               <p>{ingredient.name}</p>
               <p>{ingredient.direction}</p>
             </div>
-          ))}
+          ))} */}
         </div>
       </Row>
     </Container>

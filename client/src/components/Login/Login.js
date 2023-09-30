@@ -1,13 +1,13 @@
 import React from "react";
 import "./Login.css";
-import { useState } from "react";
+import { useState, useHistory } from "react";
 import { useFormik } from "formik";
 // import { Container } from "react-bootstrap";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 
-function LogIn({ handleSubmit, newUser, user }) {
+function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
   const [errorPage, setErrorPage] = useState("");
 
   const formSchema = yup.object().shape({
@@ -30,7 +30,6 @@ function LogIn({ handleSubmit, newUser, user }) {
       }).then((res) => {
         if (res.status === 200) {
           setErrorPage("Successfully signed up");
-          history.push("/newUser");
         } else if (res.status === 422) {
           setErrorPage("Invalid username or password ");
         }
@@ -45,7 +44,10 @@ function LogIn({ handleSubmit, newUser, user }) {
         <InputGroup className="formCenter">
           <Row>
             <Col lg="10">
-              <Form.Label className="formUserName"> username</Form.Label>
+              <Form.Label htmlFor="username" className="formUserName">
+                {" "}
+                username:
+              </Form.Label>
               <Form.Control
                 id="username"
                 type="text"
@@ -57,7 +59,10 @@ function LogIn({ handleSubmit, newUser, user }) {
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
             <Col lg="10">
-              <Form.Label className="formPassword"> Password </Form.Label>
+              <Form.Label htmlFor="password" className="formPassword">
+                {" "}
+                Password{" "}
+              </Form.Label>
 
               <Form.Control
                 id="password"

@@ -14,6 +14,8 @@ function Recipe({ user }) {
       .then((response) => response.json())
       .then((data) => setRecipes(data));
   }, []);
+  const test = recipes.map((recipe) => recipe);
+  console.log(test);
 
   return (
     <Container>
@@ -25,13 +27,13 @@ function Recipe({ user }) {
         <h3>{user ? "${user.username} recipe" : "Enjoy your meal"} </h3>
       </Row>
       <Row>
-        {recipes.map((recipe) => (
+        {/* {recipes.map((recipe) => (
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <img src={recipe.image_food} alt="My Delicious Food" />
             <p>{recipe.description}</p>
           </div>
-        ))}
+        ))} */}
       </Row>
       <Row>
         <Ingredient />

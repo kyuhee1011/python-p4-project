@@ -58,7 +58,10 @@ function SignUp() {
         <InputGroup className="formCenter">
           <Row>
             <Col lg="10">
-              <Form.Label className="formFirstName"> First Name</Form.Label>
+              <Form.Label htmlFor="firstName" className="formFirstName">
+                {" "}
+                First Name
+              </Form.Label>
               <Form.Control
                 id="firstName"
                 type="text"
@@ -71,7 +74,10 @@ function SignUp() {
             </Col>
 
             <Col lg="10">
-              <Form.Label className="formLastName"> Last Name</Form.Label>
+              <Form.Label htmlFor="lastName" className="formLastName">
+                {" "}
+                Last Name
+              </Form.Label>
               <Form.Control
                 id="lastName"
                 type="text"
@@ -85,7 +91,10 @@ function SignUp() {
           </Row>
           <Row>
             <Col lg="10">
-              <Form.Label className="formUserName"> username</Form.Label>
+              <Form.Label htmlFor="username" className="formUserName">
+                {" "}
+                username
+              </Form.Label>
               <Form.Control
                 id="username"
                 type="text"
@@ -97,7 +106,10 @@ function SignUp() {
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
             <Col lg="10">
-              <Form.Label className="formPassword"> Password </Form.Label>
+              <Form.Label htmlFor="password" className="formPassword">
+                {" "}
+                Password{" "}
+              </Form.Label>
 
               <Form.Control
                 id="password"
@@ -110,7 +122,10 @@ function SignUp() {
               <p style={{ color: "red" }}> {formik.errors.password}</p>
             </Col>
             <Col lg="10">
-              <Form.Label className="formPasswordConfirm">
+              <Form.Label
+                htmlFor="confirmation"
+                className="formPasswordConfirm"
+              >
                 {" "}
                 Password Confirmation
               </Form.Label>

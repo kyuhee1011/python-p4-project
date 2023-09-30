@@ -60,7 +60,7 @@ function NavBar({ search, setSearch }) {
             </Link>
           </li>
           <li className="nav-title">
-            <Link className="navBar-link" to="/recipes">
+            <Link className="navBar-link" to="/recipe">
               MyRecipe
             </Link>
           </li>
