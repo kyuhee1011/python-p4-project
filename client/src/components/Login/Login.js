@@ -7,8 +7,8 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 
-function LogIn({ handleSubmit, newUser }) {
-  const [errorPage, setErrorPage] = useState(false);
+function LogIn({ handleSubmit, newUser, user }) {
+  const [errorPage, setErrorPage] = useState("");
   const formSchema = yup.object().shape({
     username: yup.string().required("Must enter a username").max(20),
     password: yup.string().required("Must enter a password").max(20),
@@ -29,6 +29,7 @@ function LogIn({ handleSubmit, newUser }) {
       }).then((res) => {
         if (res.status === 200) {
           setErrorPage("Successfully signed up");
+          history.push("/newUser");
         } else if (res.status === 422) {
           setErrorPage("Invalid username or password ");
         }

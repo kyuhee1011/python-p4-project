@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 // import { useFormik } from 'formik';
 import { Container, Button } from "react-bootstrap";
-function Home({ recipes }) {
+function Home() {
   const [main, setMain] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,8 @@ function Home({ recipes }) {
           {main.map((recipe) => (
             <div key={recipe.id}>
               <h3>{recipe.title}</h3>
-              <img src={recipe.image} alt="My Delicious Food" />
+              <img src={recipe.image_food} alt="My Delicious Food" />
+              <p>{recipe.description}</p>
             </div>
           ))}
         </div>

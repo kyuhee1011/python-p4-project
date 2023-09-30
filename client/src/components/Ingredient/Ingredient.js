@@ -6,12 +6,10 @@ import { Container, Row } from "react-bootstrap";
 function Ingredient() {
   const [ingredients, setIngredients] = useState([]);
 
-  useEffect(() => {
-    fetch("/ingredient_all")
+  useEffect((ingredients) => {
+    fetch("http://127.0.0.1:5555/ingredient_all")
       .then((response) => response.json())
-      .then((ingredients) => {
-        setIngredients(ingredients);
-      });
+      .then((data) => setIngredients(data));
   }, []);
   return (
     <Container>
@@ -19,9 +17,14 @@ function Ingredient() {
         <h2>Share Your Ingredient for Your Recipe</h2>
       </Row>
       <Row>
-        {ingredients.map((ingredients) =>
-          (<p>{ingredients.name}</p>)(<p>{ingredients.direction}</p>)
-        )}
+        <div>
+          {ingredients.map((ingredient) => (
+            <div key={ingredient.id}>
+              <p>{ingredient.name}</p>
+              <p>{ingredient.direction}</p>
+            </div>
+          ))}
+        </div>
       </Row>
     </Container>
   );

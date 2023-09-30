@@ -11,7 +11,6 @@ function AddNew({ recipes, setRecipes }) {
     image: "",
     description: "",
     name: "",
-    amount: "",
     direction: "",
     Favorite: "",
   });
@@ -36,7 +35,7 @@ function AddNew({ recipes, setRecipes }) {
       .then((res) => res.json())
       .then((returnedRecipe) => {
         setRecipes([...recipes, returnedRecipe]);
-        history.push("/recipe_all");
+        history.push("/recipes");
       });
   };
   return (
@@ -106,26 +105,11 @@ function AddNew({ recipes, setRecipes }) {
                 id="name"
                 className="inputSpace"
                 name="name"
-                type="text"
+                as="textarea"
                 size="md"
                 placeholder="enter the ingredient name"
                 onChange={handleInput}
                 value={setRecipeForm.name}
-              />
-            </Col>
-
-            <Col md="10">
-              <Form.Label className="formName">Amount</Form.Label>
-
-              <Form.Control
-                id="amount"
-                className="inputSpace"
-                name="amount"
-                type="text"
-                size="md"
-                placeholder="enter the ingredient amount"
-                onChange={handleInput}
-                value={setRecipeForm.amount}
               />
             </Col>
           </Row>

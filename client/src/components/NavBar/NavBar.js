@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 function NavBar({ search, setSearch }) {
+  const [user, setUser] = useState(null);
+  function handleLogOut() {
+    fetch("http://127.0.0.1:5555/logout", {
+      method: "DELETE",
+    }).then(() => setUser(null));
+  }
   return (
     <Container fluid className="navBarContainer">
       <Row>
@@ -15,7 +22,11 @@ function NavBar({ search, setSearch }) {
           </Link>
         </Col>
         <Col>
-          <Button type="submit" variant="outline-primary">
+          <Button
+            type="submit"
+            variant="outline-primary"
+            onClick={handleLogOut}
+          >
             Logout
           </Button>
         </Col>

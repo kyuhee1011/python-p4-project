@@ -8,15 +8,12 @@ import Ingredient from "../Ingredient/Ingredient";
 
 function Recipe({ user }) {
   const [recipes, setRecipes] = useState([]);
-  const params = useParams();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/${params.id}")
+    fetch("http://127.0.0.1:5555/recipe_all")
       .then((response) => response.json())
-      .then((recipes) => {
-        setRecipes(recipes);
-      });
-  }, [params.id]);
+      .then((data) => setRecipes(data));
+  }, []);
 
   return (
     <Container>
@@ -28,15 +25,17 @@ function Recipe({ user }) {
         <h3>{user ? "${user.username} recipe" : "Enjoy your meal"} </h3>
       </Row>
       <Row>
-        {recipes.map((recipes) =>
-          (<h4>{recipes.title}</h4>)(
-            <img key={recipes.id} src={recipes.image} alt="My Delicious Food" />
-          )
-        )}
+        {recipes.map((recipe) => (
+          <div key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <img src={recipe.image_food} alt="My Delicious Food" />
+            <p>{recipe.description}</p>
+          </div>
+        ))}
       </Row>
-      {/* <Row>
+      <Row>
         <Ingredient />
-      </Row> */}
+      </Row>
     </Container>
   );
 }

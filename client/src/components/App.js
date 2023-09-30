@@ -12,6 +12,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   console.log("render");
+
   const handleSearch = recipes.filter((e) => {
     const inputSearch = e.title.toLowerCase().includes(search);
     // setSearch(inputSearch);
@@ -37,7 +38,7 @@ function App() {
         <Route exact path="/">
           <Home recipes={recipes} setRecipes={setRecipes} />
         </Route>
-        <Route exact path="/recipes">
+        <Route exact path="/recipe">
           <Recipe users={user} newUser={newUser} />
         </Route>
         <Route exact path="/mylist">
