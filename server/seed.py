@@ -13,9 +13,11 @@ if __name__ == '__main__':
         Recipe.query.delete()
 
         users =[ 
-            User(username="kyuhelee", _password_hash="k1234", firstName="kyuhee",lastName="Lee" ),
-            User(username="raylee", _password_hash="r1234", firstName="ray", lastName="lee")
+            User(username="kyuhelee", firstName="kyuhee",lastName="Lee" ),
+            User(username="raylee", firstName="ray", lastName="lee")
         ]
+        users[0].password_hash='k1234'
+        users[1].password_hash='r1234'
         ingredients=[
             Ingredient(name="3 egg, 1 Tbsp chopped onion, 1 Tbsp chopped green onion, 1 Tbsp chopped carrot, salt (option)", 
                        direction="Chopped every ingredients,In a medium bowl crack 3 eggs and add a pinch of salt  then add and mix all ingredients together, Preheat the pan between medium and low heated, Add the egg mixture to the pan and wait until the top or edges begins cooked,Using a spoon with a spatula (or two spatula), lift one end and fold it over and over until nice rolled egg, Place on the cutting board and slice the egg about ¾ or ½ inch thick and enjoy the delicious Korean omelette."),
@@ -26,15 +28,17 @@ if __name__ == '__main__':
         # for ingredient_description in ingredients:
         #     new_ingredient = Ingredient(name=ingredient_description)
         #     db.session.add(new_ingredient)
-
+# question about webp image
         recipes=[
-            Recipe(title="Korean rolled egg omeletee",
+            Recipe(title="Korean rolled egg omelette",
+                   image_food="https://i.namu.wiki/i/PaCsNGAPcwQKOPPdJxmgpCx2EIgdlmAVBizuBmSJbwgsTCYLhji-vH0Z1PsUKY6Mw4FJxtB1GiiRBZd0V3GQsgSci2L7tCP5XVzY1-4u7UXU3oiPCCaoSFjctC3C5fH3afLW2w4IXgwf5ZcxHrb1FOcfITEa2xL_wP6G4sdgLd8.webp",
                    description="It's side dish that is rolled into an omelette mixed with vegetables and some others",
                    duration="20 minutes",
                    serving="2",
                    review=1,
                    mealType="Side"),
             Recipe(title="Korean Fried Zucchini",
+                   image_food="https://i.namu.wiki/i/PaCsNGAPcwQKOPPdJxmgpIs2Cbki6whlyBm3vHciV5k57mEwGT-Zw4a0tBOWtf5czPor-xffZbOhR0H2cHXcz8o9F51E0QfX8MT59ZSE2Xan1NlberfP_jMSRfEJzw79B_KnGlmfA6Iuzhqj6S39faHcEOyxHjB343cLjo3IfVs.webp",
                    description="It's side dish that refers to pan-fried",
                    duration="40 minutes",
                    serving="4",

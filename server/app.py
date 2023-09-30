@@ -15,7 +15,7 @@ from models import User, Recipe, Ingredient, recipeIngredient
 class CheckSession(Resource):
 
     def get(self):
-        user_id = session['user_id']
+        user_id = session.get('user_id')
 
         if not user_id:
             return {'error' : 'Unauthorized'}, 401
@@ -51,7 +51,7 @@ class Login(Resource):
         username = request_login['username']
         password = request_login['password']
         user = User.query.filter(User.username == username).first()
-        if not session['user_id']:
+        if not session.get('user_id'):
             return {'errors':'invalid username/password'}, 401
 
         if user and user.authenticate(password):
@@ -60,8 +60,7 @@ class Login(Resource):
         
 class Logout(Resource):
     def delete(self):
-        session.get('user_id')
-        session['user_id'] = None
+        session.pop('user_id', None)
         return {}, 204  
         
  
@@ -155,16 +154,16 @@ class RecipeMemberById(Resource):
     
     def post(self, id):
         request_json=request.get_json()
-        user = User.query.filter(User.id==id).first()
+        user = User.query.get(id)
         ingredient=Ingredient.query.all()
-        
-        if user and ingredient in request_json['name','direction']:
+        # checking if the request data is valid before adding a new ingredient
+        if user and 'name' in request_json and 'direction' in request_json:
             new_ingredient = Ingredient(
                 name=request_json['name'],
                 direction=request_json['direction']
             )
 
-            db.session.add(user)
+            user.ingredients.append(new_ingredient) 
             db.session.add(new_ingredient)
             db.session.commit()
             return new_ingredient.to_dict(), 201
@@ -172,13 +171,13 @@ class RecipeMemberById(Resource):
             return {'errors':'unprocessable entity'}, 422
     
     def delete(self,id):
-        ingredient=Ingredient.query.filter(Ingredient.id==id).first()
+        ingredient=Ingredient.query.get(id)
         if ingredient:
             db.session.delete(ingredient)
             db.session.commit()
-            return ingredient.to_dict(), 205
+            return '', 204
         else:
-            return {'errors':'bad request'}, 400
+            return {'errors':'Bad request'}, 400
             
 
 
