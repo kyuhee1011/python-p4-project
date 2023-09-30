@@ -37,13 +37,13 @@ function App() {
         <Route exact path="/">
           <Home recipes={recipes} setRecipes={setRecipes} />
         </Route>
-        <Route exact path="/Recipe">
+        <Route exact path="/recipes">
           <Recipe users={user} newUser={newUser} />
         </Route>
-        <Route exact path="/MyFav">
+        <Route exact path="/mylist">
           <MyFav users={user} newUser={newUser} />
         </Route>
-        <Route exact path="/AddNew">
+        <Route exact path="/addNew">
           <AddNew users={user} newUser={newUser} />
         </Route>
       </Switch>

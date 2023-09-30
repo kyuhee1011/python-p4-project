@@ -9,7 +9,7 @@ function MyFav() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    fetch("/recipe_member")
+    fetch("http://127.0.0.1:5555/recipe_member")
       .then((response) => response.json())
       .then((lists) => {
         setLists(lists);

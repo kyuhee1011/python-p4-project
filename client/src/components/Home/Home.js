@@ -9,9 +9,7 @@ function Home({ recipes }) {
   useEffect(() => {
     fetch("http://127.0.0.1:5555/recipe_all")
       .then((response) => response.json())
-      .then((main) => {
-        setMain(main);
-      });
+      .then((data) => setMain(data));
   }, []);
 
   return (
@@ -19,15 +17,12 @@ function Home({ recipes }) {
       <div>
         <h2>home page</h2>
         <div>
-          {recipes.map((recipes) =>
-            (<h3>{recipes.title}</h3>)(
-              <img
-                key={recipes.id}
-                src={recipes.image}
-                alt="My Delicious Food"
-              />
-            )
-          )}
+          {main.map((recipe) => (
+            <div key={recipe.id}>
+              <h3>{recipe.title}</h3>
+              <img src={recipe.image} alt="My Delicious Food" />
+            </div>
+          ))}
         </div>
         <p>
           To check detail information about recipes, please click the button to

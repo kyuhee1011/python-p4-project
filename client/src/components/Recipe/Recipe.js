@@ -34,9 +34,9 @@ function Recipe({ user }) {
           )
         )}
       </Row>
-      <Row>
+      {/* <Row>
         <Ingredient />
-      </Row>
+      </Row> */}
     </Container>
   );
 }
