@@ -9,6 +9,7 @@ import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 
 function LogIn({ handleSubmit, newUser, user }) {
   const [errorPage, setErrorPage] = useState("");
+
   const formSchema = yup.object().shape({
     username: yup.string().required("Must enter a username").max(20),
     password: yup.string().required("Must enter a password").max(20),
@@ -50,7 +51,7 @@ function LogIn({ handleSubmit, newUser, user }) {
                 type="text"
                 name="username "
                 placeholder="Enter your username"
-                onChange={formik.newUser}
+                onChange={formik.handleUpdate}
                 value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
@@ -63,7 +64,7 @@ function LogIn({ handleSubmit, newUser, user }) {
                 type="text"
                 name="password "
                 placeholder="Enter your password"
-                onChange={formik.newUser}
+                onChange={formik.handleUpdate}
                 value={formik.values.password}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>

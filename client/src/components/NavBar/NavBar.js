@@ -5,17 +5,26 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 function NavBar({ search, setSearch }) {
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
   function handleLogOut() {
     fetch("http://127.0.0.1:5555/logout", {
       method: "DELETE",
     }).then(() => setUser(null));
+  }
+
+  function handleUpdate(e) {
+    setUsername(e.target.value);
   }
   return (
     <Container fluid className="navBarContainer">
       <Row>
         <Col>
           <Link className="navBar-link" to="/login">
-            <Button type="submit" variant="outline-primary">
+            <Button
+              type="submit"
+              variant="outline-primary"
+              onChange={handleUpdate}
+            >
               Log In
               <i class="fi fi-sr-user"></i>
             </Button>
