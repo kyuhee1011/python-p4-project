@@ -69,6 +69,7 @@ class RecipeAll(Resource):
     def get(self):
               
         data_meals=Recipe.query.all()
+        
         all_recipe=[recipe.to_dict()for recipe in data_meals]
         return make_response(jsonify(all_recipe),200)
 
@@ -105,16 +106,23 @@ class RecipeAll(Resource):
     
 class IngredientAll(Resource):
     def get(self):
-        request_login=request.get_json()
-        # username = request_login['username']
-        # user = User.query.filter(User.username == username).first()
+    #     # request_login=request.get_json()
+    #     # username = request_login['username']
+    #     # user = User.query.filter(User.username == username).first()
         data_ingredient=Ingredient.query.all()
         all_ingredient=[ingredient.to_dict()for ingredient in data_ingredient]
       
-        # if not user:
-        #     return {'errors':'User not found'}, 404
-        # else:
+    #     # if not user:
+    #     #     return {'errors':'User not found'}, 404
+    #     # else:
         return make_response(jsonify(all_ingredient),200)
+    # def get_ingredients_by_recipe(self, recipe_id):
+    #     ingredients = Ingredient.query.filter_by(recipe_id=recipe_id).all()
+    #     if not ingredients:
+    #         return jsonify({"message": "No ingredients found for this recipe"}), 404
+
+    #     ingredients_list = [ingredient.to_dict() for ingredient in ingredients]
+    #     return jsonify(ingredients_list), 200
 
     def post(self):
         new_form=request.get_json()
