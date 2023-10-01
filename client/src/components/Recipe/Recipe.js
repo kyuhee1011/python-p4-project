@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Button } from "react-bootstrap";
 import Ingredient from "../Ingredient/Ingredient";
 
-function Recipe({ user, handleAddFavorite, handleRemoveFav }) {
+function Recipe({ user, onAddList, onDeleteFavorite }) {
   const [recipes, setRecipes] = useState([]);
   // const [favorite, setFavorite] = useState(favorite);
   // const [list, setlist] = useState([]);
@@ -20,41 +20,19 @@ function Recipe({ user, handleAddFavorite, handleRemoveFav }) {
   console.log(test);
 
   // function handleFavorite() {
-  //   setFavorite((favorite) => !favorite);
+  //   const newFavorite = !favorite;
   //   fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipe.id}`, {
   //     method: "PATCH",
   //     headers: { "Content-Type": "application/json" },
   //     body: JSON.stringify({ favorite: !favorite }),
   //   })
   //     .then((res) => res.json())
-  //     .then((newRecipeList) => {
-  //       onMyFavList(newRecipeList);
-  //     });
-
-  //   function handleAddFavorite(recipe) {
-  //     setlist([...list, recipe]);
-  //   }
-  // }
-
-  // function handleRemoveFav() {
-  //   const removeFavorite = list.filter((recipe) => recipe.id !== id);
-  //   setlist(removeFavorite);
-  // }
-
-  // const [myfavorite, setMyFavorite] = useState(favorite);
-  // const handleUpdateClick = () => {
-  //   setMyFavorite((myfavorite) => !myfavorite);
-  //   fetch(`http://localhost:3000/desserts/${id}`, {
-  //     //Updates new dessert from AddForm page and the PATCH - update new dessert list
-  //     method: "PATCH",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ favorite: !favorite }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((newDessertData) => {
-  //       onMyFavList(newDessertData);
-  //     });
-  // };
+  //     .then((onAddList) => {
+  //       onAddList(newFavorite);
+  //     })
+  //     .catch((onDeleteFavorite) => {
+  //       onDeleteFavorite(newFavorite);
+  //   });
 
   return (
     <Container>
@@ -71,21 +49,17 @@ function Recipe({ user, handleAddFavorite, handleRemoveFav }) {
             <h3>{recipe.title}</h3>
             <img src={recipe.image_food} alt="My Delicious Food" />
             <p>{recipe.description}</p>
+            <Ingredient />
             <Button
-            // type="submit"
-            // variant="outline-primary"
-            // onAddList={handleAddFavorite}
-            // onDeleteFavorite={handleRemoveFav}
+              type="submit"
+              variant="outline-primary"
+              // onClick={handleFavorite}
             >
               Favorites
             </Button>
           </div>
         ))}
       </Row>
-      {/* <Row>
-        <Ingredient />
-      </Row> */}
-      <Row></Row>
     </Container>
   );
 }
