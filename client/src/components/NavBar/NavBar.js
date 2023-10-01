@@ -30,6 +30,18 @@ function NavBar({ search, setSearch }) {
             </Button>
           </Link>
         </Col>
+
+        <Col>
+          <Link className="navBar-link" to="/signUp">
+            <Button
+              type="submit"
+              variant="outline-primary"
+              onClick={handleUpdate}
+            >
+              SignUp
+            </Button>
+          </Link>
+        </Col>
         <Col>
           <Button
             type="submit"

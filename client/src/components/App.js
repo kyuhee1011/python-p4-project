@@ -7,6 +7,7 @@ import AddNew from "./AddNew/AddNew";
 import NavBar from "./NavBar/NavBar";
 import Recipe from "./Recipe/Recipe";
 import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,6 +43,9 @@ function App() {
       <Switch>
         <Route exact path="/login">
           <Login user={user} handleUpdate={handleUpdate} />
+        </Route>
+        <Route exact path="/signUp">
+          <SignUp user={user} handleUpdate={handleUpdate} />
         </Route>
         <Route exact path="/">
           <Home recipes={recipes} setRecipes={setRecipes} />
