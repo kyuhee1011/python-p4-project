@@ -49,11 +49,13 @@ class User(db.Model, SerializerMixin):
     
 class Ingredient(db.Model,SerializerMixin):
     __tablename__='ingredients'
-    serialize_rules = ('-recipes.ingredient',)
+    serialize_rules = ('-recipes.ingredients',)
     
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
     direction=db.Column(db.String)
+    # user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
+
     recipes = db.relationship('Recipe', secondary=recipeIngredient, back_populates="ingredients")
 
     def __repr__(self):

@@ -106,15 +106,15 @@ class RecipeAll(Resource):
 class IngredientAll(Resource):
     def get(self):
         request_login=request.get_json()
-        username = request_login['username']
-        user = User.query.filter(User.username == username).first()
-        data_meals=Ingredient.query.all()
-        all_ingredient=[ingredient.to_dict()for ingredient in data_meals]
+        # username = request_login['username']
+        # user = User.query.filter(User.username == username).first()
+        data_ingredient=Ingredient.query.all()
+        all_ingredient=[ingredient.to_dict()for ingredient in data_ingredient]
       
-        if not user:
-            return {'errors':'User not found'}, 404
-        else:
-            return make_response(jsonify(all_ingredient),200)
+        # if not user:
+        #     return {'errors':'User not found'}, 404
+        # else:
+        return make_response(jsonify(all_ingredient),200)
 
     def post(self):
         new_form=request.get_json()
@@ -178,13 +178,43 @@ class RecipeMemberById(Resource):
             return '', 204
         else:
             return {'errors':'Bad request'}, 400
+class UserIndex(Resource):
+    def get(self, username):
+        user=User.query.filter(User.id ==username).first()
+        if user:
+            return user.to_dict(), 200
+        else:
+            return {'errors': 'user not found'}, 404
+class MyFavorites(Resource):
+    def post(self, user_id, recipe_id):
+        user = User.query.filter(id==user_id).first()
+        recipe = Recipe.query.filter(id==recipe_id).first()
+        if not session.get('user_id'):
+            return {'errors':'invalid username/recipe entered'}, 401
+        if user and recipe:
+                user.favorite.append(recipe)
+                db.session.commit()
+                return recipe.to_dict(), 200
+        
+        
+    def delete(self, user_id, recipe_id):
+
+        user = User.query.filter(id==user_id).first()
+        recipe = Recipe.query.filter(id==recipe_id).first()
+        if not session.get('user_id'):
+            return {'errors':'invalid username/recipe entered'}, 401
             
+        if user and recipe:
+            user.favorite.remove(recipe)
+            db.session.commit()
+            return recipe.to_dict(), 200          
 
 
 # @app.route('/')
 # def index():
 #     return '<h1>Project Server</h1>'
-
+api.add_resource(UserIndex, '/users/<string:username>')
+api.add_resource(MyFavorites, '/favorites/<int:user_id>/<int:recipe_id>')
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
 api.add_resource(Login, '/login')
