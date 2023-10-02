@@ -216,13 +216,7 @@ class RecipeMemberById(Resource):
             return '', 204
         else:
             return {'errors':'Bad request'}, 400
-class UserIndex(Resource):
-    def get(self, username):
-        user=User.query.filter(User.id ==username).first()
-        if user:
-            return user.to_dict(), 200
-        else:
-            return {'errors': 'user not found'}, 404
+
 class MyFavorites(Resource):
     def post(self, user_id, recipe_id):
         user = User.query.filter(id==user_id).first()
@@ -251,7 +245,6 @@ class MyFavorites(Resource):
 # @app.route('/')
 # def index():
 #     return '<h1>Project Server</h1>'
-api.add_resource(UserIndex, '/users/<string:username>')
 api.add_resource(MyFavorites, '/favorites/<int:user_id>/<int:recipe_id>')
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
@@ -259,7 +252,7 @@ api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
 api.add_resource(IngredientAll, '/ingredient_all')
-api.add_resource(RecipeDetail, '/recipeDetail/<int:recipe_id>>')
+api.add_resource(RecipeDetail, '/recipeDetail/<int:recipe_id>')
 api.add_resource(RecipeMemberById, '/recipe_member/<int:id>')
 
 
