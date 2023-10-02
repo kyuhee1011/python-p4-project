@@ -39,7 +39,7 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
 
   return (
     <Form className="formContainer" onSubmit={formik.handleSubmit}>
-      <h2 className="addAccount"> Login </h2>
+      <h2 className="addAccount"> Login {errorPage}</h2>
       <div className="formLogin">
         <InputGroup className="formCenter">
           <Row>

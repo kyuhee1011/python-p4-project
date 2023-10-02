@@ -91,7 +91,7 @@ class RecipeAll(Resource):
         # )
         db.session.add(new_recipe)
         # db.session.add(new_ingredient)
-        db.commit()
+        db.session.commit()
 
         recipe_dict=new_recipe.to_dict()
         # ingredient_dict=new_ingredient.to_dict()
@@ -143,6 +143,36 @@ class IngredientAll(Resource):
                                201
         )
         return response
+    
+class RecipeDetail(Resource):
+    def get(self, recipe_id):
+        # recipe = Recipe.query.get(recipe_id)
+
+        # if recipe:
+        #     ingredients = [ingredient.to_dict() for ingredient in recipe.ingredients]
+        #     response_data = {
+        #         "recipe": recipe.to_dict(),
+        #         "ingredients": ingredients
+        #     }
+        #     return response_data, 200
+        # else:
+        #     return {'errors': 'recipe not found'}, 404
+        # recipe = Recipe.query.filter_by(id=recipe_id).first()
+        ingredient = Ingredient.query.filter_by(recipe_id=recipe_id).first()
+        if not ingredient:
+            return {"message": "Ingredient not found for this recipe ID"}, 404
+
+        ingredient_data = ingredient.to_dict()
+
+        return ingredient_data, 200
+       
+        # if recipe:
+        #     ingredients = recipe.ingredients
+        #     return [ingredient.to_dict() for ingredient in ingredients]
+        # else:
+        #     return []
+
+
 
 class RecipeMemberById(Resource):
     def get(self,id):
@@ -229,6 +259,7 @@ api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
 api.add_resource(IngredientAll, '/ingredient_all')
+api.add_resource(RecipeDetail, '/recipeDetail/<int:recipe_id>>')
 api.add_resource(RecipeMemberById, '/recipe_member/<int:id>')
 
 

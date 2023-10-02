@@ -19,12 +19,12 @@ function AddNew({ user, recipes, setRecipes }) {
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    const newReceipForm = { ...recipeForm, [name]: value };
-    setRecipeForm(newReceipForm);
+    setRecipeForm({ ...recipeForm, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     fetch("http://127.0.0.1:5555/recipe_all", {
       method: "POST",
       headers: {
@@ -35,7 +35,7 @@ function AddNew({ user, recipes, setRecipes }) {
       .then((res) => res.json())
       .then((returnedRecipe) => {
         setRecipes([...recipes, returnedRecipe]);
-        history.push("/recipes");
+        history.push("/recipe");
       });
   };
   return (

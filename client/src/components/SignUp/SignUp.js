@@ -42,9 +42,9 @@ function SignUp() {
         },
         body: JSON.stringify(values, null, 2),
       }).then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           setErrorPage("Successfully signed up");
-        } else if (res.status == 400) {
+        } else if (res.status === 400) {
           setErrorPage("Username already exists");
         }
       });
@@ -52,8 +52,8 @@ function SignUp() {
   });
 
   return (
-    <Form className="formContainer" onSubmit={formik.handleSubmitTask}>
-      <h2 className="addAccount"> Sign Up Page </h2>
+    <Form className="formContainer" onSubmit={formik.handleSubmit}>
+      <h2 className="addAccount"> Sign Up Page {errorPage}</h2>
       <div className="formSignUp">
         <InputGroup className="formCenter">
           <Row>
