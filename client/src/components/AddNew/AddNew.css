@@ -1,0 +1,66 @@
+
+.formContainer {
+    padding: "20%, 20%";
+    margin-bottom: "2rem";
+    margin-top: "10%";
+    text-align: left;
+}
+.addFormTitle {
+    color: rgb(182, 85, 29);
+    padding-left: 1rem;
+  
+}
+.formtitle {
+    font-weight: bold;
+    font-size: 120%; 
+}
+.formImage{
+    font-weight: bold;
+    font-size: 120%; 
+}
+.formDescription{
+    font-weight: bold;
+    font-size: 120%; 
+}
+.formName{
+    font-weight: bold;
+    font-size: 120%; 
+}
+.formDirection{
+    font-weight: bold;
+    font-size: 120%; 
+
+}
+.formCenter {
+  display: grid;
+  justify-content: left;
+
+}
+
+.formName {
+    font-weight: bold;
+    font-size: 120%;
+
+}
+
+
+
+.inputSpace {
+    width: 50%;
+    padding: 2rem 3rem 2rem 5rem;
+    margin: .2rem .5rem .1rem 1rem;
+    text-align: left;
+}
+.inputRecipe{
+    width: 50%;
+    padding: .3rem 5rem 2rem 3rem;
+    margin: .2rem .5rem .1rem 1rem;
+    text-align: left;
+
+}
+
+.formSubmt {
+    padding: .5rem .5rem .2rem .5rem;
+    margin: .2rem .5rem .1rem 1rem;
+
+}

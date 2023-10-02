@@ -39,23 +39,24 @@ function AddNew({ user, recipes, setRecipes }) {
       });
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <h3> Add My Recipe</h3>
-      <div>
+    <Form className="formContainer" onSubmit={handleSubmit}>
+      <h3 className="addFormTitle"> Add My Recipe</h3>
+      <div className="formLeft">
         <Form.Group className="formCenter">
           <Row>
-            <Col lg="10">
-              <Form.Label>title</Form.Label>
-
-              <Form.Control
-                id="title"
-                className="inputSpace"
-                type="text"
-                name="title"
-                placeholder="Enter title of the recipe"
-                onChange={handleInput}
-                value={recipeForm.title}
-              />
+            <Col md="10">
+              <Form.Label className="formtitle">Title</Form.Label>
+              <div>
+                <Form.Control
+                  id="title"
+                  className="inputRecipe"
+                  type="text"
+                  name="title"
+                  placeholder="Enter title of the recipe"
+                  onChange={handleInput}
+                  value={recipeForm.title}
+                />
+              </div>
             </Col>
           </Row>
         </Form.Group>
@@ -63,36 +64,38 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formName">Image</Form.Label>
-
-              <Form.Control
-                id="image"
-                className="inputSpace"
-                name="image"
-                type="text"
-                size="md"
-                placeholder="copy image's url"
-                onChange={handleInput}
-                value={recipeForm.image}
-              />
+              <Form.Label className="formImage">Image</Form.Label>
+              <div>
+                <Form.Control
+                  id="image"
+                  className="inputRecipe"
+                  name="image"
+                  type="text"
+                  size="md"
+                  placeholder="copy image's url"
+                  onChange={handleInput}
+                  value={recipeForm.image}
+                />
+              </div>
             </Col>
           </Row>
         </Form.Group>
 
         <Form.Group className="formCenter">
           <Row>
-            <Col lg="10">
-              <Form.Label className="descriptionName">Description</Form.Label>
-
-              <Form.Control
-                id="description"
-                name="description"
-                as="textarea"
-                className="inputSpace"
-                placeholder="Write down the description"
-                onChange={handleInput}
-                value={recipeForm.description}
-              />
+            <Col md="10">
+              <Form.Label className="formDescription">Description</Form.Label>
+              <div>
+                <Form.Control
+                  id="description"
+                  name="description"
+                  as="textarea"
+                  className="inputSpace"
+                  placeholder="Write down the description"
+                  onChange={handleInput}
+                  value={recipeForm.description}
+                />
+              </div>
             </Col>
           </Row>
         </Form.Group>
@@ -100,35 +103,37 @@ function AddNew({ user, recipes, setRecipes }) {
           <Row>
             <Col md="10">
               <Form.Label className="formName">Name</Form.Label>
-
-              <Form.Control
-                id="name"
-                className="inputSpace"
-                name="name"
-                as="textarea"
-                size="md"
-                placeholder="enter the ingredient name"
-                onChange={handleInput}
-                value={recipeForm.name}
-              />
+              <div>
+                <Form.Control
+                  id="name"
+                  className="inputSpace"
+                  name="name"
+                  as="textarea"
+                  size="md"
+                  placeholder="enter the ingredient name"
+                  onChange={handleInput}
+                  value={recipeForm.name}
+                />
+              </div>
             </Col>
           </Row>
         </Form.Group>
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formName">Direction</Form.Label>
-
-              <Form.Control
-                id="direction"
-                className="inputSpace"
-                name="direction"
-                type="text"
-                size="md"
-                placeholder="Enter the direction"
-                onChange={handleInput}
-                value={recipeForm.direction}
-              />
+              <Form.Label className="formDirection">Direction</Form.Label>
+              <div>
+                <Form.Control
+                  id="direction"
+                  className="inputSpace"
+                  name="direction"
+                  as="textarea"
+                  size="md"
+                  placeholder="Enter the direction"
+                  onChange={handleInput}
+                  value={recipeForm.direction}
+                />
+              </div>
             </Col>
           </Row>
         </Form.Group>
