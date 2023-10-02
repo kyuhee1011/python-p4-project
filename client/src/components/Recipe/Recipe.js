@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Recipe.css";
 import { useState, useEffect } from "react";
 
 import { useParams, useHistory } from "react-router-dom";
@@ -86,11 +86,13 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
   return (
     <Container>
       <Row>
-        <h2>Share Your Recipes</h2>
+        <h2 className="recipeTitle">Share Your Recipes</h2>
       </Row>
 
       <Row>
-        <h3>{user ? "${user.username} recipe" : "Enjoy your meal"} </h3>
+        <h3 className="recipeTitle">
+          {user ? "${user.username} recipe" : "Enjoy your meal"}{" "}
+        </h3>
       </Row>
       <Row>
         {/* {recipe && (
@@ -105,9 +107,11 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
 )} */}
         {recipes.map((recipe) => (
           <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
+            <h3 className="recipeMainTitle">{recipe.title}</h3>
+            <p className="rateColor">{recipe.review}</p>
             <img src={recipe.image_food} alt="My Delicious Food" />
-            <p>{recipe.description}</p>
+            <p className="recipeDescript">{recipe.description}</p>
+
             <Ingredient />
             {/* <p>
               {" "}

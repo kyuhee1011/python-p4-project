@@ -36,7 +36,6 @@ function App() {
 
   return (
     <div>
-      <h1>test</h1>
       <NavBar search={handleSearch} setSearch={setSearch} />
       {/* direct to login page 
       background image */}

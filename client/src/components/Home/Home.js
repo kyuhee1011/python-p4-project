@@ -15,13 +15,13 @@ function Home() {
   return (
     <Container>
       <div>
-        <h2>home page</h2>
+        <h2 className="recipeTitle">Home page</h2>
         <div>
           {main.map((recipe) => (
             <div key={recipe.id}>
-              <h3>{recipe.title}</h3>
+              <h3 className="recipeMainTitle">{recipe.title}</h3>
               <img src={recipe.image_food} alt="My Delicious Food" />
-              <p>{recipe.description}</p>
+              <p className="recipeDescript">{recipe.description}</p>
             </div>
           ))}
         </div>

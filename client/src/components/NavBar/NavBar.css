@@ -1,13 +1,24 @@
-
 .button {
     color:rgb(58, 128, 219) ;
     background: white;
     padding: .5rem;
-    margin-right: .5rem;
-    
+    margin-right: 1rem;
+    margin-top: .5rem;
     border: rgb(58, 128, 219) 2px solid;
     border-radius: 1em;
 
+}
+.spaceTop{
+    margin-top: 2em;
+}
+.loginButton{
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: .5rem;
+
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;  
 }
 .lgoutButton{
     color:rgb(58, 128, 219) ;
@@ -36,24 +47,3 @@
     padding-left: .5rem;
   }
 
-/* navigation menu changes  */
-@media only screen and (max-width: 500px){
-    .navContainer{
-        flex-direction:column;
-        align-items: flex-start;
-    }
-
-    .menu {
-        align-self:flex-start;
-        width:100%;
-        flex-grow: 3;
-    }
-
-    .search-bar-container {
-        margin:2% 0 2% 0;
-        align-self: flex-start;
-        width:100%;
-    }
-
-}
-    

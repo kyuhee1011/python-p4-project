@@ -17,10 +17,10 @@ function NavBar({ search, setSearch }) {
     setUsername(e.target.value);
   }
   return (
-    <Container fluid className="navBarContainer">
-      <Row>
+    <Container>
+      <Row className="spaceTop">
         <Link
-          className="button"
+          className="loginButton"
           to="/login"
           type="submit"
           variant="outline-primary"
@@ -29,7 +29,6 @@ function NavBar({ search, setSearch }) {
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
-            margin: ".2%",
           }}
         >
           {/* <Button
@@ -41,31 +40,50 @@ function NavBar({ search, setSearch }) {
           <i class="fi fi-sr-user"></i>
           {/* </Button> */}
         </Link>
-
         <Link
-          className="button"
-          to="/signUp"
-          type="submit"
-          variant="outline-primary"
-          onChange={handleUpdate}
+          placeholder="Search"
+          type="search"
+          onChange={(searchSubmit) => setSearch(searchSubmit)}
           style={{
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
             padding: ".5%",
-            margin: ".2%",
           }}
         >
-          {/* <Button
+          {/* <Link
+            className="navBar-link"
+            placeholder="Search"
+            type="search"
+            onChange={(searchSubmit) => setSearch(searchSubmit)}
+          > */}
+          <Button className="button" type="submit" variant="outline-primary">
+            Search
+          </Button>
+        </Link>
+
+        <Col>
+          <Link
+            className="loginButton"
+            to="/signUp"
+            type="submit"
+            variant="outline-primary"
+            onChange={handleUpdate}
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              flexGrow: "1",
+              padding: ".5%",
+            }}
+          >
+            {/* <Button
               type="submit"
               variant="outline-primary"
               onClick={handleUpdate}
             > */}
-          SignUp
-          {/* </Button> */}
-        </Link>
-
-        <Col>
+            SignUp
+            {/* </Button> */}
+          </Link>
           <Button
             type="submit"
             className="lgoutButton"
@@ -80,28 +98,6 @@ function NavBar({ search, setSearch }) {
           >
             Logout
           </Button>
-
-          <Link
-            placeholder="Search"
-            type="search"
-            onChange={(searchSubmit) => setSearch(searchSubmit)}
-            style={{
-              textDecoration: "none",
-              textAlign: "center",
-              flexGrow: "1",
-              padding: ".5%",
-            }}
-          >
-            {/* <Link
-            className="navBar-link"
-            placeholder="Search"
-            type="search"
-            onChange={(searchSubmit) => setSearch(searchSubmit)}
-          > */}
-            <Button className="button" type="submit" variant="outline-primary">
-              Search
-            </Button>
-          </Link>
         </Col>
       </Row>
 
@@ -114,7 +110,6 @@ function NavBar({ search, setSearch }) {
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
-            margin: ".5%",
           }}
         >
           Home
@@ -127,7 +122,6 @@ function NavBar({ search, setSearch }) {
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
-            margin: "1%",
           }}
         >
           MyRecipe
@@ -140,7 +134,6 @@ function NavBar({ search, setSearch }) {
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
-            margin: "1%",
           }}
         >
           My Favorite
@@ -153,7 +146,6 @@ function NavBar({ search, setSearch }) {
             textDecoration: "none",
             textAlign: "center",
             flexGrow: "1",
-            margin: "1%",
           }}
         >
           Add NewRecipe
