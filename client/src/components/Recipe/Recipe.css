@@ -37,3 +37,12 @@
     color:rgb(0, 0, 0);
  
 }
+.formEdit {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .8rem;
+    margin:.5rem .2rem .7rem .1rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+
+}

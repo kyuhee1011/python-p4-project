@@ -95,6 +95,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
               type="submit"
               variant={recipe.favorite ? "primary" : "outline-primary"}
               onClick={() => handleFavorite(recipe.id)}
+              className="formEdit"
             >
               Favorites
             </Button>
@@ -102,6 +103,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
               type="submit"
               variant="outline-primary"
               onClick={() => handleDelete(recipe.id)}
+              className="formEdit"
             >
               Delete
             </Button>

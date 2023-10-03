@@ -32,8 +32,8 @@ class SignUp(Resource):
 
         new_user=User(
             username = data['username'],
-            password = data['password'],
-            image_url = data['image_url']
+            password = data['password']
+           
         )
         
         new_user.password_hash = data['password']  
@@ -43,7 +43,7 @@ class SignUp(Resource):
             session['user_id'] = new_user.id
             return new_user.to_dict(), 201
         except IntegrityError:
-            return {'error': '400 Username already exist'}, 400
+            return {'error': 'Try other username'}, 400
         
 class Login(Resource):
     def post(self):
@@ -52,7 +52,7 @@ class Login(Resource):
         password = request_login['password']
         user = User.query.filter(User.username == username).first()
         if not session.get('user_id'):
-            return {'errors':'invalid username/password'}, 401
+            return {'errors':'Invalid username/password'}, 401
 
         if user and user.authenticate(password):
             session['user_id'] = user.id
@@ -61,7 +61,7 @@ class Login(Resource):
 class Logout(Resource):
     def delete(self):
         session.pop('user_id', None)
-        return {}, 204  
+        return {'message':'Thank you, See You Again!'}, 204  
         
  
     
@@ -74,6 +74,7 @@ class RecipeAll(Resource):
         return make_response(jsonify(all_recipe),200)
 
     def post(self):
+        # user login filter
         new_form=request.get_json()
         new_recipe= Recipe(
             name=new_form["name"],    
@@ -84,20 +85,13 @@ class RecipeAll(Resource):
             review=new_form["review"],
             mealType=new_form["mealType"]
         )
-        # new_ingredient=Ingredient(
-        #     name=new_form["name"],
-        #     amount=new_form["amount"],
-        #     direction=new_form["direction"]
-        # )
+       
         db.session.add(new_recipe)
-        # db.session.add(new_ingredient)
         db.session.commit()
 
         recipe_dict=new_recipe.to_dict()
-        # ingredient_dict=new_ingredient.to_dict()
         response_data = {
                 "recipe": recipe_dict,
-                # "ingredient": ingredient_dict
             }
         response=make_response(jsonify(response_data),
                                201
@@ -106,23 +100,15 @@ class RecipeAll(Resource):
     
 class IngredientAll(Resource):
     def get(self):
+        #login filter
     #     # request_login=request.get_json()
     #     # username = request_login['username']
     #     # user = User.query.filter(User.username == username).first()
         data_ingredient=Ingredient.query.all()
         all_ingredient=[ingredient.to_dict()for ingredient in data_ingredient]
       
-    #     # if not user:
-    #     #     return {'errors':'User not found'}, 404
-    #     # else:
         return make_response(jsonify(all_ingredient),200)
-    # def get_ingredients_by_recipe(self, recipe_id):
-    #     ingredients = Ingredient.query.filter_by(recipe_id=recipe_id).all()
-    #     if not ingredients:
-    #         return jsonify({"message": "No ingredients found for this recipe"}), 404
-
-    #     ingredients_list = [ingredient.to_dict() for ingredient in ingredients]
-    #     return jsonify(ingredients_list), 200
+  
 
     def post(self):
         new_form=request.get_json()
@@ -176,7 +162,7 @@ class RecipeDetail(Resource):
 
 class RecipeMemberById(Resource):
     def get(self,id):
-        user = User.query.filter(User.id==id).first()
+        user = User.query.get(id)
       
         if user:
             recipes = [recipe.to_dict() for recipe in user.recipes]
@@ -188,7 +174,7 @@ class RecipeMemberById(Resource):
             }
             return response_data, 200
         else:
-            return {'errors': 'recipe not found'},404
+            return {'errors': 'user not found'},404
     
     def post(self, id):
         request_json=request.get_json()
@@ -200,20 +186,36 @@ class RecipeMemberById(Resource):
                 name=request_json['name'],
                 direction=request_json['direction']
             )
-
             user.ingredients.append(new_ingredient) 
+        # if user and all(key in request_json for key in ('title', 'image_food', 'description', 'duration', 'serving', 'review', 'mealType')):
+        required_fields = ['title', 'image_food', 'description', 'duration', 'serving', 'review', 'mealType']
+
+        if all(field in request_json for field in required_fields):
+            new_recipe=Recipe(
+                title=request_json['title'],
+                image_food=request_json['image_food'],
+                description=request_json['description'],
+                duration=request_json['duration'],
+                serving=request_json['serving'],
+                review=request_json['review'],
+                mealType=request_json['mealType']
+            )
+            user.recipes.append(new_recipe) 
+
+            db.session.add(new_recipe)
             db.session.add(new_ingredient)
             db.session.commit()
-            return new_ingredient.to_dict(), 201
+            return new_recipe.to_dict(), 201
         else:
             return {'errors':'unprocessable entity'}, 422
     
     def delete(self,id):
-        ingredient=Ingredient.query.get(id)
-        if ingredient:
-            db.session.delete(ingredient)
+        recipe = Recipe.query.get(id) 
+      
+        if recipe:
+            db.session.delete(recipe)
             db.session.commit()
-            return '', 204
+            return {'message':'Delete successfully'}, 204
         else:
             return {'errors':'Bad request'}, 400
 
@@ -242,9 +244,7 @@ class MyFavorites(Resource):
             return recipe.to_dict(), 200          
 
 
-# @app.route('/')
-# def index():
-#     return '<h1>Project Server</h1>'
+
 api.add_resource(MyFavorites, '/favorites/<int:user_id>/<int:recipe_id>')
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
