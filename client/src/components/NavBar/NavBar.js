@@ -8,7 +8,7 @@ function NavBar({ search, setSearch }) {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
   function handleLogOut() {
-    fetch("http://127.0.0.1:5555/logout", {
+    fetch(`http://127.0.0.1:5555/logout`, {
       method: "DELETE",
     }).then(() => setUser(null));
   }

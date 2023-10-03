@@ -12,7 +12,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
   const params = useParams();
   const [ingredient, setIngredient] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [dirction, setDirection] = useState(null);
 
   const [favorite, setFavorite] = useState([]);
   // const [list, setlist] = useState([]);
@@ -21,6 +21,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
     fetch("http://127.0.0.1:5555/recipe_all")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setRecipes(data);
 
         // setIngredient(data);
@@ -30,28 +31,10 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
   console.log(test);
 
   function handleDelete() {
-    fetch(`http://127.0.0.1:5555/recipe_member/${ingredient.id}}`, {
+    fetch(`http://127.0.0.1:5555/recipe_member/${recipes.id}}`, {
       method: "DELETE",
     }).then(() => history.push(`http://127.0.0.1:5555/recipe_all"`));
   }
-
-  // const handleRecipeIngredient = (recipeId) => {
-  //   fetch(`http://127.0.0.1:5555/recipe_member/recipeDetail/${recipeId}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setIngredient(data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching ingredients:", error);
-  //       setLoading(false);
-  //     });
-  // };
 
   const handleFavorite = (recipeId) => {
     // Find the recipe that corresponds to the clicked "Favorites" button
@@ -64,7 +47,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
     });
     setRecipes(updatedRecipes);
 
-    fetch(`http://127.0.0.1:5555/recipe_member/${user.id}/${recipeId}`, {
+    fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipeId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ favorite: !favorite }),
@@ -91,20 +74,10 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
 
       <Row>
         <h3 className="recipeTitle">
-          {user ? "${user.username} recipe" : "Enjoy your meal"}{" "}
+          {user ? "${user.username}'s recipes" : "Enjoy your meal"}{" "}
         </h3>
       </Row>
       <Row>
-        {/* {recipe && (
-    <div>
-        <h1>{recipe.title}</h1>
-        <ul>
-            {recipe.ingredients.map(ingredient => (
-                <li key={ingredient.id}>{ingredient.name}</li>
-            ))}
-        </ul>
-    </div>
-)} */}
         {recipes.map((recipe) => (
           <div key={recipe.id}>
             <h3 className="recipeMainTitle">{recipe.title}</h3>
@@ -112,31 +85,11 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
             <img src={recipe.image_food} alt="My Delicious Food" />
             <p className="recipeDescript">{recipe.description}</p>
 
-            <Ingredient />
-            {/* <p>
-              {" "}
-              {recipe.ingredients.length > 0 ? (
-                <div>
-                  <p>
-                    {recipe.ingredients[0].name} -{" "}
-                    {recipe.ingredients[0].direction}
-                  </p>
-                </div>
-              ) : (
-                "No ingredients available"
-              )}
-            </p> */}
-
-            {/* {recipe && (
-    <div>
-        <h1>{recipe.title}</h1>
-        <ul>
-            {recipe.ingredients.map(ingredient => (
-                <li key={ingredient.id}>{ingredient.name}</li>
-            ))}
-        </ul>
-    </div>
-)} */}
+            <Ingredient
+              recipe={recipe}
+              // recipeId={recipe.id}
+              // onChange={handleRecipeIngredient}
+            />
 
             <Button
               type="submit"
@@ -148,7 +101,7 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
             <Button
               type="submit"
               variant="outline-primary"
-              onClick={handleDelete}
+              onClick={() => handleDelete(recipe.id)}
             >
               Delete
             </Button>

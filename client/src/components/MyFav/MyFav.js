@@ -7,7 +7,7 @@ import Recipe from "../Recipe/Recipe";
 // import { useFormik } from 'formik';
 // import { Container } from "react-bootstrap";
 
-function MyFav({ user }) {
+function MyFav({ user, recipe }) {
   const [account, setAccount] = useState(null);
   const [list, setList] = useState([]);
   const [recipes, setRecipes] = useState([]);
@@ -16,7 +16,7 @@ function MyFav({ user }) {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/users/${params.username}`)
+    fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipe.id}`)
       .then((response) => response.json())
       .then((account) => {
         setAccount(account);

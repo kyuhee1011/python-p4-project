@@ -7,7 +7,7 @@ function Home() {
   const [main, setMain] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/recipe_all")
+    fetch(`http://127.0.0.1:5555/recipe_all`)
       .then((response) => response.json())
       .then((data) => setMain(data));
   }, []);

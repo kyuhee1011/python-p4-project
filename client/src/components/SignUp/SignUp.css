@@ -1,0 +1,30 @@
+.addAccount{
+    display: block;
+    font-size: 2.5em;
+    color:rgb(0, 0, 0);
+}
+
+.formName{
+    display: block;
+    font-size: 1.5em;
+    color:rgb(0, 0, 0);
+    margin-bottom: 1%;
+ 
+}
+.formText{
+    width: 70%;
+    padding: .5rem ;
+    margin: .5rem .2rem .3rem .4rem;
+    text-align: left;
+}
+.formSubmt {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: 1rem;
+    margin-left: .3rem;
+    margin-top: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+
+}

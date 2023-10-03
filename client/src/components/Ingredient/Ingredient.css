@@ -1,0 +1,22 @@
+.ingriName {
+    display: block;
+    font-size: 1.2em;
+    color:rgb(0, 0, 0);
+    margin-bottom: 1%;
+ 
+}
+.mainIngri{
+    display: block;
+    font-size: 1.5em;
+    color:rgb(0, 0, 0);
+    margin-bottom: .5%;
+    font-weight: bold;
+}
+
+.ingriDirect {
+    display: block;
+    font-size: 1.2em;
+    color:rgb(0, 0, 0);
+    margin-bottom: 1%;
+ 
+}

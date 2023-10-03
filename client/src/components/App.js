@@ -27,7 +27,7 @@ function App() {
   const newUser = (user) => setUser(user);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/check_session").then((response) => {
+    fetch(`http://127.0.0.1:5555/check_session`).then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
@@ -50,10 +50,10 @@ function App() {
           <Home recipes={recipes} setRecipes={setRecipes} />
         </Route>
         <Route exact path="/recipe">
-          <Recipe users={user} newUser={newUser} />
+          <Recipe users={user} onLogin={newUser} />
         </Route>
         <Route exact path="/mylist">
-          <MyFav users={user} newUser={newUser} />
+          <MyFav users={user} onLogin={newUser} />
         </Route>
         <Route exact path="/addNew">
           <AddNew users={user} setRecipes={setRecipes} />

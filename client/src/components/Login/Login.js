@@ -21,7 +21,7 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("http://127.0.0.1:5555/login", {
+      fetch(`http://127.0.0.1:5555/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,6 +37,10 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
     },
   });
 
+  if (user) {
+    return <h1>Logged in.</h1>;
+  }
+
   return (
     <Form className="formContainer" onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Login {errorPage}</h2>
@@ -44,13 +48,14 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
         <InputGroup className="formCenter">
           <Row>
             <Col lg="10">
-              <Form.Label htmlFor="username" className="formUserName">
+              <Form.Label htmlFor="username" className="formName">
                 {" "}
-                username:
+                Username:
               </Form.Label>
               <Form.Control
                 id="username"
                 type="text"
+                className="formText"
                 name="username "
                 placeholder="Enter your username"
                 onChange={formik.handleUpdate}
@@ -67,6 +72,7 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
               <Form.Control
                 id="password"
                 type="text"
+                className="formText"
                 name="password "
                 placeholder="Enter your password"
                 onChange={formik.handleUpdate}
@@ -77,11 +83,11 @@ function LogIn({ handleSubmit, handleUpdate, newUser, user }) {
           </Row>
         </InputGroup>
       </div>
-      <Button variant="primary" type="submit">
+      <Button className="formSubmt" variant="primary" type="submit">
         Submit
       </Button>
       <Link to="/signup">
-        <Button variant="primary" type="submit">
+        <Button className="formSubmt" variant="primary" type="submit">
           SignUp
         </Button>
       </Link>

@@ -60,7 +60,13 @@
 }
 
 .formSubmt {
-    padding: .5rem .5rem .2rem .5rem;
-    margin: .2rem .5rem .1rem 1rem;
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: 1rem;
+    margin-left: .3rem;
+    margin-top: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
 
 }

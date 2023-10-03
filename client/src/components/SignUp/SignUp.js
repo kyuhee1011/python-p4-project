@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
 import * as yup from "yup";
 
-function SignUp() {
+function SignUp({ handleUpdate, user }) {
   const [errorPage, setErrorPage] = useState(false);
 
   const formSchema = yup.object().shape({
@@ -30,12 +30,11 @@ function SignUp() {
       confirmation: "",
       firstName: "",
       lastName: "",
-      profile_image: "",
       terms: false,
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("http://127.0.0.1:5555/signup", {
+      fetch(`http://127.0.0.1:5555/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,6 +49,9 @@ function SignUp() {
       });
     },
   });
+  if (user) {
+    return <h1>Welcome!</h1>;
+  }
 
   return (
     <Form className="formContainer" onSubmit={formik.handleSubmit}>
@@ -58,32 +60,34 @@ function SignUp() {
         <InputGroup className="formCenter">
           <Row>
             <Col lg="10">
-              <Form.Label htmlFor="firstName" className="formFirstName">
+              <Form.Label htmlFor="firstName" className="formName">
                 {" "}
                 First Name
               </Form.Label>
               <Form.Control
                 id="firstName"
                 type="text"
+                className="formText"
                 name="firstName "
                 placeholder="Enter your first name"
-                onChange={formik.handleInput}
+                onChange={formik.handleUpdate}
                 value={formik.values.firstName}
               />
               <p style={{ color: "red" }}> {formik.errors.firstName}</p>
             </Col>
 
             <Col lg="10">
-              <Form.Label htmlFor="lastName" className="formLastName">
+              <Form.Label htmlFor="lastName" className="formName">
                 {" "}
                 Last Name
               </Form.Label>
               <Form.Control
                 id="lastName"
                 type="text"
+                className="formText"
                 name="lastName "
                 placeholder="Enter your last name"
-                onChange={formik.handleInput}
+                onChange={formik.handleUpdate}
                 value={formik.values.lastName}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>
@@ -91,22 +95,23 @@ function SignUp() {
           </Row>
           <Row>
             <Col lg="10">
-              <Form.Label htmlFor="username" className="formUserName">
+              <Form.Label htmlFor="username" className="formName">
                 {" "}
                 username
               </Form.Label>
               <Form.Control
                 id="username"
                 type="text"
+                className="formText"
                 name="username "
                 placeholder="Enter your username"
-                onChange={formik.handleInput}
+                onChange={formik.handleUpdate}
                 value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
             <Col lg="10">
-              <Form.Label htmlFor="password" className="formPassword">
+              <Form.Label htmlFor="password" className="formName">
                 {" "}
                 Password{" "}
               </Form.Label>
@@ -114,6 +119,7 @@ function SignUp() {
               <Form.Control
                 id="password"
                 type="text"
+                className="formText"
                 name="password "
                 placeholder="Enter your password"
                 onChange={formik.handleInput}
@@ -122,10 +128,7 @@ function SignUp() {
               <p style={{ color: "red" }}> {formik.errors.password}</p>
             </Col>
             <Col lg="10">
-              <Form.Label
-                htmlFor="confirmation"
-                className="formPasswordConfirm"
-              >
+              <Form.Label htmlFor="confirmation" className="formName">
                 {" "}
                 Password Confirmation
               </Form.Label>
@@ -133,6 +136,7 @@ function SignUp() {
               <Form.Control
                 id="confirmation"
                 type="text"
+                className="formText"
                 name="confirmation "
                 placeholder="Enter your password again"
                 onChange={formik.handleInput}
@@ -143,7 +147,7 @@ function SignUp() {
           </Row>
         </InputGroup>
       </div>
-      <Button variant="primary" type="submit">
+      <Button className="formSubmt" variant="primary" type="submit">
         Submit
       </Button>
     </Form>

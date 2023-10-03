@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-function AddNew({ user, recipes, setRecipes }) {
+function AddNew({ user, recipe, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({
     title: "",
     image: "",
@@ -24,8 +24,9 @@ function AddNew({ user, recipes, setRecipes }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const recipeId = recipe.id;
 
-    fetch("http://127.0.0.1:5555/recipe_all", {
+    fetch(`http://127.0.0.1:5555/recipe_member/${recipeId})`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +35,7 @@ function AddNew({ user, recipes, setRecipes }) {
     })
       .then((res) => res.json())
       .then((returnedRecipe) => {
-        setRecipes([...recipes, returnedRecipe]);
+        setRecipes([...recipe, returnedRecipe]);
         history.push("/recipe");
       });
   };
@@ -102,7 +103,7 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formName">Name</Form.Label>
+              <Form.Label className="formName">Ingredient</Form.Label>
               <div>
                 <Form.Control
                   id="name"
