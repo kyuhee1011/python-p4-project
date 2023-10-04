@@ -7,11 +7,18 @@ import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Button } from "react-bootstrap";
 import Ingredient from "../Ingredient/Ingredient";
 
-function Recipe({ user, onAddList, onDeleteFavorite }) {
+function Recipe({
+  user,
+  setSearch,
+  onAddList,
+  onDeleteFavorite,
+  setRecipes,
+  recipes,
+}) {
   const history = useHistory();
   const params = useParams();
   const [ingredient, setIngredient] = useState(null);
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
   const [dirction, setDirection] = useState(null);
 
   const [favorite, setFavorite] = useState([]);
@@ -31,40 +38,40 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
   console.log(test);
 
   function handleDelete() {
-    fetch(`http://127.0.0.1:5555/recipe_member/${recipes.id}}`, {
+    fetch(`http://127.0.0.1:5555/recipe_all}`, {
       method: "DELETE",
     }).then(() => history.push(`http://127.0.0.1:5555/recipe_all"`));
   }
 
-  const handleFavorite = (recipeId) => {
-    // Find the recipe that corresponds to the clicked "Favorites" button
-    const updatedRecipes = recipes.map((recipe) => {
-      if (recipe.id === recipeId) {
-        // Toggle the favorite status for the specific recipe
-        return { ...recipe, favorite: !recipe.favorite };
-      }
-      return recipe;
-    });
-    setRecipes(updatedRecipes);
+  // const handleFavorite = (favoriteRecipe) => {
+  //   // Find the recipe that corresponds to the clicked "Favorites" button
+  //   const updatedRecipes = recipes.map((recipe) => {
+  //     if (recipes.id === recipe.id) {
+  //       // Toggle the favorite status for the specific recipe
+  //       return { ...recipe, favorite: !recipe.favorite };
+  //     }
+  //     return recipes;
+  //   });
+  //   setRecipes(updatedRecipes);
 
-    fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipeId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ favorite: !favorite }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Handle success or error responses from the server
-        if (data.success) {
-          onAddList(data.favorite);
-        } else {
-          onDeleteFavorite(data.favorite);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+  //   fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipe.id}`, {
+  //     method: "PATCH",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ favorite: !favorite }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // Handle success or error responses from the server
+  //       if (data.success) {
+  //         onAddList(data.favorite);
+  //       } else {
+  //         onDeleteFavorite(data.favorite);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
 
   return (
     <Container>
@@ -88,16 +95,12 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
             <p>{recipe.serving}</p>
             <p>{recipe.mealType}</p>
 
-            <Ingredient
-              recipe={recipe}
-              // recipeId={recipe.id}
-              // onChange={handleRecipeIngredient}
-            />
+            <Ingredient recipe={recipe} />
 
             <Button
               type="submit"
               variant={recipe.favorite ? "primary" : "outline-primary"}
-              onClick={() => handleFavorite(recipe.id)}
+              // onClick={() => handleFavorite(recipe.id)}
               className="formEdit"
             >
               Favorites

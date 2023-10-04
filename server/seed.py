@@ -15,7 +15,7 @@ if __name__ == '__main__':
         db.session.query(recipeIngredient).delete()
 
         users =[ 
-            User(username="kyuhelee", firstName="kyuhee",lastName="Lee" ),
+            User(username="kyuhelee",  firstName="kyuhee",lastName="Lee" ),
             User(username="raylee", firstName="ray", lastName="lee")
         ]
         users[0].password_hash='k1234'

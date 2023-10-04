@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 // import { useFormik } from 'formik';
 import { Container, Button } from "react-bootstrap";
-function Home() {
-  const [main, setMain] = useState([]);
+function Home({ recipes, setRecipes }) {
+  // const [main, setMain] = useState([]);
 
   useEffect(() => {
     fetch(`http://127.0.0.1:5555/recipe_all`)
       .then((response) => response.json())
-      .then((data) => setMain(data));
+      .then((data) => setRecipes(data));
   }, []);
 
   return (
@@ -17,7 +17,7 @@ function Home() {
       <div>
         <h2 className="recipeTitle">Home page</h2>
         <div>
-          {main.map((recipe) => (
+          {recipes.map((recipe) => (
             <div key={recipe.id}>
               <h3 className="recipeMainTitle">{recipe.title}</h3>
               <img src={recipe.image_food} alt="My Delicious Food" />

@@ -2,16 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./NavBar.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
-function NavBar({ search, setSearch }) {
+function NavBar({ setSearch, handleLogOut }) {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
-  function handleLogOut() {
-    fetch(`http://127.0.0.1:5555/logout`, {
-      method: "DELETE",
-    }).then(() => setUser(null));
-  }
 
   return (
     <Container>
@@ -27,41 +22,26 @@ function NavBar({ search, setSearch }) {
             flexGrow: "1",
           }}
         >
-          {/* <Button
-              type="submit"
-              variant="outline-primary"
-              onChange={handleUpdate}
-            > */}
           Log In
-          {/* <i classN="fi fi-sr-user"></i> */}
-          {/* </Button> */}
         </Link>
-        <Link
-          placeholder="Search"
-          type="search"
-          to="#"
-          onChange={(searchSubmit) => setSearch(searchSubmit)}
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-            padding: ".5%",
-          }}
-        >
-          {/* <Link
-            className="navBar-link"
+        <Form className="seacrh">
+          <Form.Control
             placeholder="Search"
             type="search"
-            onChange={(searchSubmit) => setSearch(searchSubmit)}
-          > */}
-          <Button className="button" type="submit" variant="outline-primary">
-            Search
-          </Button>
-        </Link>
+            to="#"
+            onChange={(searchevent) => setSearch(searchevent.target.value)} //setSearch(search)}
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              flexGrow: "1",
+              padding: ".5%",
+            }}
+          />
+        </Form>
 
         <Col>
           <Link
-            className="loginButton"
+            // className="loginButton"
             to="/signUp"
             type="submit"
             variant="outline-primary"
@@ -72,25 +52,15 @@ function NavBar({ search, setSearch }) {
               padding: ".5%",
             }}
           >
-            {/* <Button
-              type="submit"
-              variant="outline-primary"
-              onClick={handleUpdate}
-            > */}
-            SignUp
-            {/* </Button> */}
+            <Button type="submit" variant="outline-primary" className="button">
+              SignUp
+            </Button>
           </Link>
           <Button
             type="submit"
             className="lgoutButton"
             variant="outline-primary"
             onClick={handleLogOut}
-            style={{
-              textDecoration: "none",
-              textAlign: "center",
-              flexGrow: "1",
-              padding: ".5%",
-            }}
           >
             Logout
           </Button>

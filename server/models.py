@@ -1,7 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, CheckConstraint
 
 from config import db, bcrypt
 
@@ -18,7 +18,7 @@ class User(db.Model, SerializerMixin):
     __table_args__ = (
         db.CheckConstraint('length(username) >= 3'),
     )
-    serialize_rules = ('-recipes.user',)
+    serialize_rules = ('-recipes.user','-user._password_hash')
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
@@ -54,7 +54,6 @@ class Ingredient(db.Model,SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
     direction=db.Column(db.String)
-    # user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
 
     recipes = db.relationship('Recipe', secondary=recipeIngredient, back_populates="ingredients")
 

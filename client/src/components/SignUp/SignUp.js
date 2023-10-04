@@ -2,26 +2,23 @@ import React from "react";
 import "./SignUp.css";
 import { useState } from "react";
 import { useFormik } from "formik";
-// import { Container } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
 import * as yup from "yup";
 
 function SignUp({ user, handleAccount }) {
-  const [errorPage, setErrorPage] = useState(false);
-
+  const [errorPage, setErrorPage] = useState("");
+  const history = useHistory();
   const formSchema = yup.object().shape({
     username: yup.string().required("Must enter a username").max(20),
     password: yup.string().required("Must enter a password").max(20),
-    confirmation_password: yup
+    confirmation: yup
       .string()
       .required("Please enter confirm your password")
-      .max(20),
+      .oneOf([yup.ref("password"), null], "Password must match!"),
     firstName: yup.string().required("Must enter a first name").max(20),
     lastName: yup.string().required("Must enter a last name").max(20),
-    profile_image: yup
-      .string()
-      .required("Must upload your profile image.")
-      .max(20),
   });
   const formik = useFormik({
     initialValues: {
@@ -33,6 +30,7 @@ function SignUp({ user, handleAccount }) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
+      console.log(values);
       fetch(`http://127.0.0.1:5555/signup`, {
         method: "POST",
         headers: {
@@ -40,8 +38,14 @@ function SignUp({ user, handleAccount }) {
         },
         body: JSON.stringify(values, null, 2),
       }).then((res) => {
-        if (res.status === 200) {
+        console.log(res);
+
+        if (res.ok) {
           setErrorPage("Successfully signed up");
+          res.json().then((user) => {
+            handleAccount(user);
+          });
+          history.push(`/login`);
         } else if (res.status === 400) {
           setErrorPage("Username already exists");
         }
@@ -141,7 +145,12 @@ function SignUp({ user, handleAccount }) {
           </Row>
         </InputGroup>
       </div>
-      <Button className="formSubmt" variant="primary" type="submit">
+      <Button
+        className="formSubmt"
+        onClick={() => console.log("click")}
+        variant="primary"
+        type="submit"
+      >
         Submit
       </Button>
     </Form>

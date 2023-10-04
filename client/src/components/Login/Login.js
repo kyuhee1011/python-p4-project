@@ -3,7 +3,6 @@ import "./Login.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useFormik } from "formik";
-// import { Container } from "react-bootstrap";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
@@ -23,6 +22,7 @@ function LogIn({ user, handleAccount }) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
+      console.log(values);
       fetch(`http://127.0.0.1:5555/login`, {
         method: "POST",
         headers: {
@@ -32,7 +32,7 @@ function LogIn({ user, handleAccount }) {
       }).then((res) => {
         console.log(res);
         if (res.ok) {
-          setErrorPage("Successfully signed up");
+          setErrorPage("Successfully Logged in");
           res.json().then((user) => {
             handleAccount(user);
           });

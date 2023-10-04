@@ -1,21 +1,25 @@
 import React from "react";
 import "./AddNew.css";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-function AddNew({ user, recipe, setRecipes }) {
+function AddNew({ user, recipes, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({
     title: "",
+    review: "",
     image: "",
     description: "",
+    duration: "",
+    serving: "",
+    mealType: "",
     name: "",
     direction: "",
-    Favorite: "",
   });
 
   const history = useHistory();
+  const params = useParams();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -24,9 +28,8 @@ function AddNew({ user, recipe, setRecipes }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const recipeId = recipe.id;
 
-    fetch(`http://127.0.0.1:5555/recipe_member/${recipeId})`, {
+    fetch(`http://127.0.0.1:5555/recipe_all`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +38,7 @@ function AddNew({ user, recipe, setRecipes }) {
     })
       .then((res) => res.json())
       .then((returnedRecipe) => {
-        setRecipes([...recipe, returnedRecipe]);
+        setRecipes([...recipes, returnedRecipe]);
         history.push("/recipe");
       });
   };
@@ -56,6 +59,24 @@ function AddNew({ user, recipe, setRecipes }) {
                   placeholder="Enter title of the recipe"
                   onChange={handleInput}
                   value={recipeForm.title}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group className="formCenter">
+          <Row>
+            <Col md="10">
+              <Form.Label className="formtitle">Review</Form.Label>
+              <div>
+                <Form.Control
+                  id="review"
+                  className="inputRecipe"
+                  type="text"
+                  name="review"
+                  placeholder="Enter review of the recipe"
+                  onChange={handleInput}
+                  value={recipeForm.review}
                 />
               </div>
             </Col>

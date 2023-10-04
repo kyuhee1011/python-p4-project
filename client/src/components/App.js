@@ -13,16 +13,13 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  console.log("render");
+  console.log(recipes);
 
-  const handleSearch = recipes.filter((e) => {
-    return e.title.toLowerCase().includes(search.toLowerCase());
-    // setSearch(inputSearch);
+  const filteredRecipe = recipes.filter((recipe) => {
+    return recipe.title.toLowerCase().includes(search.toLowerCase());
   });
+  console.log(filteredRecipe);
   const [username, setUsername] = useState("");
-  // function handleUpdate(e) {
-  //   setUsername(e.target.value);
-  // }
 
   const handleAccount = (user) => setUser(user);
 
@@ -35,11 +32,24 @@ function App() {
     });
   }, []);
 
+  function handleLogOut() {
+    fetch(`http://127.0.0.1:5555/logout`, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+      }
+    });
+  }
+
   return (
     <div>
-      <NavBar search={handleSearch} setSearch={setSearch} />
-      {/* direct to login page 
-      background image */}
+      <NavBar
+        setSearch={setSearch}
+        search={search}
+        handleLogOut={handleLogOut}
+      />
+
       <Switch>
         <Route exact path="/login">
           <Login user={user} handleAccount={handleAccount} />
@@ -48,16 +58,16 @@ function App() {
           <SignUp user={user} handleAccount={handleAccount} />
         </Route>
         <Route exact path="/">
-          <Home recipes={recipes} setRecipes={setRecipes} />
+          <Home recipes={filteredRecipe} setRecipes={setRecipes} />
         </Route>
         <Route exact path="/recipe">
-          <Recipe users={user} />
+          <Recipe users={user} recipes={recipes} setRecipes={setRecipes} />
         </Route>
         <Route exact path="/mylist">
           <MyFav users={user} />
         </Route>
         <Route exact path="/addNew">
-          <AddNew users={user} setRecipes={setRecipes} />
+          <AddNew users={user} recipes={recipes} setRecipes={setRecipes} />
         </Route>
       </Switch>
     </div>
