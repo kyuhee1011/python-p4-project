@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
 import * as yup from "yup";
 
-function SignUp({ handleUpdate, user }) {
+function SignUp({ user, handleAccount }) {
   const [errorPage, setErrorPage] = useState(false);
 
   const formSchema = yup.object().shape({
@@ -25,12 +25,11 @@ function SignUp({ handleUpdate, user }) {
   });
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
       confirmation: "",
       firstName: "",
       lastName: "",
-      terms: false,
+      username: "",
+      password: "",
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
@@ -61,16 +60,15 @@ function SignUp({ handleUpdate, user }) {
           <Row>
             <Col lg="10">
               <Form.Label htmlFor="firstName" className="formName">
-                {" "}
                 First Name
               </Form.Label>
               <Form.Control
                 id="firstName"
                 type="text"
                 className="formText"
-                name="firstName "
+                name="firstName"
                 placeholder="Enter your first name"
-                onChange={formik.handleUpdate}
+                onChange={formik.handleChange}
                 value={formik.values.firstName}
               />
               <p style={{ color: "red" }}> {formik.errors.firstName}</p>
@@ -78,16 +76,15 @@ function SignUp({ handleUpdate, user }) {
 
             <Col lg="10">
               <Form.Label htmlFor="lastName" className="formName">
-                {" "}
                 Last Name
               </Form.Label>
               <Form.Control
                 id="lastName"
                 type="text"
                 className="formText"
-                name="lastName "
+                name="lastName"
                 placeholder="Enter your last name"
-                onChange={formik.handleUpdate}
+                onChange={formik.handleChange}
                 value={formik.values.lastName}
               />
               <p style={{ color: "red" }}> {formik.errors.lastName}</p>
@@ -96,40 +93,37 @@ function SignUp({ handleUpdate, user }) {
           <Row>
             <Col lg="10">
               <Form.Label htmlFor="username" className="formName">
-                {" "}
-                username
+                Username
               </Form.Label>
               <Form.Control
                 id="username"
                 type="text"
                 className="formText"
-                name="username "
+                name="username"
                 placeholder="Enter your username"
-                onChange={formik.handleUpdate}
+                onChange={formik.handleChange}
                 value={formik.values.username}
               />
               <p style={{ color: "red" }}> {formik.errors.username}</p>
             </Col>
             <Col lg="10">
               <Form.Label htmlFor="password" className="formName">
-                {" "}
-                Password{" "}
+                Password
               </Form.Label>
 
               <Form.Control
                 id="password"
                 type="text"
                 className="formText"
-                name="password "
+                name="password"
                 placeholder="Enter your password"
-                onChange={formik.handleInput}
+                onChange={formik.handleChange}
                 value={formik.values.password}
               />
               <p style={{ color: "red" }}> {formik.errors.password}</p>
             </Col>
             <Col lg="10">
               <Form.Label htmlFor="confirmation" className="formName">
-                {" "}
                 Password Confirmation
               </Form.Label>
 
@@ -137,9 +131,9 @@ function SignUp({ handleUpdate, user }) {
                 id="confirmation"
                 type="text"
                 className="formText"
-                name="confirmation "
+                name="confirmation"
                 placeholder="Enter your password again"
-                onChange={formik.handleInput}
+                onChange={formik.handleChange}
                 value={formik.values.confirmation}
               />
               <p style={{ color: "red" }}> {formik.errors.confirmation}</p>

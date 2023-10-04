@@ -13,9 +13,6 @@ function NavBar({ search, setSearch }) {
     }).then(() => setUser(null));
   }
 
-  function handleUpdate(e) {
-    setUsername(e.target.value);
-  }
   return (
     <Container>
       <Row className="spaceTop">
@@ -24,7 +21,6 @@ function NavBar({ search, setSearch }) {
           to="/login"
           type="submit"
           variant="outline-primary"
-          onChange={handleUpdate}
           style={{
             textDecoration: "none",
             textAlign: "center",
@@ -37,12 +33,13 @@ function NavBar({ search, setSearch }) {
               onChange={handleUpdate}
             > */}
           Log In
-          <i class="fi fi-sr-user"></i>
+          {/* <i classN="fi fi-sr-user"></i> */}
           {/* </Button> */}
         </Link>
         <Link
           placeholder="Search"
           type="search"
+          to="#"
           onChange={(searchSubmit) => setSearch(searchSubmit)}
           style={{
             textDecoration: "none",
@@ -68,7 +65,6 @@ function NavBar({ search, setSearch }) {
             to="/signUp"
             type="submit"
             variant="outline-primary"
-            onChange={handleUpdate}
             style={{
               textDecoration: "none",
               textAlign: "center",
@@ -104,7 +100,6 @@ function NavBar({ search, setSearch }) {
       <Row className="menuSpace">
         <Link
           className="button"
-          exact
           to="/"
           style={{
             textDecoration: "none",

@@ -103,6 +103,60 @@ function AddNew({ user, recipe, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
+              <Form.Label className="formDescription">duration</Form.Label>
+              <div>
+                <Form.Control
+                  id="duration"
+                  name="duration"
+                  as="textarea"
+                  className="inputSpace"
+                  placeholder="Write down the duration"
+                  onChange={handleInput}
+                  value={recipeForm.duration}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group className="formCenter">
+          <Row>
+            <Col md="10">
+              <Form.Label className="formDescription">serving</Form.Label>
+              <div>
+                <Form.Control
+                  id="serving"
+                  name="serving"
+                  as="textarea"
+                  className="inputSpace"
+                  placeholder="Write down the serving"
+                  onChange={handleInput}
+                  value={recipeForm.serving}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group className="formCenter">
+          <Row>
+            <Col md="10">
+              <Form.Label className="formDescription">mealType</Form.Label>
+              <div>
+                <Form.Control
+                  id="mealType"
+                  name="mealType"
+                  as="textarea"
+                  className="inputSpace"
+                  placeholder="Write down the mealType"
+                  onChange={handleInput}
+                  value={recipeForm.mealType}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group className="formCenter">
+          <Row>
+            <Col md="10">
               <Form.Label className="formName">Ingredient</Form.Label>
               <div>
                 <Form.Control

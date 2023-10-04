@@ -84,6 +84,9 @@ function Recipe({ user, onAddList, onDeleteFavorite }) {
             <p className="rateColor">{recipe.review}</p>
             <img src={recipe.image_food} alt="My Delicious Food" />
             <p className="recipeDescript">{recipe.description}</p>
+            <p>{recipe.duration}</p>
+            <p>{recipe.serving}</p>
+            <p>{recipe.mealType}</p>
 
             <Ingredient
               recipe={recipe}
