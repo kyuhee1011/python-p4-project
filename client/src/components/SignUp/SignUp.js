@@ -31,7 +31,8 @@ function SignUp({ user, handleAccount }) {
     validationSchema: formSchema,
     onSubmit: (values) => {
       console.log(values);
-      fetch(`http://127.0.0.1:5555/signup`, {
+      fetch(`signup`, {
+        credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",

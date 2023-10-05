@@ -55,6 +55,7 @@ class Login(Resource):
         user = User.query.filter(User.username == username).first()
         
         if user and user.authenticate(password):
+            print("print")
             session['user_id'] = user.id
             return user.to_dict(), 201
         return {'errors':'Invalid username/password'}, 401
@@ -77,8 +78,6 @@ class RecipeAll(Resource):
     def post(self):
 
         if session.get('user_id'):
-        # user login filter
-        #if User.query.filter(User.id==session.get('user_id')).first()
             new_form=request.get_json()
             try:
                 new_recipe= Recipe(
@@ -103,10 +102,8 @@ class RecipeAll(Resource):
                 db.session.commit()
 
                 recipe_dict=new_recipe.to_dict()
-                response_data = {
-                        "recipe": recipe_dict,
-                        }
-                response=make_response(jsonify(response_data),
+               
+                response=make_response(jsonify(recipe_dict),
                                 201
                 )
                 return response
@@ -133,32 +130,25 @@ class IngredientAll(Resource):
         return make_response(jsonify(all_ingredient),200)
   
 
-# class RecipeMember(Resource):
-#     def get(self):
-#         user = User.query.get(id)
+class RecipeById(Resource):
+    def get(self, id):
+        recipe=Recipe.query.filter(Recipe.id==id).first
       
-#         if user:
-#             recipes = [recipe.to_dict() for recipe in user.recipes]
-#             ingredients = [ingredient.to_dict() for ingredient in user.ingredients]
-#             response_data = {
-#                 "user": user.to_dict(),
-#                 "recipes": recipes,
-#                 "ingredients": ingredients
-#             }
-#             return response_data, 200
-#         else:
-#             return {'errors': 'user not found'},404
+        if recipe: 
+            return recipe.to_dict(), 200
+        else:
+            return {'errors': 'user not found'},404
     
     
-#     def delete(self,id):
-#         recipe = Recipe.query.get(id) 
+    def delete(self,id):
+        recipe=Recipe.query.filter(Recipe.id==id).first
       
-#         if recipe:
-#             db.session.delete(recipe)
-#             db.session.commit()
-#             return {'message':'Delete successfully'}, 204
-#         else:
-#             return {'errors':'Bad request'}, 400
+        if recipe:
+            db.session.delete(recipe)
+            db.session.commit()
+            return {'message':'Delete successfully'}, 204
+        else:
+            return {'errors':'Bad request'}, 400
 
 class MyFavorites(Resource):
     def post(self, user_id, recipe_id):
@@ -193,7 +183,7 @@ api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
 api.add_resource(IngredientAll, '/ingredient_all')
-# api.add_resource(RecipeMember, '/recipe_member')
+api.add_resource(RecipeById, '/recipe_all/<int:id>')
 
 
 if __name__ == '__main__':

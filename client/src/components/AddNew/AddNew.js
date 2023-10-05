@@ -9,7 +9,7 @@ function AddNew({ user, recipes, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({
     title: "",
     review: "",
-    image: "",
+    image_food: "",
     description: "",
     duration: "",
     serving: "",
@@ -29,7 +29,8 @@ function AddNew({ user, recipes, setRecipes }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://127.0.0.1:5555/recipe_all`, {
+    fetch(`/recipe_all`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,9 +90,9 @@ function AddNew({ user, recipes, setRecipes }) {
               <Form.Label className="formImage">Image</Form.Label>
               <div>
                 <Form.Control
-                  id="image"
+                  id="image_food"
                   className="inputRecipe"
-                  name="image"
+                  name="image_food"
                   type="text"
                   size="md"
                   placeholder="copy image's url"

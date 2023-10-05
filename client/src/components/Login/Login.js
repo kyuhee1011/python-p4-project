@@ -23,7 +23,8 @@ function LogIn({ user, handleAccount }) {
     validationSchema: formSchema,
     onSubmit: (values) => {
       console.log(values);
-      fetch(`http://127.0.0.1:5555/login`, {
+      fetch(`/login`, {
+        credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",

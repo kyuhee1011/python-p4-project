@@ -18,7 +18,7 @@ class User(db.Model, SerializerMixin):
     __table_args__ = (
         db.CheckConstraint('length(username) >= 3'),
     )
-    serialize_rules = ('-recipes.user','-user._password_hash')
+    serialize_rules = ('-recipes.user','-_password_hash')
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)

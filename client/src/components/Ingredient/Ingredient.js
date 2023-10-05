@@ -8,7 +8,7 @@ import { Container, Row } from "react-bootstrap";
 function Ingredient({ user, recipe }) {
   const [ingredients, setIngredient] = useState(null);
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/ingredient_all")
+    fetch(`/ingredient_all`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

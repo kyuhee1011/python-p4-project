@@ -16,7 +16,7 @@ function MyFav({ user, recipe }) {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipe.id}`)
+    fetch(`/favorites/${user.id}/${recipe.id}`)
       .then((response) => response.json())
       .then((account) => {
         setAccount(account);

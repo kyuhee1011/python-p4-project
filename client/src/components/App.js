@@ -24,7 +24,7 @@ function App() {
   const handleAccount = (user) => setUser(user);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/check_session`).then((response) => {
+    fetch(`/check_session`).then((response) => {
       console.log("response", response);
       if (response.ok) {
         response.json().then((user) => setUser(user));
@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   function handleLogOut() {
-    fetch(`http://127.0.0.1:5555/logout`, {
+    fetch(`/logout`, {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
@@ -62,7 +62,11 @@ function App() {
         </Route>
         {user && (
           <Route exact path="/recipe">
-            <Recipe users={user} recipes={recipes} setRecipes={setRecipes} />
+            <Recipe
+              users={user}
+              recipes={filteredRecipe}
+              setRecipes={setRecipes}
+            />
           </Route>
         )}
         {user && (

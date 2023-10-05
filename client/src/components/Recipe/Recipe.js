@@ -18,14 +18,14 @@ function Recipe({
   const history = useHistory();
   const params = useParams();
   const [ingredient, setIngredient] = useState(null);
-  // const [recipes, setRecipes] = useState([]);
+
   const [dirction, setDirection] = useState(null);
 
   const [favorite, setFavorite] = useState([]);
   // const [list, setlist] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/recipe_all")
+    fetch(`/recipe_all`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -33,14 +33,24 @@ function Recipe({
 
         // setIngredient(data);
       });
-  }, []);
+  }, [setRecipes]);
   const test = recipes.map((recipe) => recipe);
   console.log(test);
 
   function handleDelete() {
-    fetch(`http://127.0.0.1:5555/recipe_all}`, {
+    fetch(`/recipe_all/${recipes.id}`, {
       method: "DELETE",
-    }).then(() => history.push(`http://127.0.0.1:5555/recipe_all"`));
+    })
+      .then(() => {
+        fetch(`/recipe_all`)
+          .then((response) => response.json())
+          .then((data) => {
+            setRecipes(data);
+          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   // const handleFavorite = (favoriteRecipe) => {
@@ -80,9 +90,7 @@ function Recipe({
       </Row>
 
       <Row>
-        <h3 className="recipeTitle">
-          {user ? "${user.username}'s recipes" : "Enjoy your meal"}{" "}
-        </h3>
+        <h3 className="recipeTitle">Enjoy your meal</h3>
       </Row>
       <Row>
         {recipes.map((recipe) => (
@@ -108,7 +116,7 @@ function Recipe({
             <Button
               type="submit"
               variant="outline-primary"
-              onClick={() => handleDelete(recipes)}
+              onClick={() => handleDelete(recipe.id)}
               className="formEdit"
             >
               Delete

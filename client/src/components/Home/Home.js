@@ -7,7 +7,7 @@ function Home({ recipes, setRecipes }) {
   // const [main, setMain] = useState([]);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/recipe_all`)
+    fetch(`/recipe_all`)
       .then((response) => response.json())
       .then((data) => setRecipes(data));
   }, []);
