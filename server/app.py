@@ -32,7 +32,7 @@ class SignUp(Resource):
 
         new_user=User(
             username = data['username'],
-            password = data['password'],
+            
             firstName=data['firstName'],
             lastName=data['lastName']
            
@@ -78,6 +78,7 @@ class RecipeAll(Resource):
 
         if session.get('user_id'):
         # user login filter
+        #if User.query.filter(User.id==session.get('user_id')).first()
             new_form=request.get_json()
             try:
                 new_recipe= Recipe(
@@ -125,37 +126,12 @@ class RecipeAll(Resource):
     
 class IngredientAll(Resource):
     def get(self):
-        #login filter
-    #     # request_login=request.get_json()
-    #     # username = request_login['username']
-    #     # user = User.query.filter(User.username == username).first()
+   
         data_ingredient=Ingredient.query.all()
         all_ingredient=[ingredient.to_dict()for ingredient in data_ingredient]
       
         return make_response(jsonify(all_ingredient),200)
   
-
-    def post(self):
-        new_form=request.get_json()
-    
-        new_ingredient=Ingredient(
-            name=new_form["name"],
-            direction=new_form["direction"]
-        )
-   
-        db.session.add(new_ingredient)
-        db.commit()
-
-        ingredient_dict=new_ingredient.to_dict()
-        response_ingredient = {
-              "ingredient": ingredient_dict
-            }
-        response=make_response(jsonify(response_ingredient),
-                               201
-        )
-        return response
-    
-
 
 # class RecipeMember(Resource):
 #     def get(self):
@@ -173,41 +149,6 @@ class IngredientAll(Resource):
 #         else:
 #             return {'errors': 'user not found'},404
     
-#     def post(self):
-#         request_json=request.get_json()
-#         user = User.query.get(id)
-#         # ingredient=Ingredient.query.all()
-#         # checking if the request data is valid before adding a new ingredient
-#         if user and 'name' in request_json and 'direction' in request_json:
-#             new_ingredient = Ingredient(
-#                 name=request_json['name'],
-#                 direction=request_json['direction']
-#             )
-#             # user.ingredients.append(new_ingredient) 
-#         # if user and all(key in request_json for key in ('title', 'image_food', 'description', 'duration', 'serving', 'review', 'mealType')):
-#         required_fields = ['title', 'image_food', 'description', 'duration', 'serving', 'review', 'mealType']
-
-#         if all(field in request_json for field in required_fields):
-#             new_recipe=Recipe(
-#                 title=request_json['title'],
-#                 image_food=request_json['image_food'],
-#                 description=request_json['description'],
-#                 duration=request_json['duration'],
-#                 serving=request_json['serving'],
-#                 review=request_json['review'],
-#                 mealType=request_json['mealType']
-#             )
-
-
-#             user.recipes.append(new_recipe) 
-            
-
-#             db.session.add(new_recipe)
-#             db.session.add(new_ingredient)
-#             db.session.commit()
-#             return new_recipe.to_dict(), 201
-#         else:
-#             return {'errors':'unprocessable entity'}, 422
     
 #     def delete(self,id):
 #         recipe = Recipe.query.get(id) 
@@ -252,7 +193,6 @@ api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
 api.add_resource(IngredientAll, '/ingredient_all')
-# api.add_resource(RecipeDetail, '/recipeDetail/<int:recipe_id>')
 # api.add_resource(RecipeMember, '/recipe_member')
 
 
