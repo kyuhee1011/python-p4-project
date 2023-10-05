@@ -13,6 +13,7 @@ if __name__ == '__main__':
         Ingredient.query.delete()
         Recipe.query.delete()
         db.session.query(recipeIngredient).delete()
+        # db.session.query(userFavorite).delete()
 
         users =[ 
             User(username="kyuhelee",  firstName="kyuhee",lastName="Lee" ),
@@ -20,6 +21,7 @@ if __name__ == '__main__':
         ]
         users[0].password_hash='k1234'
         users[1].password_hash='r1234'
+        
         
 
         recipe1= Recipe(title="Korean rolled egg omelette",
@@ -48,7 +50,11 @@ if __name__ == '__main__':
 
         recipe1.ingredients.append(ingredient1)
         recipe2.ingredients.append(ingredient2)
-        recipes=[recipe1,recipe2]       
+        
+        recipes=[recipe1,recipe2]    
+
+        
+        
       
         db.session.add_all(users)
         db.session.add_all(ingredients)
