@@ -60,15 +60,21 @@ function App() {
         <Route exact path="/">
           <Home recipes={filteredRecipe} setRecipes={setRecipes} />
         </Route>
-        <Route exact path="/recipe">
-          <Recipe users={user} recipes={recipes} setRecipes={setRecipes} />
-        </Route>
-        <Route exact path="/mylist">
-          <MyFav users={user} />
-        </Route>
-        <Route exact path="/addNew">
-          <AddNew users={user} recipes={recipes} setRecipes={setRecipes} />
-        </Route>
+        {user && (
+          <Route exact path="/recipe">
+            <Recipe users={user} recipes={recipes} setRecipes={setRecipes} />
+          </Route>
+        )}
+        {user && (
+          <Route exact path="/mylist">
+            <MyFav users={user} />
+          </Route>
+        )}
+        {user && (
+          <Route exact path="/addNew">
+            <AddNew users={user} recipes={recipes} setRecipes={setRecipes} />
+          </Route>
+        )}
       </Switch>
     </div>
   );

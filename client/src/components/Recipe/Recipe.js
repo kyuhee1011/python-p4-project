@@ -108,7 +108,7 @@ function Recipe({
             <Button
               type="submit"
               variant="outline-primary"
-              onClick={() => handleDelete(recipe.id)}
+              onClick={() => handleDelete(recipes)}
               className="formEdit"
             >
               Delete
