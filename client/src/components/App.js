@@ -16,7 +16,7 @@ function App() {
   console.log(recipes);
 
   const filteredRecipe = recipes.filter((recipe) => {
-    return recipe.title.toLowerCase().includes(search.toLowerCase());
+    return recipe.title.toLowerCase().includes(search);
   });
   console.log(filteredRecipe);
   const [username, setUsername] = useState("");

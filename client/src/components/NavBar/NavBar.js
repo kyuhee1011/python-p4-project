@@ -24,46 +24,46 @@ function NavBar({ setSearch, handleLogOut }) {
         >
           Log In
         </Link>
-        <Form className="seacrh">
-          <Form.Control
-            placeholder="Search"
-            type="search"
-            to="#"
-            onChange={(searchevent) => setSearch(searchevent.target.value)} //setSearch(search)}
-            style={{
-              textDecoration: "none",
-              textAlign: "center",
-              flexGrow: "1",
-              padding: ".5%",
-            }}
-          />
-        </Form>
-
-        <Col>
-          <Link
-            // className="loginButton"
-            to="/signUp"
-            type="submit"
-            variant="outline-primary"
-            style={{
-              textDecoration: "none",
-              textAlign: "center",
-              flexGrow: "1",
-              padding: ".5%",
-            }}
-          >
-            <Button type="submit" variant="outline-primary" className="button">
-              SignUp
-            </Button>
-          </Link>
-          <Button
-            type="submit"
-            className="lgoutButton"
-            variant="outline-primary"
-            onClick={handleLogOut}
-          >
-            Logout
+        <Link
+          // className="loginButton"
+          to="/signUp"
+          type="submit"
+          variant="outline-primary"
+          style={{
+            textDecoration: "none",
+            textAlign: "center",
+            flexGrow: "1",
+            padding: ".5%",
+          }}
+        >
+          <Button type="submit" variant="outline-primary" className="button">
+            SignUp
           </Button>
+        </Link>
+        <Button
+          type="submit"
+          className="lgoutButton"
+          variant="outline-primary"
+          onClick={handleLogOut}
+        >
+          Logout
+        </Button>
+        <Col>
+          <Form className="seacrhNav">
+            <Form.Control
+              placeholder="Search"
+              type="search"
+              to="#"
+              onChange={(searchevent) => setSearch(searchevent.target.value)} //setSearch(search)}
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+                padding: ".5%",
+                margin: "1.2%",
+              }}
+            />
+          </Form>
         </Col>
       </Row>
 
