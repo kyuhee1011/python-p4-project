@@ -1,11 +1,8 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-// import { useFormik } from 'formik';
 import { Container, Button } from "react-bootstrap";
 function Home({ recipes, setRecipes }) {
-  // const [main, setMain] = useState([]);
-
   useEffect(() => {
     fetch(`/recipe_all`)
       .then((response) => response.json())

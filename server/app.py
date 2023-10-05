@@ -1,13 +1,8 @@
-#!/usr/bin/env python3
-
-# Standard library imports
 
 # Remote library imports
 from flask import request, make_response, request, jsonify, session
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
-
-# Local imports
 from config import app, db, api
 # Add your model imports
 from models import User, Recipe, Ingredient, recipeIngredient
@@ -32,7 +27,6 @@ class SignUp(Resource):
 
         new_user=User(
             username = data['username'],
-            
             firstName=data['firstName'],
             lastName=data['lastName']
            
@@ -64,11 +58,10 @@ class Logout(Resource):
     def delete(self):
         session.pop('user_id', None)
         return {'message':'Thank you, See You Again!'}, 204  
-        
- 
-    
+   
 class RecipeAll(Resource):
     def get(self):
+        #getting all recipes for non user on Home page
               
         data_meals=Recipe.query.all()
         
@@ -76,7 +69,7 @@ class RecipeAll(Resource):
         return make_response(jsonify(all_recipe),200)
 
     def post(self):
-
+    #updates/Add new recipes in Add New page
         if session.get('user_id'):
             new_form=request.get_json()
             try:
@@ -111,6 +104,7 @@ class RecipeAll(Resource):
                 return {'error': 'Unprocessable Entity'}, 422
            
         return{'error':'You must logged in'},401
+    
     def delete(self):
         recipe = Recipe.query.get(id) 
       
@@ -123,7 +117,7 @@ class RecipeAll(Resource):
     
 class IngredientAll(Resource):
     def get(self):
-   
+   #getting all incredients for users only because user && in App.js
         data_ingredient=Ingredient.query.all()
         all_ingredient=[ingredient.to_dict()for ingredient in data_ingredient]
       
@@ -141,7 +135,7 @@ class RecipeById(Resource):
     
     
     def delete(self,id):
-        recipe=Recipe.query.filter(Recipe.id==id).first
+        recipe=Recipe.query.filter(Recipe.id==id).first()
       
         if recipe:
             db.session.delete(recipe)

@@ -42,6 +42,22 @@ function App() {
     });
   }
 
+  function handleDelete(recipeId) {
+    fetch(`/recipe_all/${recipeId}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        fetch(`/recipe_all`)
+          .then((response) => response.json())
+          .then((data) => {
+            setRecipes(data);
+          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
   return (
     <div>
       <NavBar
@@ -66,12 +82,18 @@ function App() {
               users={user}
               recipes={filteredRecipe}
               setRecipes={setRecipes}
+              handleDelete={handleDelete}
             />
           </Route>
         )}
         {user && (
           <Route exact path="/mylist">
-            <MyFav users={user} />
+            <MyFav
+              users={user}
+              setRecipes={setRecipes}
+              handleDelete={handleDelete}
+              recipes={filteredRecipe}
+            />
           </Route>
         )}
         {user && (

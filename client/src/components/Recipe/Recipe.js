@@ -11,7 +11,7 @@ function Recipe({
   user,
   setSearch,
   onAddList,
-  onDeleteFavorite,
+  handleDelete,
   setRecipes,
   recipes,
 }) {
@@ -37,21 +37,21 @@ function Recipe({
   const test = recipes.map((recipe) => recipe);
   console.log(test);
 
-  function handleDelete() {
-    fetch(`/recipe_all/${recipes.id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        fetch(`/recipe_all`)
-          .then((response) => response.json())
-          .then((data) => {
-            setRecipes(data);
-          });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }
+  // function handleDelete() {
+  //   fetch(`/recipe_all/${recipes.id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then(() => {
+  //       fetch(`/recipe_all`)
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           setRecipes(data);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // }
 
   // const handleFavorite = (favoriteRecipe) => {
   //   // Find the recipe that corresponds to the clicked "Favorites" button

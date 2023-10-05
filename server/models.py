@@ -7,17 +7,21 @@ from config import db, bcrypt
 
 # Models go here!
 
+#many to many table
 recipeIngredient=db.Table(
     'recipe_ingredient',
     db.Column('recipe_id', db.Integer,  db.ForeignKey('recipes.id')),
     db.Column('ingredient_id', db.Integer,  db.ForeignKey('ingredients.id')),
     
 )
+
+#one to many table
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     __table_args__ = (
         db.CheckConstraint('length(username) >= 3'),
     )
+    #"-" means not/don't want to include/show
     serialize_rules = ('-recipes.user','-_password_hash')
 
     id = db.Column(db.Integer, primary_key=True)

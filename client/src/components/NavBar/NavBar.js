@@ -5,7 +5,6 @@ import "./NavBar.css";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 function NavBar({ user, setSearch, handleLogOut }) {
-  // const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
 
   return (
