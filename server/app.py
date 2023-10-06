@@ -147,7 +147,6 @@ class RecipeById(Resource):
 
     
 class RecipeResource(Resource):
-
     def patch(self, recipe_id):
         recipe = Recipe.query.filter_by(id=recipe_id).first()
         if recipe:

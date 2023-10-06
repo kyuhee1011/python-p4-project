@@ -27,7 +27,11 @@ function Recipe({
           <div key={recipe.id}>
             <h3 className="recipeMainTitle">{recipe.title}</h3>
             <p className="rateColor">{recipe.review}</p>
-            <img src={recipe.image_food} alt="My Delicious Food" />
+            <img
+              className="imageSize"
+              src={recipe.image_food}
+              alt="My Delicious Food"
+            />
             <p className="recipeDescript">{recipe.description}</p>
             <p>{recipe.duration}</p>
             <p>{recipe.serving}</p>

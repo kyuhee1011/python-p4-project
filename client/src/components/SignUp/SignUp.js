@@ -118,7 +118,7 @@ function SignUp({ user, handleAccount }) {
 
               <Form.Control
                 id="password"
-                type="text"
+                type="password"
                 className="formText"
                 name="password"
                 placeholder="Enter your password"
@@ -134,7 +134,7 @@ function SignUp({ user, handleAccount }) {
 
               <Form.Control
                 id="confirmation"
-                type="text"
+                type="password"
                 className="formText"
                 name="confirmation"
                 placeholder="Enter your password again"

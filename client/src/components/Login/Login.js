@@ -77,7 +77,7 @@ function LogIn({ user, handleAccount }) {
 
               <Form.Control
                 id="password"
-                type="text"
+                type="password"
                 className="formText"
                 name="password"
                 placeholder="Enter your password"
