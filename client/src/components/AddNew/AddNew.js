@@ -42,6 +42,7 @@ function AddNew({ user, recipes, setRecipes }) {
         history.push("/recipe");
       });
   };
+
   return (
     <Form className="formContainer" onSubmit={handleSubmit}>
       <h3 className="addFormTitle"> Add My Recipe</h3>

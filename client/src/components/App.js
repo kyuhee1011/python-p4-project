@@ -83,6 +83,7 @@ function App() {
   return (
     <div>
       <NavBar
+        user={user}
         setSearch={setSearch}
         search={search}
         handleLogOut={handleLogOut}

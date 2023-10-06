@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
-function NavBar({ setSearch, handleLogOut }) {
+function NavBar({ user, setSearch, handleLogOut }) {
+  const handleNavClick = (e) => {
+    if (!user) {
+      e.preventDefault();
+      alert("Please Logged In");
+    }
+  };
   return (
     <Container>
       <Row className="spaceTop">
@@ -78,6 +84,7 @@ function NavBar({ setSearch, handleLogOut }) {
         <Link
           className="button"
           to="/recipe"
+          onClick={handleNavClick}
           style={{
             textDecoration: "none",
             textAlign: "center",
@@ -90,6 +97,7 @@ function NavBar({ setSearch, handleLogOut }) {
         <Link
           className="button"
           to="/mylist"
+          onClick={handleNavClick}
           style={{
             textDecoration: "none",
             textAlign: "center",
@@ -102,6 +110,7 @@ function NavBar({ setSearch, handleLogOut }) {
         <Link
           className="button"
           to="/addNew"
+          onClick={handleNavClick}
           style={{
             textDecoration: "none",
             textAlign: "center",
