@@ -13,7 +13,7 @@ if __name__ == '__main__':
         Ingredient.query.delete()
         Recipe.query.delete()
         db.session.query(recipeIngredient).delete()
-        # db.session.query(userFavorite).delete()
+        # db.session.query(favorite).delete()
 
         users =[ 
             User(username="kyuhelee",  firstName="kyuhee",lastName="Lee" ),

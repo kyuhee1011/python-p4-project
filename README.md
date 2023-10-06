@@ -1,5 +1,7 @@
 # Phase 4 Full-Stack Application Project Template
 
+Recipe Warehouse
+
 ## Description
 
 This website allows user to share their recipe and look on others. Users can look up by pressing recipe button or search in the search bar.
@@ -9,6 +11,8 @@ Non-user can view only Home page and not other pages. In order to view or use Re
 ## Quick Start
 
 Clone the repository:
+git clone https://github.com/kyuhee1011/python-p4-project.git
+Or
 git clone git@github.com:kyuhee1011/python-p4-project.git
 
 Open two terminal 1 for Frontend and 1 for Backend.

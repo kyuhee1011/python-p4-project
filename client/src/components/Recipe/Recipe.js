@@ -15,14 +15,7 @@ function Recipe({
   setRecipes,
   recipes,
 }) {
-  const history = useHistory();
-  const params = useParams();
-  const [ingredient, setIngredient] = useState(null);
-
-  const [dirction, setDirection] = useState(null);
-
   const [favorite, setFavorite] = useState([]);
-  // const [list, setlist] = useState([]);
 
   useEffect(() => {
     fetch(`/recipe_all`)
@@ -34,54 +27,38 @@ function Recipe({
         // setIngredient(data);
       });
   }, [setRecipes]);
-  const test = recipes.map((recipe) => recipe);
-  console.log(test);
+  // const test = recipes.map((recipe) => recipe);
+  // console.log(test);
 
-  // function handleDelete() {
-  //   fetch(`/recipe_all/${recipes.id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then(() => {
-  //       fetch(`/recipe_all`)
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           setRecipes(data);
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // }
+  const handleFavorite = ({ favoriteRecipe, recipeId }) => {
+    // Find the recipe that corresponds to the clicked "Favorites" button
+    const updatedRecipes = recipes.map((recipe) => {
+      if (recipes.id === recipe.id) {
+        // Toggle the favorite status for the specific recipe
+        return { ...recipe, favorite: !recipe.favorite };
+      }
+      return recipes;
+    });
+    setRecipes(updatedRecipes);
 
-  // const handleFavorite = (favoriteRecipe) => {
-  //   // Find the recipe that corresponds to the clicked "Favorites" button
-  //   const updatedRecipes = recipes.map((recipe) => {
-  //     if (recipes.id === recipe.id) {
-  //       // Toggle the favorite status for the specific recipe
-  //       return { ...recipe, favorite: !recipe.favorite };
-  //     }
-  //     return recipes;
-  //   });
-  //   setRecipes(updatedRecipes);
-
-  //   fetch(`http://127.0.0.1:5555/favorites/${user.id}/${recipe.id}`, {
-  //     method: "PATCH",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ favorite: !favorite }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // Handle success or error responses from the server
-  //       if (data.success) {
-  //         onAddList(data.favorite);
-  //       } else {
-  //         onDeleteFavorite(data.favorite);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
+    fetch(`/favorites/${user.id}/${recipeId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ favorite: !favorite }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Handle success or error responses from the server
+        if (data.success) {
+          onAddList(data.favorite);
+        } else {
+          handleDelete(data.favorite);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <Container>

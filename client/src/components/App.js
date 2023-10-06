@@ -13,6 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
+  const [favorites, setFavorites] = useState([]);
   console.log(recipes);
 
   const filteredRecipe = recipes.filter((recipe) => {
@@ -58,6 +59,23 @@ function App() {
       });
   }
 
+  function onAddFavorite(myFav) {
+    if (user && user.id) {
+      const myAddFavorite = favorites.some((recipe) => recipe.id === myFav.id);
+      if (!myAddFavorite) {
+        setFavorites([...favorites, myFav]);
+      }
+    }
+  }
+
+  function onDeleteFavorite(myFav) {
+    if (user && user.id) {
+      const newFavorites = favorites.filter((recipe) => recipe.id !== myFav.id);
+
+      setFavorites(newFavorites);
+    }
+  }
+
   return (
     <div>
       <NavBar
@@ -83,6 +101,8 @@ function App() {
               recipes={filteredRecipe}
               setRecipes={setRecipes}
               handleDelete={handleDelete}
+              onAddFavorite={onAddFavorite}
+              onDeleteFavorite={onDeleteFavorite}
             />
           </Route>
         )}
@@ -93,6 +113,8 @@ function App() {
               setRecipes={setRecipes}
               handleDelete={handleDelete}
               recipes={filteredRecipe}
+              onAddFavorite={onAddFavorite}
+              onDeleteFavorite={onDeleteFavorite}
             />
           </Route>
         )}

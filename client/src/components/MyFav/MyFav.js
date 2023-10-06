@@ -1,57 +1,56 @@
 import React from "react";
 import "./MyFav.css";
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
 import Recipe from "../Recipe/Recipe";
 
-// import { useFormik } from 'formik';
-// import { Container } from "react-bootstrap";
+function MyFav({ user, recipes, onAddFavorite, onDeleteFavorite }) {
+  const [myfavorite, setMyFavorite] = useState(false);
 
-function MyFav({ user, recipe }) {
-  const [account, setAccount] = useState(null);
-  const [list, setList] = useState([]);
-  const [recipes, setRecipes] = useState([]);
-
-  const history = useHistory();
-  const params = useParams();
-
-  useEffect(() => {
-    fetch(`/favorites/${user.id}/${recipe.id}`)
-      .then((response) => response.json())
-      .then((account) => {
-        setAccount(account);
+  const handleUpdateFavClick = (recipeId) => {
+    setMyFavorite((myfavorite) => !myfavorite);
+    fetch(`/favorites/${user.id}/${recipeId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ myfavorite: !myfavorite }),
+    })
+      .then((res) => res.json())
+      .then((newMyRecipe) => {
+        onAddFavorite(newMyRecipe);
       });
-  }, [params.username]);
+  };
 
-  function handleAddFavorite(recipe) {
-    setList([...list, recipe]);
-  }
-
-  function handleRemoveFav(id) {
-    const removeFavorite = list.filter((recipe) => recipe.id !== id);
-    setList(removeFavorite);
-  }
+  const handleDeleteUpdate = (recipeId) => {
+    setMyFavorite((myfavorite) => !myfavorite);
+    fetch(`/favorites/${user.id}/${recipeId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((deletedMyRecipe) => {
+        onDeleteFavorite(deletedMyRecipe);
+      });
+  };
 
   return (
     <div>
-      <h1>{account ? account.username : ""}</h1>
+      <h1>{user ? user.username : "Favorites"}</h1>
       {recipes.map((recipe) => (
         <Recipe
           key={recipe.id}
           recipe={recipe}
-          onAddFavorite={handleAddFavorite}
-          onDeleteFavorite={handleRemoveFav}
+          onAddFavorite={() => handleUpdateFavClick(recipe.id)}
+          onDeleteFavorite={() => handleDeleteUpdate(recipe.id)}
         />
       ))}
-      <h1>Favorites</h1>
-      {list.map((recipe) => (
+
+      {/* {list.map((recipe) => (
         <Recipe
           key={recipe.id}
           recipe={recipe}
-          onAddFavorite={handleAddFavorite}
+          onAddFavorite={handleUpdateFavClick}
           onDeleteFavorite={() => handleRemoveFav(recipe.id)}
         />
-      ))}
+      ))} */}
     </div>
   );
 }
