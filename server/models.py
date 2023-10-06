@@ -14,11 +14,6 @@ recipeIngredient=db.Table(
     db.Column('ingredient_id', db.Integer,  db.ForeignKey('ingredients.id')),
     
 )
-# favorite = db.Table(
-#     'favorites',
-#     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-#     db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'))
-# )
 
 #one to many table
 class User(db.Model, SerializerMixin):
