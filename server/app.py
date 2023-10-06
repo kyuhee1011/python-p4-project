@@ -143,40 +143,28 @@ class RecipeById(Resource):
             return {'message':'Delete successfully'}, 204
         else:
             return {'errors':'Bad request'}, 400
-
-class MyFavorites(Resource):
-    def post(self, user_id, recipe_id):
-        user = User.query.filter(id==user_id).first()
-        recipe = Recipe.query.filter(id==recipe_id).first()
-       
-        if user and recipe:
-                user.favorite.append(recipe)
-                db.session.commit()
-                return recipe.to_dict(), 200
-        return {'errors':'invalid username/recipe entered'}, 401
         
-        
-    def delete(self, user_id, recipe_id):
 
-        user = User.query.filter(id==user_id).first()
-        recipe = Recipe.query.filter(id==recipe_id).first()
-       
-            
-        if user and recipe:
-            user.favorite.remove(recipe)
+    
+class RecipeResource(Resource):
+
+    def patch(self, recipe_id):
+        recipe = Recipe.query.filter_by(id=recipe_id).first()
+        if recipe:
+            recipe.favorite = not recipe.favorite
             db.session.commit()
             return recipe.to_dict(), 200
-        return {'errors':'invalid username/recipe entered'}, 401     
+        else:
+            return {"message": "Recipe not found"}, 404
 
+  
 
-
-api.add_resource(MyFavorites, '/favorites/<int:user_id>/<int:recipe_id>')
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(RecipeAll, '/recipe_all')
-api.add_resource(IngredientAll, '/ingredient_all')
+api.add_resource(RecipeResource, '/recipe/<int:recipe_id>')
 api.add_resource(RecipeById, '/recipe_all/<int:id>')
 
 

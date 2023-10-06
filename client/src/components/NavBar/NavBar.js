@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./NavBar.css";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
-function NavBar({ user, setSearch, handleLogOut }) {
-  const [username, setUsername] = useState("");
-
+function NavBar({ setSearch, handleLogOut }) {
   return (
     <Container>
       <Row className="spaceTop">
@@ -24,7 +21,6 @@ function NavBar({ user, setSearch, handleLogOut }) {
           Log In
         </Link>
         <Link
-          // className="loginButton"
           to="/signUp"
           type="submit"
           variant="outline-primary"
@@ -53,20 +49,20 @@ function NavBar({ user, setSearch, handleLogOut }) {
               placeholder="Search"
               type="search"
               to="#"
-              onChange={(searchevent) => setSearch(searchevent.target.value)} //setSearch(search)}
+              onChange={(searchevent) => setSearch(searchevent.target.value)}
               style={{
                 textDecoration: "none",
                 textAlign: "center",
                 flexGrow: "1",
                 padding: ".5%",
-                margin: "1.2%",
+                margin: "1%",
               }}
             />
           </Form>
         </Col>
       </Row>
 
-      <Row className="menuSpace">
+      <Row className="navSpace">
         <Link
           className="button"
           to="/"

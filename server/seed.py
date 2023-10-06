@@ -21,7 +21,11 @@ if __name__ == '__main__':
         ]
         users[0].password_hash='k1234'
         users[1].password_hash='r1234'
-        
+        # user1= User(username="kyuhelee",  firstName="kyuhee",lastName="Lee" )
+        # user2=User(username="raylee", firstName="ray", lastName="lee")
+        # user1.password_hash='k1234'
+        # user2.password_hash='r1234'
+
         
 
         recipe1= Recipe(title="Korean rolled egg omelette",
@@ -29,15 +33,19 @@ if __name__ == '__main__':
                    description="It's side dish that is rolled into an omelette mixed with vegetables and some others",
                    duration="20 minutes",
                    serving="2",
+                   favorite=False,
                    review=1,
-                   mealType="Side")
+                   mealType="Side", 
+                   user_id=1)
         recipe2=Recipe(title="Korean Fried Zucchini",
                    image_food="https://i.namu.wiki/i/PaCsNGAPcwQKOPPdJxmgpIs2Cbki6whlyBm3vHciV5k57mEwGT-Zw4a0tBOWtf5czPor-xffZbOhR0H2cHXcz8o9F51E0QfX8MT59ZSE2Xan1NlberfP_jMSRfEJzw79B_KnGlmfA6Iuzhqj6S39faHcEOyxHjB343cLjo3IfVs.webp",
                    description="It's side dish that refers to pan-fried",
                    duration="40 minutes",
                    serving="4",
+                   favorite=True,
                    review=1,
-                   mealType="Side")
+                   mealType="Side",
+                   user_id=1)
         recipes=[recipe1,recipe2]
 
         ingredient1= Ingredient( name="3 egg, 1 Tbsp chopped onion, 1 Tbsp chopped green onion, 1 Tbsp chopped carrot, salt (option)", 
@@ -53,7 +61,10 @@ if __name__ == '__main__':
         
         recipes=[recipe1,recipe2]    
 
-        
+        # user1.recipes.append(recipe1)
+        # user2.recipes.append(recipe2)
+        # users=[user1,user2]
+
         
       
         db.session.add_all(users)

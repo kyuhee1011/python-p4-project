@@ -1,65 +1,18 @@
 import React from "react";
 import "./Recipe.css";
-import { useState, useEffect } from "react";
 
-import { useParams, useHistory } from "react-router-dom";
 // import { useFormik } from 'formik';
 import { Container, Row, Button } from "react-bootstrap";
 import Ingredient from "../Ingredient/Ingredient";
 
 function Recipe({
   user,
-  setSearch,
-  onAddList,
+  onAddFavorite,
   handleDelete,
   setRecipes,
   recipes,
+  handleUpdateFavorite,
 }) {
-  const [favorite, setFavorite] = useState([]);
-
-  useEffect(() => {
-    fetch(`/recipe_all`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setRecipes(data);
-
-        // setIngredient(data);
-      });
-  }, [setRecipes]);
-  // const test = recipes.map((recipe) => recipe);
-  // console.log(test);
-
-  const handleFavorite = ({ favoriteRecipe, recipeId }) => {
-    // Find the recipe that corresponds to the clicked "Favorites" button
-    const updatedRecipes = recipes.map((recipe) => {
-      if (recipes.id === recipe.id) {
-        // Toggle the favorite status for the specific recipe
-        return { ...recipe, favorite: !recipe.favorite };
-      }
-      return recipes;
-    });
-    setRecipes(updatedRecipes);
-
-    fetch(`/favorites/${user.id}/${recipeId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ favorite: !favorite }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Handle success or error responses from the server
-        if (data.success) {
-          onAddList(data.favorite);
-        } else {
-          handleDelete(data.favorite);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
   return (
     <Container>
       <Row>
@@ -85,10 +38,10 @@ function Recipe({
             <Button
               type="submit"
               variant={recipe.favorite ? "primary" : "outline-primary"}
-              // onClick={() => handleFavorite(recipe.id)}
+              onClick={() => handleUpdateFavorite(recipe.id)}
               className="formEdit"
             >
-              Favorites
+              {recipe.favorite ? "unfavorite" : "favorite"}
             </Button>
             <Button
               type="submit"

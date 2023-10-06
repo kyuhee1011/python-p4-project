@@ -14,11 +14,11 @@ recipeIngredient=db.Table(
     db.Column('ingredient_id', db.Integer,  db.ForeignKey('ingredients.id')),
     
 )
-favorite = db.Table(
-    'favorites',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'))
-)
+# favorite = db.Table(
+#     'favorites',
+#     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+#     db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'))
+# )
 
 #one to many table
 class User(db.Model, SerializerMixin):
@@ -35,7 +35,7 @@ class User(db.Model, SerializerMixin):
     firstName = db.Column(db.String)
     lastName=db.Column(db.String)
     
-  
+
     recipes = db.relationship('Recipe', backref='user')
 
     @hybrid_property
@@ -82,10 +82,13 @@ class Recipe(db.Model, SerializerMixin):
     image_food=db.Column(db.String)
     description=db.Column(db.String)
     duration=db.Column(db.String)
+    favorite=db.Column(db.Boolean)
     serving=db.Column(db.String)  
     review=db.Column(db.Integer)
     mealType=db.Column(db.String)
     user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user_id=db.relationship("User", secondary=favorite, back_populates="recipes")
+
     ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipes")
 
     def __repr__(self):

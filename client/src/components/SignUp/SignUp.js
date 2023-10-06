@@ -58,10 +58,10 @@ function SignUp({ user, handleAccount }) {
   }
 
   return (
-    <Form className="formContainer" onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Sign Up Page {errorPage}</h2>
-      <div className="formSignUp">
-        <InputGroup className="formCenter">
+      <div>
+        <InputGroup>
           <Row>
             <Col lg="10">
               <Form.Label htmlFor="firstName" className="formName">

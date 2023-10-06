@@ -1,20 +1,9 @@
 import React from "react";
 import "./Ingredient.css";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-
 import { Container, Row } from "react-bootstrap";
 
 function Ingredient({ user, recipe }) {
-  const [ingredients, setIngredient] = useState(null);
-  useEffect(() => {
-    fetch(`/ingredient_all`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setIngredient(data);
-      });
-  }, []);
   return (
     <Container>
       <Row>
@@ -24,7 +13,7 @@ function Ingredient({ user, recipe }) {
       <Row className="ingriDirect">{recipe.ingredients[0].direction}</Row>
 
       <Row>
-        <Link className="navBar-link" to="/addNew">
+        <Link to="/addNew">
           <p>Share Your Recipe</p>
         </Link>
       </Row>

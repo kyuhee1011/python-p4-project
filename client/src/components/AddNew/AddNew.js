@@ -1,7 +1,7 @@
 import React from "react";
 import "./AddNew.css";
 import { useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Form, Button, Col, Row } from "react-bootstrap";
 
@@ -19,7 +19,6 @@ function AddNew({ user, recipes, setRecipes }) {
   });
 
   const history = useHistory();
-  const params = useParams();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -46,8 +45,8 @@ function AddNew({ user, recipes, setRecipes }) {
   return (
     <Form className="formContainer" onSubmit={handleSubmit}>
       <h3 className="addFormTitle"> Add My Recipe</h3>
-      <div className="formLeft">
-        <Form.Group className="formCenter">
+      <div>
+        <Form.Group>
           <Row>
             <Col md="10">
               <Form.Label className="formtitle">Title</Form.Label>
@@ -65,7 +64,7 @@ function AddNew({ user, recipes, setRecipes }) {
             </Col>
           </Row>
         </Form.Group>
-        <Form.Group className="formCenter">
+        <Form.Group>
           <Row>
             <Col md="10">
               <Form.Label className="formtitle">Review</Form.Label>
@@ -84,7 +83,7 @@ function AddNew({ user, recipes, setRecipes }) {
           </Row>
         </Form.Group>
 
-        <Form.Group className="formCenter">
+        <Form.Group>
           <Row>
             <Col md="10">
               <Form.Label className="formImage">Image</Form.Label>
@@ -140,7 +139,7 @@ function AddNew({ user, recipes, setRecipes }) {
             </Col>
           </Row>
         </Form.Group>
-        <Form.Group className="formCenter">
+        <Form.Group>
           <Row>
             <Col md="10">
               <Form.Label className="formDescription">serving</Form.Label>
@@ -161,7 +160,7 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formDescription">mealType</Form.Label>
+              <Form.Label className="formType">mealType</Form.Label>
               <div>
                 <Form.Control
                   id="mealType"

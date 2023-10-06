@@ -13,24 +13,45 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [favorites, setFavorites] = useState([]);
-  console.log(recipes);
+  const [myfavoriteAdd, setMyFavoriteAdd] = useState(false);
 
   const filteredRecipe = recipes.filter((recipe) => {
-    return recipe.title.toLowerCase().includes(search);
+    return recipe?.title?.toLowerCase().includes(search);
   });
-  console.log(filteredRecipe);
-  const [username, setUsername] = useState("");
 
   const handleAccount = (user) => setUser(user);
+  const updateRecipeFav = (recipe) => {
+    const updatedRecipes = recipes.map((r) => {
+      if (r?.id === recipe?.id) return recipe;
+      return r;
+    });
+    setRecipes(updatedRecipes);
+  };
+
+  const handleUpdateFavorite = (recipeId) => {
+    fetch(`recipe/${recipeId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ myfavoriteAdd: !myfavoriteAdd }),
+    })
+      .then((res) => res.json())
+      .then((data) => updateRecipeFav(data));
+  };
 
   useEffect(() => {
     fetch(`/check_session`).then((response) => {
-      console.log("response", response);
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
     });
+  }, []);
+
+  useEffect(() => {
+    fetch(`/recipe_all`)
+      .then((response) => response.json())
+      .then((data) => {
+        setRecipes(data);
+      });
   }, []);
 
   function handleLogOut() {
@@ -59,23 +80,6 @@ function App() {
       });
   }
 
-  function onAddFavorite(myFav) {
-    if (user && user.id) {
-      const myAddFavorite = favorites.some((recipe) => recipe.id === myFav.id);
-      if (!myAddFavorite) {
-        setFavorites([...favorites, myFav]);
-      }
-    }
-  }
-
-  function onDeleteFavorite(myFav) {
-    if (user && user.id) {
-      const newFavorites = favorites.filter((recipe) => recipe.id !== myFav.id);
-
-      setFavorites(newFavorites);
-    }
-  }
-
   return (
     <div>
       <NavBar
@@ -100,9 +104,8 @@ function App() {
               users={user}
               recipes={filteredRecipe}
               setRecipes={setRecipes}
+              handleUpdateFavorite={handleUpdateFavorite}
               handleDelete={handleDelete}
-              onAddFavorite={onAddFavorite}
-              onDeleteFavorite={onDeleteFavorite}
             />
           </Route>
         )}
@@ -110,11 +113,8 @@ function App() {
           <Route exact path="/mylist">
             <MyFav
               users={user}
-              setRecipes={setRecipes}
-              handleDelete={handleDelete}
               recipes={filteredRecipe}
-              onAddFavorite={onAddFavorite}
-              onDeleteFavorite={onDeleteFavorite}
+              handleUpdateFavorite={handleUpdateFavorite}
             />
           </Route>
         )}

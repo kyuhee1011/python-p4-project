@@ -31,9 +31,10 @@
     font-size: 120%; 
 
 }
-.formCenter {
-  display: grid;
-  justify-content: left;
+
+.formType{
+    font-weight: bold;
+    font-size: 120%; 
 
 }
 

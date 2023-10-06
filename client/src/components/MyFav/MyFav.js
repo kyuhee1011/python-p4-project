@@ -1,57 +1,44 @@
 import React from "react";
 import "./MyFav.css";
-import { useState, useEffect } from "react";
-import Recipe from "../Recipe/Recipe";
+import Ingredient from "../Ingredient/Ingredient";
+import { Container, Row, Button } from "react-bootstrap";
 
-function MyFav({ user, recipes, onAddFavorite, onDeleteFavorite }) {
-  const [myfavorite, setMyFavorite] = useState(false);
-
-  const handleUpdateFavClick = (recipeId) => {
-    setMyFavorite((myfavorite) => !myfavorite);
-    fetch(`/favorites/${user.id}/${recipeId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ myfavorite: !myfavorite }),
-    })
-      .then((res) => res.json())
-      .then((newMyRecipe) => {
-        onAddFavorite(newMyRecipe);
-      });
-  };
-
-  const handleDeleteUpdate = (recipeId) => {
-    setMyFavorite((myfavorite) => !myfavorite);
-    fetch(`/favorites/${user.id}/${recipeId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((deletedMyRecipe) => {
-        onDeleteFavorite(deletedMyRecipe);
-      });
-  };
+function MyFav({ user, recipes, handleUpdateFavorite }) {
+  const recipeFilterArray = recipes.filter((recipe) => {
+    return recipe.favorite === true;
+  });
 
   return (
-    <div>
-      <h1>{user ? user.username : "Favorites"}</h1>
-      {recipes.map((recipe) => (
-        <Recipe
-          key={recipe.id}
-          recipe={recipe}
-          onAddFavorite={() => handleUpdateFavClick(recipe.id)}
-          onDeleteFavorite={() => handleDeleteUpdate(recipe.id)}
-        />
-      ))}
+    <Container>
+      <Row>
+        <h3 className="recipeTitle">My Favorite Recipes</h3>
+      </Row>
 
-      {/* {list.map((recipe) => (
-        <Recipe
-          key={recipe.id}
-          recipe={recipe}
-          onAddFavorite={handleUpdateFavClick}
-          onDeleteFavorite={() => handleRemoveFav(recipe.id)}
-        />
-      ))} */}
-    </div>
+      <Row>
+        {recipeFilterArray.map((recipe) => (
+          <div key={recipe.id}>
+            <h3 className="recipeMainTitle">{recipe.title}</h3>
+
+            <img src={recipe.image_food} alt="My Delicious Food" />
+            <p className="recipeDescript">{recipe.description}</p>
+            <p>{recipe.duration}</p>
+            <p>{recipe.serving}</p>
+            <p>{recipe.mealType}</p>
+
+            <Ingredient recipe={recipe} />
+
+            <Button
+              type="submit"
+              variant={recipe.favorite ? "primary" : "outline-primary"}
+              onClick={() => handleUpdateFavorite(recipe.id)}
+              className="formEdit"
+            >
+              {recipe.favorite ? "unfavorite" : "favorite"}
+            </Button>
+          </div>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

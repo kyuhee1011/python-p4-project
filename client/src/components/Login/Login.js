@@ -50,10 +50,10 @@ function LogIn({ user, handleAccount }) {
   }
 
   return (
-    <Form className="formContainer" onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Login {errorPage}</h2>
-      <div className="formLogin">
-        <InputGroup className="formCenter">
+      <div>
+        <InputGroup>
           <Row>
             <Col lg="10">
               <Form.Label htmlFor="username" className="formName">
