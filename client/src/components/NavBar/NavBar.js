@@ -14,8 +14,9 @@ function NavBar({ user, setSearch, handleLogOut }) {
     <Container className="containerCenter">
       <Row>
         <div className="buttonAccount">
+          <div>
           <Link
-            className="spaceTop"
+         
             to="/login"
             type="submit"
             variant="outline-primary"
@@ -28,57 +29,67 @@ function NavBar({ user, setSearch, handleLogOut }) {
             <Button
               type="submit"
               variant="outline-primary"
-              className="lgoutButton"
+              className="spaceTop lgoutButton"
             >
               Log In
             </Button>
           </Link>
+          </div>
           <div>
             <Link
               to="/signUp"
               type="submit"
-              className="spaceTop"
+              
               variant="outline-primary"
               style={{
                 textDecoration: "none",
                 textAlign: "center",
                 flexGrow: "1",
-                padding: ".5%",
               }}
             >
               <Button
                 type="submit"
                 variant="outline-primary"
-                className="lgoutButton"
+                className="spaceTop lgoutButton"
               >
                 SignUp
               </Button>
             </Link>
           </div>
-          <Button
-            type="submit"
-            className="lgoutButton "
-            variant="outline-primary"
-            onClick={handleLogOut}
-          >
-            Logout
-          </Button>
+          <div>
+            {" "}
+            <Button
+              type="submit"
+              className="spaceTop lgoutButton  "
+              variant="outline-primary"
+              onClick={handleLogOut}
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+              }}
+            >
+              Logout
+            </Button>
+          </div>
         </div>
+        <div className="searchMobile">
         <Col>
-          <Form className="seacrhNav">
+          <Form className="searchNav">
             <Form.Control
               placeholder="Search"
               type="search"
               to="#"
               onChange={(searchevent) => setSearch(searchevent.target.value)}
               style={{
-                borderBlockStyle:"none",
+                borderBlockStyle: "none",
                 textAlign: "center",
                 flexGrow: "1",
               }}
             />
           </Form>
         </Col>
+        </div>
         <div className="mainMenuNav">
           <Col>
             <Link
