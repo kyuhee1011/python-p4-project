@@ -1,8 +1,20 @@
-.imgControl {
-    width: 50%;
+.imageSize {
+    width: 80%;
     height: auto;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
 }
 
+.containerCenter{
+    display: flex;
+    justify-content: center;
+}
+.mainMenuNav{
+    margin-top:4%
+}
+.contentCenter{
+    text-align: center;
+}
 .recipeTitle {
     display: block;
     font-size: 3em;
@@ -24,4 +36,15 @@
     font-size: 1.5em;
     color:rgb(0, 0, 0);
  
+}
+@media screen and (min-width: 500px) {
+    .containerCenter{
+        display: flex;
+        justify-content: center;
+    }
+    .mainMenuNav {      
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 }

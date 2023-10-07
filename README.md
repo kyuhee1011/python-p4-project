@@ -34,7 +34,7 @@ npm start
 
 ## Backend
 
-Open Second terminal
+Open Second terminal to run Backend Server
 
 ## prerequisites
 
@@ -73,6 +73,7 @@ Backend has 4 tables
 - recipeIngredient
 
 ## Database Relationship Diagram
+![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/project%205%20ERD%20.png)
 
 ## Video
 

@@ -11,44 +11,59 @@ function NavBar({ user, setSearch, handleLogOut }) {
     }
   };
   return (
-    <Container>
-      <Row className="spaceTop">
-        <Link
-          className="loginButton"
-          to="/login"
-          type="submit"
-          variant="outline-primary"
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-          }}
-        >
-          Log In
-        </Link>
-        <Link
-          to="/signUp"
-          type="submit"
-          variant="outline-primary"
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-            padding: ".5%",
-          }}
-        >
-          <Button type="submit" variant="outline-primary" className="button">
-            SignUp
+    <Container className="containerCenter">
+      <Row>
+        <div className="buttonAccount">
+          <Link
+            className="spaceTop"
+            to="/login"
+            type="submit"
+            variant="outline-primary"
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              flexGrow: "1",
+            }}
+          >
+            <Button
+              type="submit"
+              variant="outline-primary"
+              className="lgoutButton"
+            >
+              Log In
+            </Button>
+          </Link>
+          <div>
+            <Link
+              to="/signUp"
+              type="submit"
+              className="spaceTop"
+              variant="outline-primary"
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+                padding: ".5%",
+              }}
+            >
+              <Button
+                type="submit"
+                variant="outline-primary"
+                className="lgoutButton"
+              >
+                SignUp
+              </Button>
+            </Link>
+          </div>
+          <Button
+            type="submit"
+            className="lgoutButton "
+            variant="outline-primary"
+            onClick={handleLogOut}
+          >
+            Logout
           </Button>
-        </Link>
-        <Button
-          type="submit"
-          className="lgoutButton"
-          variant="outline-primary"
-          onClick={handleLogOut}
-        >
-          Logout
-        </Button>
+        </div>
         <Col>
           <Form className="seacrhNav">
             <Form.Control
@@ -57,68 +72,67 @@ function NavBar({ user, setSearch, handleLogOut }) {
               to="#"
               onChange={(searchevent) => setSearch(searchevent.target.value)}
               style={{
-                textDecoration: "none",
+                borderBlockStyle:"none",
                 textAlign: "center",
                 flexGrow: "1",
-                padding: ".5%",
-                margin: "1%",
               }}
             />
           </Form>
         </Col>
-      </Row>
+        <div className="mainMenuNav">
+          <Col>
+            <Link
+              className="button"
+              to="/"
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+              }}
+            >
+              Home
+            </Link>
 
-      <Row className="navSpace">
-        <Link
-          className="button"
-          to="/"
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-          }}
-        >
-          Home
-        </Link>
+            <Link
+              className="button "
+              to="/recipe"
+              onClick={handleNavClick}
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+              }}
+            >
+              MyRecipe
+            </Link>
 
-        <Link
-          className="button"
-          to="/recipe"
-          onClick={handleNavClick}
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-          }}
-        >
-          MyRecipe
-        </Link>
+            <Link
+              className="button"
+              to="/mylist"
+              onClick={handleNavClick}
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+              }}
+            >
+              My Favorite
+            </Link>
 
-        <Link
-          className="button"
-          to="/mylist"
-          onClick={handleNavClick}
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-          }}
-        >
-          My Favorite
-        </Link>
-
-        <Link
-          className="button"
-          to="/addNew"
-          onClick={handleNavClick}
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            flexGrow: "1",
-          }}
-        >
-          Add NewRecipe
-        </Link>
+            <Link
+              className="button"
+              to="/addNew"
+              onClick={handleNavClick}
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                flexGrow: "1",
+              }}
+            >
+              Add NewRecipe
+            </Link>
+          </Col>
+        </div>
       </Row>
     </Container>
   );

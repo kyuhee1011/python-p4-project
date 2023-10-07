@@ -7,14 +7,13 @@ import Ingredient from "../Ingredient/Ingredient";
 
 function Recipe({
   user,
-  onAddFavorite,
   handleDelete,
   setRecipes,
   recipes,
   handleUpdateFavorite,
 }) {
   return (
-    <Container>
+    <Container className="containerCenter">
       <Row>
         <h2 className="recipeTitle">Share Your Recipes</h2>
       </Row>
