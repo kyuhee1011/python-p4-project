@@ -62,6 +62,7 @@ function LogIn({ user, handleAccount }) {
               <Form.Control
                 id="username"
                 type="text"
+                
                 className="formText"
                 name="username"
                 placeholder="Enter your username"

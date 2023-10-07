@@ -149,4 +149,6 @@ function NavBar({ user, setSearch, handleLogOut }) {
   );
 }
 
+
+
 export default NavBar;

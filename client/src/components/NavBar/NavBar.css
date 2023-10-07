@@ -1,130 +1,132 @@
+.button {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: 1rem;
+    margin-top: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    
 
-    .button {
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        margin-right: 1rem;
-        margin-top: .5rem;
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;
-        
+}
+.spaceTop{
+    margin-top: 2em;
+}
+.mainMenuNav{
+    margin-top: 5%;
+}
+.containerCenter{
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
+.loginButton{
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: .5rem;
 
-    }
-    .spaceTop{
-        margin-top: 2em;
-    }
-    .containerCenter{
-        align-items: center;
-        justify-content: center;
-        display:flex;
-    }
-    .loginButton{
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        margin-right: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;  
+}
+.lgoutButton{
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-top: 1rem;
+    margin-left: -.5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+}
+.buttonAccount {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    
+    margin-left:23rem;
+    margin-top: .5rem;
+    flex-direction: column;
+ 
+    justify-content: flex-end;
+    display:flex;
 
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;  
-    }
-    .lgoutButton{
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        margin-top: 1rem;
-        margin-left: -.5rem;
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;
-    }
-    .buttonAccount {
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        
-        margin-left:23rem;
-        margin-top: .5rem;
-        flex-direction: column;
-     
-        justify-content: flex-end;
-        display:flex;
+}
+.searchNav{
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    margin-right:1rem;
+    margin-left:15rem
+}
 
-    }
-    .searchNav{
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;
-        margin-right:1rem;
-        margin-left:15rem
-    }
-
-    .navSpace{
-        margin-top: 1.5rem;
-    }
+.navSpace{
+    margin-top: 1.5rem;
+}
 @media only screen and (max-width: 550px){
-    .button {
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        
-      
-        margin-top: .5rem;
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        display:flex;
-
-    }
+.button {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    
   
+    margin-top: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+
+}
 
 
-    .buttonAccount {
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        margin-right: auto;
-        margin-left:auto;
-        margin-top: .5rem;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-evenly;
-        display:flex;
 
-    }
-    .spaceTop{
-        color:rgb(58, 128, 219) ;
-        background: white;
-        padding: .5rem;
-        margin:.3rem .3rem -.3rem .3rem;
-       
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;  
-    }
-    .searchMobile{
-        margin-right: auto;
-        margin-left:auto;
-        margin-top: .5rem;
-        flex-direction: row;
-       
-        justify-content: center;
-        display:flex;
+.buttonAccount {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: auto;
+    margin-left:auto;
+    margin-top: .5rem;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-evenly;
+    display:flex;
 
-    }
+}
+.spaceTop{
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin:.3rem .3rem -.3rem .3rem;
+   
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;  
+}
+.searchMobile{
+    margin-right: auto;
+    margin-left:auto;
+    margin-top: .5rem;
+    flex-direction: row;
+   
+    justify-content: center;
+    display:flex;
 
-  
-    .navSpace{
-        margin-top: 1.5rem;
-        border: 5px solid rgb(58, 128, 219);
-        padding: 0.5rem;
-        border-radius: 5px;
-        background-color: rgb(255, 255, 255);
-    }
+}
 
-    .searchNav{
-        border: rgb(58, 128, 219) 2px solid;
-        border-radius: 1em;
-        margin-right: auto;
-        margin-left:auto;
-        
-    }
+
+.navSpace{
+    margin-top: 1.5rem;
+    border: 5px solid rgb(58, 128, 219);
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.searchNav{
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    margin-right: auto;
+    margin-left:auto;
+    
+}
 }

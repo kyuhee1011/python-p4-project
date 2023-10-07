@@ -10,13 +10,14 @@ function Home({ recipes, setRecipes }) {
   }, []);
 
   return (
-    <Container>
-      <h2 className="recipeTitle">Home page</h2>
-
-      <Card className="contentCenter" style={{ width: "25rem", margin: "1%" }}>
-        <Card.Body style={{ height: "48vh" }}>
+    <Container className="containerCenter">
+      
+      
+        <h2 className="recipeTitle">Home page</h2>
+        <Card className="contentCenter">
+        <Card.Body className="contentBody">
           {recipes.map((recipe) => (
-            <div key={recipe.id} style={{ height: "100%", width: "100%" }}>
+            <div key={recipe.id} style={{ height: "auto", width: "30rem" }}>
               <Card.Title className="recipeMainTitle">
                 {recipe.title}
               </Card.Title>
@@ -26,23 +27,31 @@ function Home({ recipes, setRecipes }) {
                 src={recipe.image_food}
                 alt="My Delicious Food"
               />
-              <Card.Text className="recipeDescript">
-                {recipe.description}
-              </Card.Text>
+              <div className="cardText">
+                <Card.Text className="recipeDescript">
+                  {recipe.description}
+                </Card.Text>
+              </div>
             </div>
           ))}
+        </Card.Body>
 
+        <div className="centerText cardText">
           <p>
             To check detail information about recipes, please click the button
             to login
           </p>
 
           <Link to="/login">
-            <Button variant="outline-primary" size="md">
+            <Button
+              className="buttonBottom"
+              variant="outline-primary"
+              size="md"
+            >
               Login
             </Button>
           </Link>
-        </Card.Body>
+        </div>
       </Card>
     </Container>
   );

@@ -1,32 +1,78 @@
 .imageSize {
-    width: 80%;
+    width: 70%;
     height: auto;
     border: rgb(58, 128, 219) 2px solid;
     border-radius: 1em;
-}
-
-.containerCenter{
-    display: flex;
-    justify-content: center;
-}
-.mainMenuNav{
-    margin-top:4%
+    
 }
 .contentCenter{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.contentBody{
+          
+    padding: 10px;      
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    height: "auto";
+    width: "40rem";
+    justify-content: space-between;
+   
+}
+
+.buttonBottom {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-right: 1rem;
+ 
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    
+
 }
 .recipeTitle {
-    display: block;
+   
     font-size: 3em;
     color:orange;
     font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    
  
 }
+.centerText{
+   
+    font-size: 1em;
+    color:rgb(14, 12, 9);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.lgBottombutton {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: .5rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+    
 
+}
 .recipeMainTitle{
     display: block;
     font-size: 2em;
     color:rgb(0, 0, 0);
+    margin-bottom: 1rem;
  
     font-weight: bold;
 }
@@ -37,14 +83,36 @@
     color:rgb(0, 0, 0);
  
 }
-@media screen and (min-width: 400px) {
-    .containerCenter{
-        display: flex;
-        justify-content: center;
+
+.cardText{
+    width: 21rem;
+   
+    text-align: center;
+}
+@media screen and (max-width: 550px) {
+    .contentBody{
+        display: block;
+        text-align: center;
+        float:left;           
+    
+    } 
+    .contentCenter{
+        text-align: center;
     }
-    .mainMenuNav {      
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+  
+    .recipeTitle {
+   
+        font-size: 3em;
+        color:orange;
+        font-weight: bold;
+        text-align: center;
+             
     }
+    .cardText{
+        width: 30rem;
+        margin-left: 2.5rem;
+        text-align: center;
+    }
+
+  
 }
