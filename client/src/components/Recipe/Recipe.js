@@ -21,7 +21,7 @@ function Recipe({
             {recipes.map((recipe) => (
               <div key={recipe.id}>
                 <Card.Title className="recipeMainTitle">
-                  {recipe.title}{" "}
+                  {recipe.title}
                 </Card.Title>
                 <Card.Text className="rateColor">
                   Rate: {recipe.review}

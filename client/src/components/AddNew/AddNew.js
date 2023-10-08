@@ -3,7 +3,7 @@ import "./AddNew.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row, FloatingLabel } from "react-bootstrap";
 
 function AddNew({ user, recipes, setRecipes }) {
   const [recipeForm, setRecipeForm] = useState({
@@ -56,6 +56,7 @@ function AddNew({ user, recipes, setRecipes }) {
                   id="title"
                   className="inputRecipe"
                   type="text"
+                  style={{ width: "10rem" }}
                   name="title"
                   placeholder="Enter title of the recipe"
                   onChange={handleInput}
@@ -73,9 +74,10 @@ function AddNew({ user, recipes, setRecipes }) {
                 <Form.Control
                   id="review"
                   className="inputRecipe"
+                  style={{ width: "10rem" }}
                   type="text"
                   name="review"
-                  placeholder="Enter review of the recipe"
+                  placeholder="Enter rate 1 to 5"
                   onChange={handleInput}
                   value={recipeForm.review}
                 />
@@ -83,7 +85,6 @@ function AddNew({ user, recipes, setRecipes }) {
             </Col>
           </Row>
         </Form.Group>
-
         <Form.Group>
           <Row>
             <Col md="10">
@@ -93,9 +94,10 @@ function AddNew({ user, recipes, setRecipes }) {
                   id="image_food"
                   className="inputRecipe"
                   name="image_food"
+                  style={{ width: "10rem" }}
                   type="text"
                   size="md"
-                  placeholder="copy image's url"
+                  placeholder="Copy image's url"
                   onChange={handleInput}
                   value={recipeForm.image}
                 />
@@ -112,6 +114,7 @@ function AddNew({ user, recipes, setRecipes }) {
                 <Form.Control
                   id="description"
                   name="description"
+                  style={{ width: "10rem" }}
                   as="textarea"
                   className="inputSpace"
                   placeholder="Write down the description"
@@ -125,12 +128,13 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formDescription">duration</Form.Label>
+              <Form.Label className="formDescription">Duration</Form.Label>
               <div>
                 <Form.Control
                   id="duration"
                   name="duration"
                   as="textarea"
+                  style={{ width: "10rem" }}
                   className="inputSpace"
                   placeholder="Write down the duration"
                   onChange={handleInput}
@@ -143,11 +147,12 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group>
           <Row>
             <Col md="10">
-              <Form.Label className="formDescription">serving</Form.Label>
+              <Form.Label className="formDescription">Serving</Form.Label>
               <div>
                 <Form.Control
                   id="serving"
                   name="serving"
+                  style={{ width: "10rem" }}
                   as="textarea"
                   className="inputSpace"
                   placeholder="Write down the serving"
@@ -161,11 +166,12 @@ function AddNew({ user, recipes, setRecipes }) {
         <Form.Group className="formCenter">
           <Row>
             <Col md="10">
-              <Form.Label className="formType">mealType</Form.Label>
+              <Form.Label className="formType">MealType</Form.Label>
               <div>
                 <Form.Control
                   id="mealType"
                   name="mealType"
+                  style={{ width: "10rem" }}
                   as="textarea"
                   className="inputSpace"
                   placeholder="Write down the mealType"
@@ -185,9 +191,10 @@ function AddNew({ user, recipes, setRecipes }) {
                   id="name"
                   className="inputSpace"
                   name="name"
+                  style={{ width: "10rem" }}
                   as="textarea"
                   size="md"
-                  placeholder="enter the ingredient name"
+                  placeholder="Enter the ingredient name"
                   onChange={handleInput}
                   value={recipeForm.name}
                 />
@@ -204,6 +211,7 @@ function AddNew({ user, recipes, setRecipes }) {
                   id="direction"
                   className="inputSpace"
                   name="direction"
+                  style={{ width: "10rem" }}
                   as="textarea"
                   size="md"
                   placeholder="Enter the direction"
