@@ -48,7 +48,6 @@ if __name__ == '__main__':
                        direction="Cut zucchini into 1/3 or ¼ inch slices and lay them down on a plate. Lightly sprinkle the salt all over zucchini slices before adding another layer of it. Leave them for 30 min or more. Put 1/3 cup or more Korean pancake powder on a plate. On another side, add and stir eggs with a pinch of salt in a small bowl. Coat nice and thin layer the zucchini on both sides with Korean pancake powder and set aside. Preheat the Pan with oil between medium and high heat. (Beside the pan put coated zucchinis and egg) Lower the heat before placing zucchinis. Grab each flour zucchini and dip into the egg to give extra egg coated and then put it in the pan. When the edges of the egg turn light brown, turn them over to cook another side. After finishing all pancake, place them on the plate to enjoy. You can serve them with roasted sesame seeds on the top or not.")
         ingredients=[ingredient1,ingredient2]      
         
-
         recipe1.ingredients.append(ingredient1)
         recipe2.ingredients.append(ingredient2)
         
