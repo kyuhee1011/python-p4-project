@@ -63,13 +63,13 @@
 }
 
 .formSubmt {
-    color:rgb(58, 128, 219) ;
+    color:rgb(230, 72, 32) ;
     background: white;
     padding: .5rem;
     margin-right: 1rem;
     margin-left: .3rem;
     margin-top: .5rem;
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
 
 }

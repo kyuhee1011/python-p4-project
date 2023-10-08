@@ -82,7 +82,6 @@ class Recipe(db.Model, SerializerMixin):
     review=db.Column(db.Integer)
     mealType=db.Column(db.String)
     user_id =db.Column(db.Integer, db.ForeignKey('users.id'))
-    # user_id=db.relationship("User", secondary=favorite, back_populates="recipes")
 
     ingredients=db.relationship("Ingredient", secondary=recipeIngredient, back_populates="recipes")
 

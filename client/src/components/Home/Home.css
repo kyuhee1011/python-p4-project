@@ -1,7 +1,7 @@
 .imageSize {
     width: 70%;
     height: auto;
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
     
 }
@@ -20,17 +20,18 @@
     flex-wrap: wrap;
     height: "auto";
     width: "40rem";
+    margin-top: 2rem;
     justify-content: space-between;
    
 }
 
 .buttonBottom {
-    color:rgb(58, 128, 219) ;
+    color:rgb(230, 72, 32) ;
     background: white;
     padding: .5rem;
     margin-right: 1rem;
  
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
     
 
@@ -57,13 +58,13 @@
     text-align: center;
 }
 .lgBottombutton {
-    color:rgb(58, 128, 219) ;
+    color:rgb(230, 72, 32) ;
     background: white;
     padding: .5rem;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: .5rem;
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
     
 
@@ -81,12 +82,13 @@
     display: block;
     font-size: 1.5em;
     color:rgb(0, 0, 0);
+    
  
 }
 
 .cardText{
-    width: 21rem;
-   
+    width: 25rem;
+   margin-left: 2%;
     text-align: center;
 }
 @media screen and (max-width: 550px) {

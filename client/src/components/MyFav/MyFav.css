@@ -1,7 +1,7 @@
 .imageSize {
     width: 40%;
     height: auto;
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
 }
 .containerCenter{
@@ -50,11 +50,11 @@
     padding:1rem;
 }
 .formEdit {
-    color:rgb(58, 128, 219) ;
+    color:rgb(230, 72, 32) ;
     background: white;
     padding: .8rem;
     margin:.5rem .2rem .7rem .1rem;
-    border: rgb(58, 128, 219) 2px solid;
+    border: rgb(230, 72, 32) 2px solid;
     border-radius: 1em;
 
 }

@@ -11,7 +11,7 @@ function Recipe({
   handleUpdateFavorite,
 }) {
   return (
-    <Container className="containerCenter">
+    <Container className="containerCenter" >
       <Card className="contentCenter">
         <Row>
           <h2 className="recipeTitle">Share Your Recipes</h2>
@@ -64,8 +64,11 @@ function Recipe({
                 </div>
               </div>
             ))}
+         
           </Row>
+          
         </Card.Body>
+        
       </Card>
     </Container>
   );

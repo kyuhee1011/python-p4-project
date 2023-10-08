@@ -1,6 +1,4 @@
-# Phase 4 Full-Stack Application Project Template
-
-Recipe Warehouse
+# Recipe Warehouse
 
 ## Description
 
@@ -31,6 +29,7 @@ npm start
 - Easy to navigate.
 - Have 8 Components and Inclues 6 routes for the Client Side with Login, SignUp, Home, Recipe, MyFav, AddNew.
 - Optimized for navigation.
+- Responsive Design.
 
 ## Backend
 
@@ -73,6 +72,7 @@ Backend has 4 tables
 - recipeIngredient
 
 ## Database Relationship Diagram
+
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/project%205%20ERD%20.png)
 
 ## Video

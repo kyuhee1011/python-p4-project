@@ -77,7 +77,7 @@ function AddNew({ user, recipes, setRecipes }) {
                   style={{ width: "10rem" }}
                   type="text"
                   name="review"
-                  placeholder="Enter rate 1 to 5"
+                  placeholder="Rate your recipe 1 to 5"
                   onChange={handleInput}
                   value={recipeForm.review}
                 />
