@@ -2,7 +2,7 @@ import React from "react";
 import "./Recipe.css";
 
 // import { useFormik } from 'formik';
-import { Container, Row, Button } from "react-bootstrap";
+import { Container, Card, Row, Button } from "react-bootstrap";
 import Ingredient from "../Ingredient/Ingredient";
 
 function Recipe({
@@ -14,49 +14,61 @@ function Recipe({
 }) {
   return (
     <Container className="containerCenter">
-      <Row>
-        <h2 className="recipeTitle">Share Your Recipes</h2>
-      </Row>
+      <Card className="contentCenter">
+        <Row>
+          <h2 className="recipeTitle">Share Your Recipes</h2>
+        </Row>
+        <Card.Body className="contentBody">
+          <Row>
+            {recipes.map((recipe) => (
+              <div key={recipe.id}>
+                <Card.Title className="recipeMainTitle">
+                  {recipe.title}{" "}
+                </Card.Title>
+                <Card.Text className="rateColor">
+                  Rate: {recipe.review}
+                </Card.Text>
+                <Card.Img
+                  className="imageSize"
+                  src={recipe.image_food}
+                  alt="My Delicious Food"
+                />
+                <Card.Text className="recipeDescript">
+                  {recipe.description}
+                </Card.Text>
+                <Card.Text className="recipePrep space">
+                  <b>Duration:</b> {recipe.duration} 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                  <b>Serving:</b> {recipe.serving}
+                </Card.Text>
+                <Card.Text className="recipeDescript">
+                  <b>Meal Type:</b> {recipe.mealType}
+                </Card.Text>
 
-      <Row>
-        <h3 className="recipeTitle">Enjoy your meal</h3>
-      </Row>
-      <Row>
-        {recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <h3 className="recipeMainTitle">{recipe.title}</h3>
-            <p className="rateColor">{recipe.review}</p>
-            <img
-              className="imageSize"
-              src={recipe.image_food}
-              alt="My Delicious Food"
-            />
-            <p className="recipeDescript">{recipe.description}</p>
-            <p>{recipe.duration}</p>
-            <p>{recipe.serving}</p>
-            <p>{recipe.mealType}</p>
+                <Ingredient recipe={recipe} />
 
-            <Ingredient recipe={recipe} />
-
-            <Button
-              type="submit"
-              variant={recipe.favorite ? "primary" : "outline-primary"}
-              onClick={() => handleUpdateFavorite(recipe.id)}
-              className="formEdit"
-            >
-              {recipe.favorite ? "unfavorite" : "favorite"}
-            </Button>
-            <Button
-              type="submit"
-              variant="outline-primary"
-              onClick={() => handleDelete(recipe.id)}
-              className="formEdit"
-            >
-              Delete
-            </Button>
-          </div>
-        ))}
-      </Row>
+                <Button
+                  type="submit"
+                  variant={recipe.favorite ? "primary" : "outline-primary"}
+                  onClick={() => handleUpdateFavorite(recipe.id)}
+                  className="formEdit"
+                >
+                  {recipe.favorite ? "unfavorite" : "favorite"}
+                </Button>
+                <Button
+                  type="submit"
+                  variant="outline-primary"
+                  onClick={() => handleDelete(recipe.id)}
+                  className="formEdit"
+                >
+                  Delete
+                </Button>
+              </div>
+            ))}
+          </Row>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }

@@ -4,7 +4,9 @@
     border: rgb(58, 128, 219) 2px solid;
     border-radius: 1em;
 }
-
+.containerCenter{
+    text-align: center;
+}
 .recipeTitle {
     display: block;
     font-size: 3em;
@@ -24,15 +26,26 @@
 .rateColor{
 
     font-size: 1em;
-    color:rgb(255, 0, 0);
+    color:rgb(252, 122, 1);
     font-weight: bold;
     margin-top: -1.5%;
 }
 .recipeDescript{
     display: block;
-    font-size: 1.5em;
-    color:rgb(0, 0, 0);
+    font-size: 1.5em;       
  
+}
+
+.recipeDescript.space{
+    word-spacing: 10px;      
+ 
+}
+
+
+.recipePrep{
+    display: block;
+    font-size: 1.5em;  
+    padding:1rem;
 }
 .formEdit {
     color:rgb(58, 128, 219) ;
