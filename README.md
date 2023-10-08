@@ -25,7 +25,7 @@ Python 3.8.13
 
 ## Installing/ Getting Started.
 
-Open second terminal
+Open other terminal
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction2.png)
 
 ```ubuntu
@@ -65,7 +65,7 @@ Backend has 4 tables
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/project%205%20ERD%20.png)
 
 
-## Front End
+## Frontend Quick Start
 
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction1.png)
 
