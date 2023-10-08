@@ -1,0 +1,60 @@
+.imageSize {
+    width: 60%;
+    height: auto;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+}
+.containerCenter{
+    text-align: center;
+}
+.recipeTitle {
+    display: block;
+    font-size: 3em;
+    color:orange;
+    font-weight: bold;
+ 
+}
+.cardNext{
+    margin-bottom: 5%;
+}
+
+.recipeMainTitle{
+    display: block;
+    font-size: 2em;
+    color:rgb(0, 0, 0);
+    margin-bottom: 2%; 
+    font-weight: bold;
+}
+.rateColor{
+
+    font-size: 1em;
+    color:rgb(252, 122, 1);
+    font-weight: bold;
+    margin-top: -1.5%;
+}
+.recipeDescript{
+    display: block;
+    font-size: 1.5em;
+    margin-left:3%;
+    margin-right:3%        
+}
+
+.recipePrep.space{
+    word-spacing: 2px;     
+}
+
+
+.recipePrep{
+    display: block;
+    font-size: 1.5em;  
+    padding:1rem;
+}
+.formEdit {
+    color:rgb(58, 128, 219) ;
+    background: white;
+    padding: .8rem;
+    margin:.5rem .2rem .7rem .1rem;
+    border: rgb(58, 128, 219) 2px solid;
+    border-radius: 1em;
+
+}
