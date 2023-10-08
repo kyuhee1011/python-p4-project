@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useFormik } from "formik";
+import { useFormik, Field } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Form, Button, InputGroup, Row, Col } from "react-bootstrap";
@@ -50,7 +50,7 @@ function LogIn({ user, handleAccount }) {
   }
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form className="loginForm" onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Login {errorPage}</h2>
       <div>
         <InputGroup>
@@ -62,8 +62,8 @@ function LogIn({ user, handleAccount }) {
               <Form.Control
                 id="username"
                 type="text"
-                
-                className="formText"
+                size="small"
+                style={{ width:"20rem" }}
                 name="username"
                 placeholder="Enter your username"
                 onChange={formik.handleChange}
@@ -79,7 +79,7 @@ function LogIn({ user, handleAccount }) {
               <Form.Control
                 id="password"
                 type="password"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="password"
                 placeholder="Enter your password"
                 onChange={formik.handleChange}

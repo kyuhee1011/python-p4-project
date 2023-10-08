@@ -58,7 +58,7 @@ function SignUp({ user, handleAccount }) {
   }
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form className="signUpForm" onSubmit={formik.handleSubmit}>
       <h2 className="addAccount"> Sign Up Page {errorPage}</h2>
       <div>
         <InputGroup>
@@ -70,7 +70,7 @@ function SignUp({ user, handleAccount }) {
               <Form.Control
                 id="firstName"
                 type="text"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="firstName"
                 placeholder="Enter your first name"
                 onChange={formik.handleChange}
@@ -86,7 +86,7 @@ function SignUp({ user, handleAccount }) {
               <Form.Control
                 id="lastName"
                 type="text"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="lastName"
                 placeholder="Enter your last name"
                 onChange={formik.handleChange}
@@ -103,7 +103,7 @@ function SignUp({ user, handleAccount }) {
               <Form.Control
                 id="username"
                 type="text"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="username"
                 placeholder="Enter your username"
                 onChange={formik.handleChange}
@@ -119,7 +119,7 @@ function SignUp({ user, handleAccount }) {
               <Form.Control
                 id="password"
                 type="password"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="password"
                 placeholder="Enter your password"
                 onChange={formik.handleChange}
@@ -135,7 +135,7 @@ function SignUp({ user, handleAccount }) {
               <Form.Control
                 id="confirmation"
                 type="password"
-                className="formText"
+                style={{ width:"20rem" }}
                 name="confirmation"
                 placeholder="Enter your password again"
                 onChange={formik.handleChange}

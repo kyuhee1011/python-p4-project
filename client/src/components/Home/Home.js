@@ -11,10 +11,8 @@ function Home({ recipes, setRecipes }) {
 
   return (
     <Container className="containerCenter">
-      
-      
+      <Card className="contentCenter">
         <h2 className="recipeTitle">Home page</h2>
-        <Card className="contentCenter">
         <Card.Body className="contentBody">
           {recipes.map((recipe) => (
             <div key={recipe.id} style={{ height: "auto", width: "30rem" }}>
