@@ -19,12 +19,7 @@
     margin-bottom: 1%;
  
 }
-.formText{
-    width: 50%;
-    padding: .4rem ;
-    margin: .5rem .2rem .3rem .4rem;
-    text-align: left;
-}
+
 .formSubmt {
     color:rgb(230, 72, 32) ;
     background: white;

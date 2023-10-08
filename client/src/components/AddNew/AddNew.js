@@ -20,11 +20,13 @@ function AddNew({ user, recipes, setRecipes }) {
 
   const history = useHistory();
 
+  //function for onChange
   const handleInput = (e) => {
     const { name, value } = e.target;
     setRecipeForm({ ...recipeForm, [name]: value });
   };
 
+  //function for submitting something new recipe
   const handleSubmit = (e) => {
     e.preventDefault();
 

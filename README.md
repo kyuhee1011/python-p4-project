@@ -2,9 +2,9 @@
 
 ## Description
 
-This website allows user to share their recipe and look on others. Users can look up by pressing recipe button or search in the search bar.
+This website allows user to share their recipe and look at others. Users can look it up by pressing the recipe button or searching in the search bar.
 
-Non-user can view only Home page and not other pages. In order to view or use Recipes, Ingredients, Add Favorite, or Add New Recipe need to SignUp and Log in.
+Non-users can view only the Home page and not other pages. In order to view or use Recipes, Ingredients, Add Favorite, or Add New Recipe need to sign up and Log in.
 
 ## Quick Start
 
@@ -13,11 +13,11 @@ git clone https://github.com/kyuhee1011/python-p4-project.git
 Or
 git clone git@github.com:kyuhee1011/python-p4-project.git
 
-Open two terminal 1 for Frontend and 1 for Backend.
+Open two terminals 1 for Frontend and 1 for Backend.
 
 ## Backend
 
-Open Second terminal to run Backend Server
+Open the Second terminal to run the Backend Server
 
 ## prerequisites
 
@@ -25,7 +25,7 @@ Python 3.8.13
 
 ## Installing/ Getting Started.
 
-Open other terminal
+On other terminal
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction2.png)
 
 ```ubuntu
@@ -33,7 +33,7 @@ cd server
 pipenv install
 ```
 
-Run pipenv shell and then change to correct directory to play.
+Run pipenv shell and then change to the correct directory to play.
 
 ```ubuntu
 pipenv shell
@@ -81,7 +81,7 @@ npm start
 
 - Good Visual Quality.
 - Easy to navigate.
-- Have 8 Components and Inclues 6 routes for the Client Side with Login, SignUp, Home, Recipe, MyFav, AddNew.
+- Have 8 Components and includes 6 routes for the Client Side with Login, SignUp, Home, Recipe, MyFav, AddNew.
 - Optimized for navigation.
 - Responsive Design.
 
@@ -93,5 +93,5 @@ https://youtu.be/_Nl-w4yQe14
 Recipe images: https://namu.wiki/
 https://en.wikipedia.org/wiki/Main_Page
 
-## Demo
+## Full instruction Demo video
 https://youtu.be/Zab_3bnWKvY

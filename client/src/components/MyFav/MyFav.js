@@ -36,7 +36,7 @@ function MyFav({ user, recipes, handleUpdateFavorite }) {
                   <b>Serving:</b> {recipe.serving}
                 </Card.Text>
                 <Card.Text className="recipeDescript">
-                  <b>Meal Type:</b>
+                  <b>Meal Type: </b>
                   {recipe.mealType}
                 </Card.Text>
 

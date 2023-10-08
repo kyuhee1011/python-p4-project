@@ -11,7 +11,7 @@ function Recipe({
   handleUpdateFavorite,
 }) {
   return (
-    <Container className="containerCenter" >
+    <Container className="containerCenter">
       <Card className="contentCenter">
         <Row>
           <h2 className="recipeTitle">Share Your Recipes</h2>
@@ -51,6 +51,8 @@ function Recipe({
                     onClick={() => handleUpdateFavorite(recipe.id)}
                     className="formEdit"
                   >
+                    {/* using a ternary conditional operator 
+                    if it is true"♡ Unfavorite" and false "❤️ Favorite" */}
                     {recipe.favorite ? "♡ Unfavorite" : "❤️ Favorite"}
                   </Button>
                   <Button
@@ -64,11 +66,8 @@ function Recipe({
                 </div>
               </div>
             ))}
-         
           </Row>
-          
         </Card.Body>
-        
       </Card>
     </Container>
   );

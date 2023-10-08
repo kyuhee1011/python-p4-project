@@ -14,9 +14,6 @@
     font-weight: bold;
  
 }
-.cardNext{
-    margin-bottom: 5%;
-}
 
 .recipeMainTitle{
     display: block;
@@ -25,13 +22,7 @@
     margin-bottom: 2%; 
     font-weight: bold;
 }
-.rateColor{
 
-    font-size: 1em;
-    color:rgb(252, 122, 1);
-    font-weight: bold;
-    margin-top: -1.5%;
-}
 .recipeDescript{
     display: block;
     font-size: 1.5em;
@@ -39,16 +30,6 @@
     margin-right:3%        
 }
 
-.recipePrep.space{
-    word-spacing: 2px;     
-}
-
-
-.recipePrep{
-    display: block;
-    font-size: 1.5em;  
-    padding:1rem;
-}
 .formEdit {
     color:rgb(230, 72, 32) ;
     background: white;

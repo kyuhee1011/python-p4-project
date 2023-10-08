@@ -15,11 +15,14 @@ function App() {
   const [search, setSearch] = useState("");
   const [myfavoriteAdd, setMyFavoriteAdd] = useState(false);
 
+  //search task
   const filteredRecipe = recipes.filter((recipe) => {
     return recipe?.title?.toLowerCase().includes(search);
   });
 
   const handleAccount = (user) => setUser(user);
+  
+  //handle MyFavorite list
   const updateRecipeFav = (recipe) => {
     const updatedRecipes = recipes.map((r) => {
       if (r?.id === recipe?.id) return recipe;
@@ -38,6 +41,7 @@ function App() {
       .then((data) => updateRecipeFav(data));
   };
 
+  //Check session
   useEffect(() => {
     fetch(`/check_session`).then((response) => {
       if (response.ok) {
@@ -46,6 +50,7 @@ function App() {
     });
   }, []);
 
+  //fetch all recipes for non users and users
   useEffect(() => {
     fetch(`/recipe_all`)
       .then((response) => response.json())
@@ -54,6 +59,7 @@ function App() {
       });
   }, []);
 
+  
   function handleLogOut() {
     fetch(`/logout`, {
       method: "DELETE",
@@ -64,6 +70,10 @@ function App() {
     });
   }
 
+  // DELETE request to delete a specific recipe based on the recipeId. 
+  //After the deletion is successful, it fetches the updated list of 
+  //recipes and updates the UI with the new data.
+  
   function handleDelete(recipeId) {
     fetch(`/recipe_all/${recipeId}`, {
       method: "DELETE",

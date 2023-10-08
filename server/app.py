@@ -6,7 +6,9 @@ from sqlalchemy.exc import IntegrityError
 from config import app, db, api
 # Add your model imports
 from models import User, Recipe, Ingredient, recipeIngredient
-    
+
+
+#checking the user id exist/match with information in data
 class CheckSession(Resource):
 
     def get(self):
@@ -29,7 +31,9 @@ class SignUp(Resource):
             username = data['username'],
             firstName=data['firstName'],
             lastName=data['lastName']
-           
+          # no need to include password because already 
+          # handle by setting password has attribute separtely
+          # also will cause the error              
         )
         
         new_user.password_hash = data['password']  
@@ -61,7 +65,7 @@ class Logout(Resource):
    
 class RecipeAll(Resource):
     def get(self):
-        #getting all recipes for non user on Home page
+        #getting all recipes for non users on Home page
               
         data_meals=Recipe.query.all()
         
@@ -69,7 +73,7 @@ class RecipeAll(Resource):
         return make_response(jsonify(all_recipe),200)
 
     def post(self):
-    #updates/Add new recipes in Add New page
+    #updates/Add new recipes in Add New page and updates new recipe in MyRecipe page
         if session.get('user_id'):
             new_form=request.get_json()
             try:
@@ -87,8 +91,10 @@ class RecipeAll(Resource):
                     name=new_form['name'],
                     direction=new_form['direction']
                 )
-            
-            
+         
+                #adding new_ingredient to the list of ingredients 
+                # for the new_recipe (associated with a recipe)
+
                 new_recipe.ingredients.append(new_ingredient)
        
                 db.session.add(new_recipe)
@@ -147,9 +153,12 @@ class RecipeById(Resource):
 
     
 class RecipeResource(Resource):
+   #updating a recipe's favorite status in a database. 
     def patch(self, recipe_id):
         recipe = Recipe.query.filter_by(id=recipe_id).first()
         if recipe:
+            #If recipe.favorite is True, 
+            # it sets it to False, and if it's False, it sets it to True. 
             recipe.favorite = not recipe.favorite
             db.session.commit()
             return recipe.to_dict(), 200
