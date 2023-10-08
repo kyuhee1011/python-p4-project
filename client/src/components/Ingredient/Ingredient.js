@@ -10,11 +10,14 @@ function Ingredient({ user, recipe }) {
         <h3 className="mainIngri">Ingredients</h3>
       </Row>
       <Row className="ingriName">{recipe.ingredients[0].name}</Row>
-      <Row className="ingriDirect">Directions: <br/>{recipe.ingredients[0].direction}</Row>
+      <Row className="ingriDirect"><b>Directions:</b> <br/>{recipe.ingredients[0].direction}</Row>
 
       <Row>
-        <Link to="/addNew">
-          <p>Share Your Recipe</p>
+        <Link to="/addNew"
+          style={{
+            textDecoration: "none",
+          }}>
+          <p className="shareRecipe">Share Your Recipe</p>
         </Link>
       </Row>
     </Container>

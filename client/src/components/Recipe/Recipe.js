@@ -1,7 +1,5 @@
-import React from "react";
 import "./Recipe.css";
-
-// import { useFormik } from 'formik';
+import React from "react";
 import { Container, Card, Row, Button } from "react-bootstrap";
 import Ingredient from "../Ingredient/Ingredient";
 
@@ -37,9 +35,8 @@ function Recipe({
                   {recipe.description}
                 </Card.Text>
                 <Card.Text className="recipePrep space">
-                  <b>Duration:</b> {recipe.duration} 
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               
+                  <b>Duration:</b> {recipe.duration}
+                  &nbsp;&nbsp;&nbsp;&nbsp;
                   <b>Serving:</b> {recipe.serving}
                 </Card.Text>
                 <Card.Text className="recipeDescript">
@@ -47,23 +44,24 @@ function Recipe({
                 </Card.Text>
 
                 <Ingredient recipe={recipe} />
-
-                <Button
-                  type="submit"
-                  variant={recipe.favorite ? "primary" : "outline-primary"}
-                  onClick={() => handleUpdateFavorite(recipe.id)}
-                  className="formEdit"
-                >
-                  {recipe.favorite ? "unfavorite" : "favorite"}
-                </Button>
-                <Button
-                  type="submit"
-                  variant="outline-primary"
-                  onClick={() => handleDelete(recipe.id)}
-                  className="formEdit"
-                >
-                  Delete
-                </Button>
+                <div className="cardNext">
+                  <Button
+                    type="submit"
+                    variant={recipe.favorite ? "primary" : "outline-primary"}
+                    onClick={() => handleUpdateFavorite(recipe.id)}
+                    className="formEdit"
+                  >
+                    {recipe.favorite ? "♡ Unfavorite" : "❤️ Favorite"}
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="outline-primary"
+                    onClick={() => handleDelete(recipe.id)}
+                    className="formEdit"
+                  >
+                    🗑️ Delete
+                  </Button>
+                </div>
               </div>
             ))}
           </Row>

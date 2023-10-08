@@ -14,13 +14,15 @@
     font-weight: bold;
  
 }
-
+.cardNext{
+    margin-bottom: 5%;
+}
 
 .recipeMainTitle{
     display: block;
     font-size: 2em;
     color:rgb(0, 0, 0);
- 
+    margin-bottom: 2%; 
     font-weight: bold;
 }
 .rateColor{
@@ -32,13 +34,13 @@
 }
 .recipeDescript{
     display: block;
-    font-size: 1.5em;       
- 
+    font-size: 1.5em;
+    margin-left:3%;
+    margin-right:3%        
 }
 
-.recipeDescript.space{
-    word-spacing: 10px;      
- 
+.recipePrep.space{
+    word-spacing: 2px;     
 }
 
 
