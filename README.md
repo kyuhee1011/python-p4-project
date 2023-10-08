@@ -15,22 +15,6 @@ git clone git@github.com:kyuhee1011/python-p4-project.git
 
 Open two terminal 1 for Frontend and 1 for Backend.
 
-## Front End
-
-```ubuntu
-cd client
-npm install
-npm start
-```
-
-## Features
-
-- Good Visual Quality.
-- Easy to navigate.
-- Have 8 Components and Inclues 6 routes for the Client Side with Login, SignUp, Home, Recipe, MyFav, AddNew.
-- Optimized for navigation.
-- Responsive Design.
-
 ## Backend
 
 Open Second terminal to run Backend Server
@@ -41,7 +25,11 @@ Python 3.8.13
 
 ## Installing/ Getting Started.
 
+Open second terminal
+![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction2.png)
+
 ```ubuntu
+cd server
 pipenv install
 ```
 
@@ -61,8 +49,9 @@ Run pyton seed.py beforehand to seed the database and then python app.py to call
 python seed.py
 python app.py
 ```
+![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction3.png)
 
-## Features
+## Backend Features
 
 Backend has 4 tables
 
@@ -74,6 +63,27 @@ Backend has 4 tables
 ## Database Relationship Diagram
 
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/project%205%20ERD%20.png)
+
+
+## Front End
+
+![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction1.png)
+
+
+```ubuntu
+cd client
+npm install
+npm start
+```
+![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction4.png)
+
+## Frontend Features
+
+- Good Visual Quality.
+- Easy to navigate.
+- Have 8 Components and Inclues 6 routes for the Client Side with Login, SignUp, Home, Recipe, MyFav, AddNew.
+- Optimized for navigation.
+- Responsive Design.
 
 ## Video
 
