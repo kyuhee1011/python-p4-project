@@ -2,7 +2,7 @@
 
 ## Description
 
-This website allows user to share their recipe and look at others. Users can look it up by pressing the recipe button or searching in the search bar.
+This website allows user to share their recipe and look at others. Users can look it up by pressing the recipe button or searching in the search bar. Also, they can add their recipe to share with others
 
 Non-users can view only the Home page and not other pages. In order to view or use Recipes, Ingredients, Add Favorite, or Add New Recipe need to sign up and Log in.
 
@@ -17,7 +17,7 @@ Open two terminals 1 for Frontend and 1 for Backend.
 
 ## Backend
 
-Open the Second terminal to run the Backend Server
+Open the terminal to run the Backend Server
 
 ## prerequisites
 
@@ -49,6 +49,7 @@ Run pyton seed.py beforehand to seed the database and then python app.py to call
 python seed.py
 python app.py
 ```
+
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction3.png)
 
 ## Backend Features
@@ -64,17 +65,16 @@ Backend has 4 tables
 
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/project%205%20ERD%20.png)
 
-
 ## Frontend Quick Start
 
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction1.png)
-
 
 ```ubuntu
 cd client
 npm install
 npm start
 ```
+
 ![git hub code](https://github.com/kyuhee1011/python-p4-project/blob/main/client/assets/direction4.png)
 
 ## Frontend Features
@@ -86,6 +86,7 @@ npm start
 - Responsive Design.
 
 ## Video
+
 https://youtu.be/_Nl-w4yQe14
 
 ## Acknowledgment
@@ -94,4 +95,5 @@ Recipe images: https://namu.wiki/
 https://en.wikipedia.org/wiki/Main_Page
 
 ## Full instruction Demo video
+
 https://youtu.be/Zab_3bnWKvY
