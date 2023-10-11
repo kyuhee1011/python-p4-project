@@ -17,10 +17,10 @@ flask-restful==0.3.10
 flask-sqlalchemy==3.0.5
 greenlet==3.0.0; platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32')))))
 gunicorn==21.2.0
-importlib-metadata==6.8.0; python_version < '3.10'
-importlib-resources==6.1.0; python_version < '3.9'
+importlib-metadata==6.7.0; python_version < '3.10'
+importlib-resources==5.12.0; python_version < '3.9'
 ipdb==0.13.9
-ipython==8.12.3; python_version >= '3.7'
+ipython==7.34.0; python_version >= '3.7'
 itsdangerous==2.1.2; python_version >= '3.7'
 jedi==0.19.1; python_version >= '3.6'
 jinja2==3.1.2; python_version >= '3.7'
@@ -46,7 +46,7 @@ sqlalchemy-serializer==1.4.1
 stack-data==0.6.3
 toml==0.10.2; python_version >= '3.7'
 traitlets==5.11.2; python_version >= '3.8'
-typing-extensions==4.8.0; python_version < '3.9'
+typing-extensions==4.7.1; python_version < '3.9'
 wcwidth==0.2.8
 werkzeug==2.2.2; python_version >= '3.8'
 zipp==3.17.0; python_version >= '3.8'
