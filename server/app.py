@@ -3,7 +3,7 @@
 from flask import request, make_response, request, jsonify, session
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
-from config import app, db, api
+from config import app, db, api, env_dot
 # Add your model imports
 from models import User, Recipe, Ingredient, recipeIngredient
 
