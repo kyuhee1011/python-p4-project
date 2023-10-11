@@ -23,7 +23,7 @@ if __name__ == '__main__':
             
 
         recipe1= Recipe(title="Korean Rolled Egg Omelette",
-                   image_food="https://i.namu.wiki/i/PaCsNGAPcwQKOPPdJxmgpCx2EIgdlmAVBizuBmSJbwgsTCYLhji-vH0Z1PsUKY6Mw4FJxtB1GiiRBZd0V3GQsgSci2L7tCP5XVzY1-4u7UXU3oiPCCaoSFjctC3C5fH3afLW2w4IXgwf5ZcxHrb1FOcfITEa2xL_wP6G4sdgLd8.webp",
+                   image_food="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Gyeran-mari.jpg/330px-Gyeran-mari.jpg",
                    description="It's side dish that is rolled into an omelette mixed with vegetables and some others",
                    duration="20 minutes",
                    serving="2",
