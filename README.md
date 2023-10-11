@@ -1,5 +1,10 @@
 # Recipe Warehouse
 
+You can click here to visit Website
+https://recipe-warehouse.onrender.com/
+
+or follow the instruction below.
+
 ## Description
 
 This website allows user to share their recipe and look at others. Users can look it up by pressing the recipe button or searching in the search bar. Also, they can add their recipe to share with others

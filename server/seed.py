@@ -9,10 +9,14 @@ import ipdb
 if __name__ == '__main__':
    
     with app.app_context():
+        db.session.query(recipeIngredient).delete()
+        
+        Recipe.query.delete()
         User.query.delete()
         Ingredient.query.delete()
-        Recipe.query.delete()
-        db.session.query(recipeIngredient).delete()
+        
+       
+        
 
         users =[ 
             User(username="kyuhelee",  firstName="kyuhee",lastName="Lee" ),
@@ -20,6 +24,8 @@ if __name__ == '__main__':
         ]
         users[0].password_hash='k1234'
         users[1].password_hash='r1234'
+        db.session.add_all(users)
+        db.session.commit()
             
 
         recipe1= Recipe(title="Korean Rolled Egg Omelette",
@@ -30,16 +36,16 @@ if __name__ == '__main__':
                    favorite=False,
                    review=3,
                    mealType="Side", 
-                   user_id=1)
+                   user_id=users[0].id)
         recipe2=Recipe(title="Korean Fried Zucchini",
-                   image_food="https://i.namu.wiki/i/PaCsNGAPcwQKOPPdJxmgpIs2Cbki6whlyBm3vHciV5k57mEwGT-Zw4a0tBOWtf5czPor-xffZbOhR0H2cHXcz8o9F51E0QfX8MT59ZSE2Xan1NlberfP_jMSRfEJzw79B_KnGlmfA6Iuzhqj6S39faHcEOyxHjB343cLjo3IfVs.webp",
+                   image_food="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Hobak_Jeon%2C_etc.jpg/405px-Hobak_Jeon%2C_etc.jpg",
                    description="It's side dish that refers to pan-fried",
                    duration="40 minutes",
                    serving="4",
                    favorite=True,
                    review=3,
                    mealType="Side",
-                   user_id=1)
+                   user_id=users[1].id)
         recipes=[recipe1,recipe2]
 
         ingredient1= Ingredient( name="3 egg, 1 Tbsp chopped onion, 1 Tbsp chopped green onion, 1 Tbsp chopped carrot, salt (option)", 
@@ -53,7 +59,7 @@ if __name__ == '__main__':
         
         recipes=[recipe1,recipe2]    
             
-        db.session.add_all(users)
+       
         db.session.add_all(ingredients)
         db.session.add_all(recipes)
         db.session.commit()
