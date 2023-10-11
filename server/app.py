@@ -1,6 +1,6 @@
 
 # Remote library imports
-from flask import request, make_response, request, jsonify, session
+from flask import request, make_response, request, render_template, jsonify, session
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 from config import app, db, api, env_dot
@@ -164,8 +164,10 @@ class RecipeResource(Resource):
             return recipe.to_dict(), 200
         else:
             return {"message": "Recipe not found"}, 404
-
-  
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")  
 
 api.add_resource(CheckSession, '/check_session')
 api.add_resource(SignUp, '/signup')
