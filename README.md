@@ -96,7 +96,7 @@ https://youtu.be/_Nl-w4yQe14
 
 ## Acknowledgment
 
-Recipe images: https://namu.wiki/
+Recipe images:
 https://en.wikipedia.org/wiki/Main_Page
 
 ## Full instruction Demo video
